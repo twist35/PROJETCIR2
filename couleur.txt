@@ -1,0 +1,12 @@
+#779CAA bleu sombre
+#E5F8FF bleu clair
+#C5E9F7 bleu ciel
+#AA8966 marron
+#F7DFC5 beige
+
+#E5F8FF bleu clair fond
+#193B59 bleu foncé
+#0B4B59 vert foncé
+#21A6A6 vert bleu
+#30BFB1 vert clair
+#BF7E04 marron (titre de page)

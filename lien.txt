@@ -1,0 +1,8 @@
+index.html : Accueil
+authentification.html : Authentification
+profil.html : Profil
+creation.html : création profil
+modiffication.html : changer profil
+mesmatchs.html : liste des maths, anciens et futurs
+match.html : X match
+organisation.html : créer un match, gestion file attente + stats

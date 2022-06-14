@@ -1,0 +1,4 @@
+ssh user2@10.10.51.72 
+isen35
+
+debian11

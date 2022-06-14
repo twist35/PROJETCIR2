@@ -1,0 +1,17 @@
+authentification.html : Authentification
+POST email et mdp
+verificatrion en php du mdp et email
+
+Page 2 : Explorer
+GET tous les match de la bdd et affiche
+
+Page 3 : 
+
+
+
+
+
+antonin :
+profil, mesmatchs, match
+lucas :
+index, authentification, creation,organisation
