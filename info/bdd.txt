@@ -1,0 +1,5 @@
+table partie insérer une date et une heure
+INSERT INTO 'partie'(date) VALUES ('YYYY-MM-DD HH:MM:SS')
+
+table user inserer une date de naissance
+INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
