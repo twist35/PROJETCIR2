@@ -1,0 +1,58 @@
+/*
+    Créé par Antonin SABIRON le 15/06/2022
+    Pour le projet de fin d'année CIR2
+    Fichier contenant la plupart du style css
+*/
+
+/*GENERAL*/
+
+.back-b-marine
+{
+    background-color: #193B59;
+}
+.text-b-marine
+{
+   color: #193B59;
+}
+.back-v-b
+{
+    background-color: #21A6A6;
+}
+.text-beige
+{
+    color: #F7DFC5;
+}
+
+
+/*HEADER*/
+
+#head
+{
+    height: 120px;
+}
+.navbar-nav
+{
+    width: 100%;
+}
+
+.p-1
+{
+    margin-right: 0px; /*un décalage dans le header  */
+    font-weight:bolder
+}
+.nav-link
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#menu
+{
+    margin-top: 0.5%;
+}
+
+@media only screen and (max-width: 980px) 
+{
+    /*HEADER*/
+    
+}
