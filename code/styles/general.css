@@ -23,7 +23,16 @@
 {
     color: #F7DFC5;
 }
+.back
+{
+    background-color: #E5F8FF;
+}
 
+#page
+{
+    /*width: 80vw;*/
+
+}
 
 /*HEADER*/
 
@@ -55,15 +64,10 @@
 {
     display: flex;
     align-items: center;
-    /*display:none;*/
 }
-#connexion
-{
-    /*display: block;*/
-}
+
 
 @media only screen and (max-width: 980px) 
 {
-    /*HEADER*/
     
 }

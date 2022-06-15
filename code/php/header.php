@@ -24,7 +24,7 @@
 
 </head>
 
-<body>   
+<body class="back">   
     <header>
         <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
             <span class="navbar-brand p-1 text-b-marine ">Match Generator</span>
@@ -46,6 +46,7 @@
             </ul>
         </nav>
     </header>
+    <div id="page" class="back">
     <script>
             $connected = true;
             if($connected)
