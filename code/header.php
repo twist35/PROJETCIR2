@@ -3,6 +3,12 @@
     Pour le projet de fin d'année CIR2
     Fichier contenant le code html header commun à chaque page du site
 -->
+<?php
+    $connected = true;
+    if ($connected)
+    {
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,13 +17,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="styles/general.css">
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <title>Page1</title>
 
 </head>
+<?php
+?>
+
 <body>
     <header>
         <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
@@ -34,7 +43,7 @@
                 </li>
                 <li id="profil" class="nav-item d-flex align-items-center back-b-marine rounded-3 ">
                     <a class="nav-link text-beige" href="#">profil
-                        <img id="photo-bouton" src="..\ressources\img\avatar_t.png" height="32" width="32" alt="photo profil">
+                        <img id="photo-bouton" src="ressources\img\avatar_t.png" height="32" width="32" alt="photo profil">
                     </a>
                 </li>
             </ul>
