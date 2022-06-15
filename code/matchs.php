@@ -2,11 +2,11 @@
     Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
-    Fichier contenant la page d'accueil (recherche)
+    Fichier contenant les matchs
 -->
 <?php include_once("php/header.php")?>
 <div class="titre-page back-b-marine text-center h2 text-marron py-1">
-    Accueil
+    Matchs
 </div>
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eaque aliquam debitis at odio laborum eveniet mollitia quasi quos porro nisi voluptatibus ut dicta veniam eligendi tempore obcaecati similique excepturi.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium nisi ligula, a feugiat purus rhoncus sed. Praesent tempus quis nibh at gravida. Integer leo nisi, feugiat ut leo quis, dapibus scelerisque odio. Proin id leo ultricies, elementum lorem vel, interdum velit. Praesent magna leo, efficitur quis leo sed, ullamcorper lobortis libero. Suspendisse a imperdiet dolor, aliquam imperdiet nunc. Quisque pellentesque sit amet nunc quis condimentum. Aliquam consequat urna sit amet orci egestas, eu varius mi iaculis.
@@ -18,6 +18,5 @@ Vestibulum tincidunt leo eu sagittis faucibus. Sed leo diam, ultricies vitae sem
 Etiam sem mi, faucibus nec porta vel, venenatis pellentesque nibh. Praesent iaculis elementum sapien a suscipit. Aliquam consequat blandit mattis. Aliquam in felis massa. Phasellus venenatis justo sed mi vehicula cursus. Vestibulum gravida eros faucibus vestibulum eleifend. Vivamus sodales pulvinar felis vitae laoreet. Proin eget quam sed lectus laoreet pretium. Aliquam erat volutpat. Pellentesque egestas luctus mattis.
 
 Sed maximus nibh suscipit pellentesque posuere. Etiam faucibus augue sagittis eleifend sodales. Phasellus mi sem, viverra volutpat auctor placerat, consectetur quis lectus. Sed eget pulvinar ex, id scelerisque neque. Fusce egestas nibh justo, nec molestie arcu rhoncus quis. Suspendisse potenti. Nunc rhoncus purus porta odio fringilla, id vehicula ante fringilla. Nulla sit amet sodales diam. Fusce fermentum, arcu vitae hendrerit rutrum, purus magna tempor augue, vel maximus turpis nisl non leo. Nunc efficitur elit eget justo volutpat imperdiet. Proin congue auctor felis, ac tempus justo gravida vitae. Ut pharetra ut quam nec pulvinar. Fusce id eleifend enim, ut euismod felis. Phasellus id nibh mi.
-
 
 <?php include_once("php/footer.php")?>

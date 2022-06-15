@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/general.css">
     <!-- JavaScript -->
-    <!--<script src="js/ajax.js"></script>-->
+    <script src="js/ajax.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
@@ -27,19 +27,19 @@
 <body class="back">   
     <header>
         <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
-            <span class="navbar-brand p-1 text-b-marine ">Match Generator</span>
+            <span class="h1  text-b-marine">Match Generator</span>
             <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
                 <li class="nav-item  rounded-3 back-b-marine">
-                    <a class="nav-link text-beige" href="#">les matchs</a>
+                    <a class="nav-link text-beige" href="matchs.php">les matchs</a>
                 </li>
                 <li  id="nav2" class="nav-item  rounded-3 back-b-marine" >
-                    <a class="nav-link text-beige"  href="#">créer un match</a>
+                    <a class="nav-link text-beige"  href="organisation.php">créer un match</a>
                 </li>
                 <li id="connexion" class="nav-item rounded-3 back-b-marine">
-                    <a class="nav-link  text-beige" href="#">connexion</a>
+                    <a class="nav-link  text-beige" href="authentification.php">connexion</a>
                 </li>
                 <li id="profil" class="nav-item back-b-marine rounded-3 ">
-                    <a class="nav-link text-beige" href="#">profil
+                    <a class="nav-link text-beige" href="profil.php">profil
                         <img id="photo-bouton" src="ressources\img\avatar_t.png" height="32" width="32" alt="photo profil">
                     </a>
                 </li>
