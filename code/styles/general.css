@@ -52,11 +52,13 @@
 }
 #profil
 {
-    display: block;
+    display: flex;
+    align-items: center;
+    /*display:none;*/
 }
 #connexion
 {
-    display: none;
+    /*display: block;*/
 }
 
 @media only screen and (max-width: 980px) 
