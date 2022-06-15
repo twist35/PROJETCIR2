@@ -50,6 +50,14 @@
 {
     margin-top: 0.5%;
 }
+#profil
+{
+    display: block;
+}
+#connexion
+{
+    display: none;
+}
 
 @media only screen and (max-width: 980px) 
 {
