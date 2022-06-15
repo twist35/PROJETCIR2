@@ -7,6 +7,10 @@
 
 /*GENERAL*/
 
+body
+{
+    height: 100%;
+}
 .back-b-marine
 {
     background-color: #193B59;
@@ -23,9 +27,18 @@
 {
     color: #F7DFC5;
 }
+.text-marron
+{
+    color: #BF7E04;
+}
 .back
 {
     background-color: #E5F8FF;
+}
+.vw-60
+{
+    width: 60vw;
+    max-width: 330px;
 }
 
 #page
@@ -38,18 +51,15 @@
 
 #head
 {
-    height: 120px;
+    height: 140px;
+    padding: 1vh 0 2vh 0;
+    
 }
 .navbar-nav
 {
     width: 100%;
 }
 
-.p-1
-{
-    margin-right: 0px; /*un décalage dans le header  */
-    font-weight:bolder
-}
 .nav-link
 {
     padding-left: 15px;
@@ -66,6 +76,8 @@
     align-items: center;
 }
 
+
+/*PROFIL*/
 
 @media only screen and (max-width: 980px) 
 {

@@ -6,3 +6,5 @@ if (!isset($_SESSION['count'])) {
   $_SESSION['count']++;
 }
 echo $_SESSION['count'];
+
+//session_destroy(); remet a zéro 
