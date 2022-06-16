@@ -30,7 +30,7 @@
             <a href="index.php" class="nav-link"><span class="h1  text-b-marine">Match Generator</span></a>
             <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
                 <li class="nav-item  rounded-3 back-b-marine">
-                    <a class="nav-link text-beige" href="matchs.php">les matchs</a>
+                    <a class="nav-link text-beige" href="match.php">les matchs</a>
                 </li>
                 <li  id="nav2" class="nav-item  rounded-3 back-b-marine" >
                     <a class="nav-link text-beige"  href="organisation.php">créer un match</a>

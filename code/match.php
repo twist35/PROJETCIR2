@@ -6,7 +6,7 @@
 -->
 <?php include_once("php/header.php")?>
 <div class="titre-page back-b-marine text-center h2 text-marron py-1">
-    Matchs
+    Détail du Match
 </div>
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eaque aliquam debitis at odio laborum eveniet mollitia quasi quos porro nisi voluptatibus ut dicta veniam eligendi tempore obcaecati similique excepturi.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium nisi ligula, a feugiat purus rhoncus sed. Praesent tempus quis nibh at gravida. Integer leo nisi, feugiat ut leo quis, dapibus scelerisque odio. Proin id leo ultricies, elementum lorem vel, interdum velit. Praesent magna leo, efficitur quis leo sed, ullamcorper lobortis libero. Suspendisse a imperdiet dolor, aliquam imperdiet nunc. Quisque pellentesque sit amet nunc quis condimentum. Aliquam consequat urna sit amet orci egestas, eu varius mi iaculis.
