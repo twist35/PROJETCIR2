@@ -60,6 +60,7 @@ CREATE TABLE user(
         mdp            Varchar (255) NOT NULL ,
         date_naissance Date NOT NULL ,
         nb_win         Int ,
+        note_site      Int ,
         id_ville       Int NOT NULL ,
         condition_p    Varchar (255) NOT NULL
 	,CONSTRAINT user_PK PRIMARY KEY (email)
