@@ -8,46 +8,67 @@
 <div class="titre-page back-b-marine text-center h2 text-marron py-1">
     Accueil
 </div>
-<div class="bg-primary text-center mt-3 py-2 d-flex flex-row justify-content-around align-items-center text-center">
+<div id="recherche" class="back-bleu text-center mt-3 py-2">
     <div class="h4 ml-n2">
         Mes Matchs
     </div>
     <div>
-        <form class="text-center center d-flex justify-content-center flex-row align-items-center">
-            <div>Ville
-                <label for="ville"></label>
-                <select class="back">
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
-                </select>
+        <form id="formulaire-recherche"class="text-center center">
+            <div class="d-flex  align-items-end flex-row justify-content-center">
+                <div class="recherche-div" >Forme sportive 
+                    <label for="fs"></label>
+                    <select class="back">
+                        <option >A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                    </select>
+                </div>
+                <div class="recherche-div" >Date Maximale
+                    <label for="date_r"></label>
+                    <input class="back" type="date" id="date_r" name="date_r" value="2022-06-16" min="2018-01-01">
+                </div>
+                <div class="recherche-div">Ville
+                    <label for="ville"></label>
+                    <select class="back">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                    </select>
+                </div>
+                <div class="recherche-div" >Disponibilité
+                    <label for="dispo"></label>
+                    <select class="back">
+                        <option>Disponible</option>
+                        <option>Indisponible</option>
+                    </select>
+                </div>
             </div>
-            
-            <div style="margin-left: 1vw;" >Forme sportive
-                <label for="fs"></label>
-                <select class="back">
-                    <option >A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>D</option>
-                </select>
-            </div>
-            <div  style="margin-left: 1vw;" >Date Maximale
-                <label for="date_r"></label>
-                <input class="back" type="date" id="date_r" name="date_r" value="2018-07-22" min="2018-01-01">
-            </div>
-            <div style="margin-left: 1vw;" >Disponibilité
-                <label for="dispo"></label>
-                <select class="back">
-                    <option>Disponible</option>
-                    <option>Indisponible</option>
-                </select>
-            </div>
-            <button type="submit" class="btn back-b-marine text-beige " style="margin-left: 1vw;">Rechercher</button>
+            <button type="submit" id="bouton-recherche" class="btn back-b-marine text-beige" style="margin-left: 1vw;">Rechercher</button>
         </form>
     </div>
 </div>
+
+<div class="wrapper text-center mt-4">
+    <div class="bulle text-center">
+    hhhhhhhh
+    hhhh
+    </div>
+    <div class="bulle text-center">
+    hhhhhhhh
+    hhhh
+    </div>
+    <div class="bulle text-center">
+    hhhhhhhh
+    hhhh
+    </div>
+    <div class="bulle text-center">
+    hhhhhhhh
+    hhhh
+    </div>
+</div>
+
 
 
 <?php include_once("php/footer.php")?>
