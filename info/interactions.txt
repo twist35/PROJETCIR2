@@ -12,6 +12,6 @@ Page 3 :
 
 
 antonin :
-profil, mesmatchs, match
+profil, match
 lucas :
 index, authentification, creation,organisation

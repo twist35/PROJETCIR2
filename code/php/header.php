@@ -27,7 +27,7 @@
 <body class="back">   
     <header>
         <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
-            <a href="index.html" class="nav-link"><span class="h1  text-b-marine">Match Generator</span></a>
+            <a href="index.php" class="nav-link"><span class="h1  text-b-marine">Match Generator</span></a>
             <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
                 <li class="nav-item  rounded-3 back-b-marine">
                     <a class="nav-link text-beige" href="matchs.php">les matchs</a>
