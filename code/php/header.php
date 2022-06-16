@@ -48,7 +48,7 @@
     </header>
     <div id="page" class="back">
     <script>
-            $connected = true;
+            $connected = true; // valeur a modifier si on est connecter
             if($connected)
             {
                 $("#profil").attr("style", "display: inline !important");

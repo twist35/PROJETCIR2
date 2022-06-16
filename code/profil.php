@@ -20,7 +20,7 @@
     <label for="fs"></label>
     <small class="form-text text-muted">Modifier votre forme sportive :</small>
     <select>
-        <option>A</option>
+        <option >A</option>
         <option>B</option>
         <option>C</option>
         <option>D</option>
@@ -30,7 +30,7 @@
     <div>Noter le site</div>
     <label for="note"></label>
     <small class="form-text text-muted">Mettre une note au site</small>
-    <select>
+    <select >
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -42,8 +42,8 @@
     <div>Mot de passe</div>
     <label for="mdp"></label>
     <small class="form-text text-muted  text-b-marine">Modifier votre mot de passe :</small>
-    <input type="text" class="form-control" id="ville" placeholder="Entrer l'ancien mot de passe">
-    <input type="text" class="form-control" id="ville" placeholder="Entrer le nouveau mot de passe">
+    <input type="text" class="form-control " id="ville" placeholder="Entrer l'ancien mot de passe">
+    <input type="text" class="form-control " id="ville" placeholder="Entrer le nouveau mot de passe">
   </div>
   <div class="form-group vw-60 mb-2">
     <div id="pdp text-b-marine">Photo de Profil</div>
