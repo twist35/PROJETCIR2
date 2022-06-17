@@ -75,7 +75,7 @@ CREATE TABLE user(
 
 INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p) VALUES
 ('lulu@gmail.com','Lucas','LeBihan','123','2002-04-17','1','Sédentaire'),
-('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','2','Sportif');
+('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif');
 
 #------------------------------------------------------------
 # Table: sport
@@ -153,8 +153,8 @@ CREATE TABLE user_inscrits(
 -- Contenu de user_inscrits
 ------------------------------------------------------------
 
-INSERT INTO user_inscrits (email, id_partie) VALUES
-('lulu@gmail.com','1'),
-('anto@gmail.com','1'),
-('lulu@gmail.com','2'),
-('anto@gmail.com','2');
+INSERT INTO user_inscrits (valide, mj, email, id_partie) VALUES
+(0,0,'lulu@gmail.com','1'),
+(0,0,'anto@gmail.com','1'),
+(0,0,'lulu@gmail.com','2'),
+(0,0,'anto@gmail.com','2');
