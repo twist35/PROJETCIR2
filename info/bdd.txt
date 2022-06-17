@@ -12,7 +12,7 @@ table sport:
     nom_sport
 
 table partie:
-    id_partie, nom_partie, nb_joueurs, joueurs_min, joueurs_max, date, prix, duree, score_a, score_b, num_rue, nom_rue,
+    id_partie, nom_partie, nb_joueurs, joueurs_min, joueurs_max, date, prix, duree, score_a, score_b, adresse,
 FK  email (organisateur), id_ville, nom_sport
 
 table user_inscrits:
@@ -21,10 +21,10 @@ FK  id_partie, email
 
 ---------------------------------Infos BDD----------------------------------------
 ###Créer la bdd sur xampp
-drop database if exists projetcir2
-create database projetcir2
-use projetcir2
-source htdocs/PROJETCIR2/code/sql/bdd.sql
+drop database if exists projetcir2;
+create database projetcir2;
+use projetcir2;
+source htdocs/PROJETCIR2/code/sql/bdd.sql;
 
 insert decimal avec un . et pas ,
 
@@ -38,19 +38,20 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
 --------------------------Selection des données------------------------------------
 
 ###Données d'un match:
-    SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+    SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
     FROM partie p
     JOIN ville v ON p.id_ville = v.id_ville
     WHERE id_partie = var_id;
 
 ++++++++++++ Accueil ++++++++++++++++++++++
 ###Données de mes prochains matchs:
-    SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+    SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
     FROM partie p
     JOIN ville v ON p.id_ville = v.id_ville
     JOIN user_inscrits i ON p.id_partie = i.id_partie
     JOIN user u ON u.email = i.email
-    WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date > NOW();
+    WHERE (i.valide = 1 AND u.email = 'var_email' OR p.email = 'var_email') AND p.date > NOW();
+    //Exemple WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date > NOW();
 
 --------------------------Filtre des données---------------------------------------
 
@@ -97,7 +98,7 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
 
 ++++++++++++++++ Page Match +++++++++++++++++++
 ###données du détails du match:
-    SELECT p.num_rue, p.nom_rue, p.duree, p.prix, p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs, u.prenom, u.nom, u.photo
+    SELECT p.adresse, p.duree, p.prix, p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs, u.prenom, u.nom, u.photo
     FROM partie p
     JOIN user u ON p.email = u.email
     WHERE id_partie = 1;
@@ -122,15 +123,17 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
     JOIN ville v ON p.id_ville = v.id_ville
     JOIN user_inscrits i ON p.id_partie = i.id_partie
     JOIN user u ON u.email = i.email
-    WHERE valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com';
+    WHERE valide = 1 AND u.email = 'var_email' OR p.email = 'var_email';
+    //Exemple WHERE valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com';
 
 ###Données des matchs déjà joués:
-    SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+    SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date",TIME(p.date) AS "heure", i.mj, p.score_a, p.score_b
     FROM partie p
     JOIN ville v ON p.id_ville = v.id_ville
     JOIN user_inscrits i ON p.id_partie = i.id_partie
     JOIN user u ON u.email = i.email
-    WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date < NOW();
+    WHERE (i.valide = 1 AND u.email = 'var_email' OR p.email = 'var_email') AND p.date > NOW();
+    //Exemple WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date < NOW();
 
 ###Données de mes prochains matchs:
     SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
@@ -138,15 +141,39 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
     JOIN ville v ON p.id_ville = v.id_ville
     JOIN user_inscrits i ON p.id_partie = i.id_partie
     JOIN user u ON u.email = i.email
-    WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date > NOW();
+    WHERE (i.valide = 1 AND u.email = 'var_email' OR p.email = 'var_email') AND p.date > NOW();
+    //Exemple WHERE (i.valide = 1 AND u.email = 'lulu@gmail.com' OR p.email = 'lulu@gmail.com') AND p.date > NOW();
 
 +++++++++++++++++ Organisation +++++++++++++++++++
-###
+###Créer un match :
+    INSERT INTO partie (nom_partie, nom_sport, joueurs_min, joueurs_max, adresse, id_ville, date, duree, prix, email)
+    VALUES ('var_nompartie', 'var_nomsport', var_jmin, var_jmax, 'var_adresse', var_idville , 'var_date', 'var_duree', var_prix, 'var_email');
+    //Exemple VALUES ('Match4', 'Handball', 2, 12, '15 azerty', 4, '2022-09-30', '02:15', 5.50, 'lulu@gmail.com');
+                                                                              ou '01:30:15'
+
+###Données file d'attente
+    SELECT p.nom_partie, u.prenom, u.nom FROM partie p
+    JOIN user_inscrits i ON i.id_partie = p.id_partie
+    JOIN user u ON u.email = i.email
+    WHERE i.valide = 0 AND p.id_partie = var_idpartie;
+
 
 ###Validation des participants:
-    UPDATE user_inscrits
+    UPDATE user_inscrits i
+    JOIN user u ON u.email = i.email
     SET valide = 1
-    WHERE id_user = var_iduser;
+    WHERE i.id_partie = var_idpartie AND i.email = 'var_email';
 
+###Insertion des stats d'un match (scores):
+    UPDATE partie
+    SET score_a = 3,
+        score_b = 1
+    WHERE id_partie = 1;
+
+###Insertion des stats d'un match (meilleur joueur):
+    UPDATE user_inscrits
+    SET mj = 1
+    WHERE id_partie = var_idpartie AND email = 'var_email';
+    //Exemple WHERE id_partie = 1 AND email = 'lulu@gmail.com';
 
 
