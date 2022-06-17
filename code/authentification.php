@@ -20,7 +20,7 @@
     <small class="form-text text-muted  text-b-marine">Mot de passe</small>
     <input type="text" class="form-control" id="mdp" placeholder="Entrer votre mot de passe">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn back-b-marine text-beige">Submit</button>
 </form>
 
 <?php include_once("php/footer.php")?>
