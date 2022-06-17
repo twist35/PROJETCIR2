@@ -45,33 +45,82 @@
             </ul>
         </nav>
     </header>
-    <div id="page" class="back">
+<div id="page" class="back">
     <script>
             $connected = true; // valeur a modifier si on est connecter
             if($connected)
             {
                 $("#profil").attr("style", "display: inline !important");
                 $("#connexion").attr("style", "display: none !important");
-                console.log("cc1");
             }
             else
             {
                 $("#profil").attr("style", "display: none !important");
                 $("#connexion").attr("style", "display: inline !important");
-                console.log("cc2");
             }
 
     </script>
-<div class="titre-page back-b-marine text-center h2 text-marron py-1">
-    Oragnisation
+    <div class="titre-page back-b-marine text-center h2 text-marron py-1">
+        Organisation
+    </div>
+    <div class="back-v-b" >
+        <div class="h4 text-center text-white">Création d'un Match</div>
+    </div>
+    <form class="text-center center d-flex justify-content-center flex-column align-items-center">
+        <div class="form-group mb-2">
+            <label for="nom_m">Nom du match</label>
+            <input type="text" class="form-control" id="nom_m" name="nom_m" required>
+        </div>
+        <div class="form-group mb-2">
+            <label for="type">Type de sport</label>
+            <select name="type" required>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+            </select>
+        </div>
+        <div class="form-group mb-2 d-flex flex-row align-items-center">
+            <label class="px-2" for="nb_max">Joueurs</label>
+            <div class="px-2">
+                <small class="form-text text-muted">Nombre maximum</small>
+                <input type="number" class="form-control" id="nb_max" name="nb_max" required >
+            </div>
+            <div class="px-2">
+                <small class="form-text text-muted">Nombre minimum</small>
+                <input type="number" class="form-control" id="nb_min" name="nb_min" required >
+            </div>
+        </div>
+        <div class="form-group mb-2 d-flex flex-row align-items-center">
+            <label class="px-2" for="lieu">Lieu</label>
+            <div class="px-2">
+                <small class="form-text text-muted">Adresse </small>
+                <input type="text" class="form-control" id="adresse" name="adresse" required >
+            </div>
+            <div class="px-2">
+                <small class="form-text text-muted">Ville</small>
+                <input type="texte" class="form-control" id="ville" name="ville" required >
+            </div>
+        </div>
+        <div class="form-group mb-2">
+            <label for="date">Date </label>
+            <input type="datetime-local" id="date" name="date" value="2022-06-17T14:30" required">
+        </div>
+        <div class="form-group mb-2">
+            <label for="fin">Durée</label>
+            <input type="time" id="fin" name="fin" required>
+        </div>
+        <div class="form-group mb-2">
+            <label for="prix">Prix d'inscription</label>
+            <input type="number" class="form-control" id="prix" name="prix" required>
+        </div>
+        <button type="submit" class="btn back-b-marine text-beige ">Créer le match</button>
+    </form>
 </div>
-<div class="back-v-b" >
-    <div class="h4 text-center text-white">Création d'un Match</div>
-</div>
-</div>
+
     <footer class=" back-v-b">
 
-    <div class="text-center p-2 align-text-bottom mt-3 py-3">
-        Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
-    </div>
-</footer>
+        <div class="text-center p-2 align-text-bottom mt-3 py-3">
+            Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+        </div>
+    </footer>
