@@ -2,9 +2,8 @@
     Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
-    Fichier contenant le code html header commun à chaque page du site
+    Fichier contenant la page d'authentification
 -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,19 +26,19 @@
 <body class="back">   
     <header>
         <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
-            <a href="index.php" class="nav-link"><span class="h1  text-b-marine">Match Generator</span></a>
+            <a href="index.html" class="nav-link"><span class="h1  text-b-marine">Match Generator</span></a>
             <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
                 <li class="nav-item  rounded-3 back-b-marine">
-                    <a class="nav-link text-beige" href="match.php">les matchs</a>
+                    <a class="nav-link text-beige" href="index.html">les matchs</a>
                 </li>
                 <li  id="nav2" class="nav-item  rounded-3 back-b-marine" >
-                    <a class="nav-link text-beige"  href="organisation.php">créer un match</a>
+                    <a class="nav-link text-beige"  href="organisation.html">créer un match</a>
                 </li>
                 <li id="connexion" class="nav-item rounded-3 back-b-marine">
-                    <a class="nav-link  text-beige" href="authentification.php">connexion</a>
+                    <a class="nav-link  text-beige" href="authentification..html">connexion</a>
                 </li>
                 <li id="profil" class="nav-item back-b-marine rounded-3 ">
-                    <a class="nav-link text-beige" href="profil.php">profil
+                    <a class="nav-link text-beige" href="profil.html">profil
                         <img id="photo-bouton" src="ressources\img\avatar_t.png" height="32" width="32" alt="photo profil">
                     </a>
                 </li>
@@ -62,4 +61,32 @@
                 console.log("cc2");
             }
 
-    </script>
+</script>
+<div class="titre-page back-b-marine text-center h2 text-marron py-1">
+    Authentification
+</div>
+<form class="text-center center d-flex justify-content-center flex-column align-items-center">
+  <div>Se connecter : </div>
+  <div class="form-group vw-60 mb-2"> 
+    <label for="login"></label>
+    <small class="form-text text-muted  text-b-marine">Email</small>
+    <input type="text" class="form-control " id="login" placeholder="Entrer votre email">
+  </div>
+  <div class="form-group vw-60 mb-2">
+  <label for="mdp"></label>
+    <small class="form-text text-muted  text-b-marine">Mot de passe</small>
+    <input type="text" class="form-control" id="mdp" placeholder="Entrer votre mot de passe">
+  </div>
+  <button type="submit" class="btn back-b-marine text-beige">Se connecter</button>
+  <a href="compte.html" class="mt-2 text-decoration-none text-reset">Créer un compte</a>
+</form>
+
+
+
+</div>
+<footer class=" back-v-b">
+
+<div class="text-center p-2 align-text-bottom mt-3 py-3">
+    Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+</div>
+</footer>
