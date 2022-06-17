@@ -8,6 +8,7 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+USE projetcir2;
 
 #------------------------------------------------------------
 # Table: ville
@@ -20,9 +21,9 @@ CREATE TABLE ville(
 	,CONSTRAINT ville_PK PRIMARY KEY (id_ville)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
---Contenu de ville
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de ville
+#------------------------------------------------------------
 
 INSERT INTO ville (nom,cp) VALUES
     ('Brest',29200),
@@ -40,9 +41,9 @@ CREATE TABLE condition_physique(
 	,CONSTRAINT condition_physique_PK PRIMARY KEY (condition_p)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
---Contenu de condition_physique
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de condition_physique
+#------------------------------------------------------------
 
 INSERT INTO condition_physique (condition_p) VALUES
 ('Sportif'),
@@ -69,9 +70,9 @@ CREATE TABLE user(
 	,CONSTRAINT user_condition_physique_FK FOREIGN KEY (condition_p) REFERENCES condition_physique(condition_p)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
---Contenu de user
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de user
+#------------------------------------------------------------
 
 INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p) VALUES
 ('lulu@gmail.com','Lucas','LeBihan','123','2002-04-17','1','Sédentaire'),
@@ -86,9 +87,9 @@ CREATE TABLE sport(
 	,CONSTRAINT sport_PK PRIMARY KEY (nom_sport)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
--- Contenu de sport
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de sport
+#------------------------------------------------------------
 
 INSERT INTO sport (nom_sport) VALUES
 ('Football'),
@@ -100,6 +101,7 @@ INSERT INTO sport (nom_sport) VALUES
 #------------------------------------------------------------
 # Table: partie
 #------------------------------------------------------------
+
 
 CREATE TABLE partie(
         id_partie   Int  Auto_increment  NOT NULL ,
@@ -123,9 +125,9 @@ CREATE TABLE partie(
 	,CONSTRAINT partie_sport1_FK FOREIGN KEY (nom_sport) REFERENCES sport(nom_sport)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
--- Contenu de partie
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de partie
+#------------------------------------------------------------
 
 INSERT INTO partie ( nom_partie, joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport) VALUES
 ('Match1','2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football'),
@@ -135,6 +137,7 @@ INSERT INTO partie ( nom_partie, joueurs_min, joueurs_max, date, duree, adresse,
 #------------------------------------------------------------
 # Table: user_inscrits
 #------------------------------------------------------------
+
 
 CREATE TABLE user_inscrits(
         id_user   Int  Auto_increment  NOT NULL ,
