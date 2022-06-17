@@ -49,11 +49,6 @@ body
     /*width: 80vw;*/
 
 }
-label
-{
-    margin: 0 0 0.5vh 0; 
-}
-
 /*HEADER*/
 
 #head
@@ -118,6 +113,27 @@ label
     border-radius: 25% 10%;
     /*background-image: url("../ressources/img/avatar_t.png");*/
 }
+.bulle-attente
+{
+    background-color: #30BFB1;
+    height: 30vh;
+    width: 25vw;
+    min-height: 200px;
+    min-width: 225px;
+    margin: auto;
+    border-radius: 15%;
+}
+.bulle-stat
+{
+    background-color: #30BFB1;
+    height: 30vh;
+    width: 25vw;
+    min-height: 200px;
+    min-width: 225px;
+    margin: auto;
+    border-radius: 15%;
+}
+
 .wrapper 
 {
     display: grid;
