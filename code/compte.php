@@ -9,17 +9,21 @@
     Créer un compte
 </div>
 <form class="text-center center d-flex justify-content-center flex-column align-items-center">
-  <div class="form-group vw-60 mb-2">
-    <div>Ville : <span id="ville_profil"></span></div>
-    <label for="ville"></label>
-    <small class="form-text text-muted">Modifier votre ville :</small>
-    <input type="text" class="form-control" id="ville" placeholder="Entrer ville">
+<div class="form-group vw-60 mb-2">
+    <label for="ville">Entrer votre email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="jean.dupond@gmail.com"  required >
   </div>
   <div class="form-group vw-60 mb-2">
-    <div>Forme sportive : <span id="fs"></span></div>
-    <label for="fs"></label>
-    <small class="form-text text-muted">Modifier votre forme sportive :</small>
-    <select>
+    <label for="ville">Entrer votre mot de passe</label>
+    <input type="password" class="form-control" id="mdp" name="mdp">
+  </div>
+  <div class="form-group vw-60 mb-2">
+    <label for="ville">Entrer votre ville</label>
+    <input type="text" class="form-control" id="ville" name="ville" placeholder="Entrer ville">
+  </div>
+  <div class="form-group vw-60 mb-2">
+    <label for="fs">Entrez votre forme sportive</label>
+    <select name="fs">
         <option>A</option>
         <option>B</option>
         <option>C</option>
@@ -27,28 +31,7 @@
     </select>
   </div>
   <div class="form-group vw-60 mb-2">
-    <div>Noter le site</div>
-    <label for="note"></label>
-    <small class="form-text text-muted">Mettre une note au site</small>
-    <select >
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
-  </div>
-  <div class="form-group vw-60 mb-2">
-    <div>Mot de passe</div>
-    <label for="mdp"></label>
-    <small class="form-text text-muted  text-b-marine">Modifier votre mot de passe :</small>
-    <input type="text" class="form-control " id="old_mdp" placeholder="Entrer l'ancien mot de passe">
-    <input type="text" class="form-control " id="new_mdp" placeholder="Entrer le nouveau mot de passe">
-  </div>
-  <div class="form-group vw-60 mb-2">
-    <div id="pdp text-b-marine">Photo de Profil</div>
-    <label for="pdp"></label>
-    <small class="form-text text-muted ">Modifier votre photo de profil :</small>
+    <label for="avatar">Entrer votre avatar</label>
     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
   </div>
   <button type="submit" class="btn back-b-marine text-beige ">Valider</button>
