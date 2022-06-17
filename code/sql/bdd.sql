@@ -112,8 +112,7 @@ CREATE TABLE partie(
         duree       Time NOT NULL ,
         score_a     Int ,
         score_b     Int ,
-        num_rue     Int NOT NULL ,
-        nom_rue     Varchar (255) NOT NULL ,
+        adresse     Varchar (255) NOT NULL ,
         email       Varchar (255) NOT NULL ,
         id_ville    Int NOT NULL ,
         nom_sport   Varchar (255) NOT NULL
@@ -128,10 +127,10 @@ CREATE TABLE partie(
 -- Contenu de partie
 ------------------------------------------------------------
 
-INSERT INTO partie ( nom_partie, joueurs_min, joueurs_max, date, duree, num_rue, nom_rue, email, id_ville, nom_sport) VALUES
-('Match1','2','10','2022-06-17 17:00:00','02:00:00','20','Cuirasse Bretagne','lulu@gmail.com','1','Football'),
-('Match2','5','20','2022-12-06 15:30:00','01:30:00','32','blabla','anto@gmail.com','3','Tennis'),
-('Match3','4','8','2017-02-25 10:00:00','01:00:00','5','blablabla','lulu@gmail.com','2','Basketball');
+INSERT INTO partie ( nom_partie, joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport) VALUES
+('Match1','2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football'),
+('Match2','5','20','2022-12-06 15:30:00','01:30:00','32 blabla','anto@gmail.com','3','Tennis'),
+('Match3','4','8','2017-02-25 10:00:00','01:00:00','5 blablabla','lulu@gmail.com','2','Basketball');
 
 #------------------------------------------------------------
 # Table: user_inscrits
