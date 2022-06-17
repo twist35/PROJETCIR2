@@ -42,7 +42,7 @@
     <div>Mot de passe</div>
     <label for="mdp"></label>
     <small class="form-text text-muted  text-b-marine">Modifier votre mot de passe :</small>
-    <input type="text" class="form-control " id="old_mdp" placeholder="Entrer l'ancien mot de passe">
+    <input type="text" class="form-control mb-2" id="old_mdp" placeholder="Entrer l'ancien mot de passe">
     <input type="text" class="form-control " id="new_mdp" placeholder="Entrer le nouveau mot de passe">
   </div>
   <div class="form-group vw-60 mb-2">

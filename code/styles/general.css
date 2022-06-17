@@ -49,6 +49,10 @@ body
     /*width: 80vw;*/
 
 }
+label
+{
+    margin: 0 0 0.5vh 0; 
+}
 
 /*HEADER*/
 
