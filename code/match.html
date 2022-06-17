@@ -46,40 +46,99 @@
         </nav>
     </header>
     <div id="page" class="back">
-    <script>
-            $connected = true; // valeur a modifier si on est connecter
-            if($connected)
-            {
-                $("#profil").attr("style", "display: inline !important");
-                $("#connexion").attr("style", "display: none !important");
-                console.log("cc1");
-            }
-            else
-            {
-                $("#profil").attr("style", "display: none !important");
-                $("#connexion").attr("style", "display: inline !important");
-                console.log("cc2");
-            }
+        <script>
+                $connected = true; // valeur a modifier si on est connecter
+                if($connected)
+                {
+                    $("#profil").attr("style", "display: inline !important");
+                    $("#connexion").attr("style", "display: none !important");
+                    console.log("cc1");
+                }
+                else
+                {
+                    $("#profil").attr("style", "display: none !important");
+                    $("#connexion").attr("style", "display: inline !important");
+                    console.log("cc2");
+                }
 
-    </script>
-<div class="titre-page back-b-marine text-center h2 text-marron py-1">
-    Détail du Match
-</div>
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, eaque aliquam debitis at odio laborum eveniet mollitia quasi quos porro nisi voluptatibus ut dicta veniam eligendi tempore obcaecati similique excepturi.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium nisi ligula, a feugiat purus rhoncus sed. Praesent tempus quis nibh at gravida. Integer leo nisi, feugiat ut leo quis, dapibus scelerisque odio. Proin id leo ultricies, elementum lorem vel, interdum velit. Praesent magna leo, efficitur quis leo sed, ullamcorper lobortis libero. Suspendisse a imperdiet dolor, aliquam imperdiet nunc. Quisque pellentesque sit amet nunc quis condimentum. Aliquam consequat urna sit amet orci egestas, eu varius mi iaculis.
+        </script>
+        <div class="titre-page back-b-marine text-center h2 text-marron py-1">
+            Détail du Match
+        </div>
+        
+        <div class="d-flex flex-column back-bleu justify-content-center align-items-center w-75 h-25 mx-auto rounded-3 py-3 text-white">
+            <div class="h5">
+                Match n°<span id="num">X</span> |
+                <span id="type">Foot</span>
+            </div>
+            <div class="d-flex flex-row justify-content-around w-100">
+                <div>
+                    <div>Adresse</div>
+                    <div>Durée : <span id="duree">XX:XX</span></div>
+                    <div>Places : <span id="places">XX</span></div>
+                    <div>Prix : <span id="prix">XX</span></div>
+                    <div class="mt-3">
+                        Organisateur : <span id="organisateur">Samuel Saussi</span>
+                        <img class="rounded-3" id="photo_orga" src="ressources\img\avatar_t.png" alt="photo profil orga">
+                    </div>
+                </div>
+                <div>
+                    <div>Date</div>
+                    <div>Heure</div>
+                    <div>Places : <span id="places">XX</span></div>
+                    <div>Joueurs inscrits : <span id="inscrits">XX</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="back-v-b mt-3" >
+            <div class="h4 text-center text-white">Listes des Joueurs</div>
+        </div>
+        <div id="les_matchs" class="wrapper-joueur text-center my-4">
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+            <div class="bulle-joueur text-center">
+                <div class="h6">Nom prénom</div>
+                <img src="ressources\img\avatar_t.png" alt="photo profil">
+            </div>
+           
+        </div>
 
-Sed a mollis turpis. Nulla rutrum urna bibendum erat aliquet, vitae sodales arcu fringilla. Nullam nulla nisl, accumsan cursus suscipit ac, molestie quis nisl. Phasellus ante ante, laoreet eu volutpat ut, dignissim a ligula. Nam semper ante dolor, ac sagittis urna volutpat et. Mauris imperdiet cursus turpis ut suscipit. Duis quis finibus nisl. Curabitur consectetur felis odio, at porttitor sapien vestibulum efficitur. Vivamus ultricies quam ac lorem eleifend mollis.
-
-Vestibulum tincidunt leo eu sagittis faucibus. Sed leo diam, ultricies vitae sem at, convallis pulvinar diam. Donec ultrices ligula at leo pretium, vitae iaculis lorem mollis. Nullam pharetra, orci quis sollicitudin ultrices, nunc nulla aliquet felis, sit amet pretium nibh justo in turpis. Praesent blandit nunc vitae placerat mollis. Curabitur venenatis posuere mi. Donec purus purus, lobortis vel felis in, tempor molestie tortor. Quisque libero purus, commodo eu maximus a, egestas vitae tellus. Nulla facilisis, ligula eget consequat feugiat, ligula nunc rutrum ex, quis hendrerit justo orci ut dolor. Ut arcu sem, elementum sit amet vestibulum sit amet, elementum sed arcu. Ut justo neque, blandit quis posuere tempus, sollicitudin vitae lorem. Etiam ultrices dapibus quam eu pulvinar. Suspendisse a aliquet urna.
-
-Etiam sem mi, faucibus nec porta vel, venenatis pellentesque nibh. Praesent iaculis elementum sapien a suscipit. Aliquam consequat blandit mattis. Aliquam in felis massa. Phasellus venenatis justo sed mi vehicula cursus. Vestibulum gravida eros faucibus vestibulum eleifend. Vivamus sodales pulvinar felis vitae laoreet. Proin eget quam sed lectus laoreet pretium. Aliquam erat volutpat. Pellentesque egestas luctus mattis.
-
-Sed maximus nibh suscipit pellentesque posuere. Etiam faucibus augue sagittis eleifend sodales. Phasellus mi sem, viverra volutpat auctor placerat, consectetur quis lectus. Sed eget pulvinar ex, id scelerisque neque. Fusce egestas nibh justo, nec molestie arcu rhoncus quis. Suspendisse potenti. Nunc rhoncus purus porta odio fringilla, id vehicula ante fringilla. Nulla sit amet sodales diam. Fusce fermentum, arcu vitae hendrerit rutrum, purus magna tempor augue, vel maximus turpis nisl non leo. Nunc efficitur elit eget justo volutpat imperdiet. Proin congue auctor felis, ac tempus justo gravida vitae. Ut pharetra ut quam nec pulvinar. Fusce id eleifend enim, ut euismod felis. Phasellus id nibh mi.
-
-</div>
-    <footer class=" back-v-b">
-
-    <div class="text-center p-2 align-text-bottom mt-3 py-3">
-        Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+        <footer class=" back-v-b">
+            <div class="text-center p-2 align-text-bottom mt-3 py-3">
+                Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+            </div>
+        </footer>
     </div>
-</footer>
+</body>
+</html>
+    
