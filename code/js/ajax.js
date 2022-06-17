@@ -22,7 +22,7 @@
  
    // Create XML HTTP request.
    xhr = new XMLHttpRequest();
-   if (type == 'GET' && data != null)
+   if (type == 'POST' && data != null)
      url += '?' + data;
    xhr.open(type, url);
    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
