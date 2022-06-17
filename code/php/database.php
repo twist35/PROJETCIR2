@@ -63,4 +63,26 @@ function dbRequestUser($db, $email){
     }
     return $result;
 }
+
+function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $naissance){
+    try{
+        $request = 'INSERT INTO user (nom, prenom, email, mdp, id_ville, condition_p, photo, date_naissance) VALUES
+        (:prenom, :nom, :email, :mdp, (SELECT id_ville FROM ville WHERE nom = :ville), :fs, :photo, :naissance)';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+        $statement->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR);
+        $statement->bindParam(':fs', $fs, PDO::PARAM_STR);
+        $statement->bindParam(':photo', $photo, PDO::PARAM_STR);
+        $statement->bindParam(':ville', $ville, PDO::PARAM_STR);
+        $statement->bindParam(':naissance', $naissance, PDO::PARAM_STR);
+        $statement->execute();
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+}
 ?>
