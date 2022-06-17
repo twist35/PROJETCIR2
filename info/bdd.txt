@@ -81,6 +81,12 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
 
 
 ++++++++++++++ Editer le profil ++++++++++++++
+###Séléction des données déjà remplies par l'utilisateur
+    SELECT v.nom, u.condition_p
+    FROM ville v
+    JOIN user u ON v.id_ville = u.id_ville
+    WHERE u.email = 'lulu@gmail.com';
+
 ###Commande pour éditer le profil:
     UPDATE user 
     SET id_ville = (SELECT id_ville FROM ville WHERE nom = 'var_nomville'),
