@@ -70,7 +70,7 @@
 </div>
 <div class=" recherche back-bleu text-center mt-3 py-2">
     <div class="h4 ml-n2">
-        Mes Matchs
+        Les Matchs
     </div>
     <div>
         <form id="formulaire-recherche-g"class=" formulaire-recherche text-center center">
@@ -127,10 +127,7 @@
     hhhhhhhh
     hhhh
     </div>
-    <div class="bulle text-center">
-    hhhhhhhh
-    hhhh
-    </div>
+    
 </div>
 
 <?php include_once("php/footer.php")?>
