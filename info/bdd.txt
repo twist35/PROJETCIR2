@@ -34,16 +34,6 @@ INSERT INTO 'partie'(date) VALUES ('YYYY-MM-DD HH:MM:SS')
 table user inserer une date de naissance
 INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
 
------------------------Insertion données------------------------------------------
-
-###Inscription des users:
-    INSERT INTO user_inscrits (valide, mj, id_partie, email)
-    VALUES (0, 0, var_idpartie , 'var_email');
-
-###Validation des participants:
-    UPDATE user_inscrits
-    SET valide = 1
-    WHERE id_user = var_iduser;
 
 --------------------------Selection des données------------------------------------
 
@@ -122,6 +112,10 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
     JOIN user_inscrits i ON u.email = i.email
     WHERE i.valide = 1 AND i.id_partie = var_idpartie;
 
+###Inscription des users:
+    INSERT INTO user_inscrits (valide, mj, id_partie, email)
+    VALUES (0, 0, var_idpartie , 'var_email');
+
 ###Données des matchs auquel on participe ou que l'on organise:  si on est les 2 -> 2 fois la même partie
     SELECT p.nom_partie, p.nom_sport, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
     FROM partie p
@@ -149,6 +143,10 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
 +++++++++++++++++ Organisation +++++++++++++++++++
 ###
 
+###Validation des participants:
+    UPDATE user_inscrits
+    SET valide = 1
+    WHERE id_user = var_iduser;
 
 
 
