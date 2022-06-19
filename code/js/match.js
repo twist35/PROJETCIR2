@@ -1,7 +1,7 @@
 'use strict';
 ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
-ajaxRequest('POST', 'php/requete.php/compte/', InsertCompte);
+//ajaxRequest('POST', 'php/requete.php/compte/', InsertCompte);
 
 function displayMatch(match){
     console.log("cc2");
@@ -16,13 +16,13 @@ function displayProfil(infos){
     }
 }
 
-function InsertCompte(){
+/*function InsertCompte(){
     
-}
-    /*$('#ville_profil').change((event) => 
+
+    $('#ville_profil').change((event) => 
     {
         ajaxRequest('GET', 'php/requete.php/profil/' + S(event.target).val(), displayProfil);
-    });*/
-//}
-/*$("#profil").attr("style", "display: none !important");
-                    $("#connexion").attr("style", "display: inline !important");*/
+    });
+}*/
+//$("#profil").attr("style", "display: none !important");
+//                    $("#connexion").attr("style", "display: inline !important");

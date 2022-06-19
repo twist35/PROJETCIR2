@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="styles/general.css">
     <!-- JavaScript -->
     <script src="js/ajax.js"></script>
+    <script src="js/authentification.js" defer></script>
+    <script src="js/session.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
@@ -35,7 +37,7 @@
                     <a class="nav-link text-beige"  href="organisation.html">créer un match</a>
                 </li>
                 <li id="connexion" class="nav-item rounded-3 back-b-marine">
-                    <a class="nav-link  text-beige" href="authentification..html">connexion</a>
+                    <a class="nav-link  text-beige" href="authentification.html">connexion</a>
                 </li>
                 <li id="profil" class="nav-item back-b-marine rounded-3 ">
                     <a class="nav-link text-beige" href="profil.html">profil
@@ -46,47 +48,33 @@
         </nav>
     </header>
     <div id="page" class="back">
-    <script>
-            $connected = true; // valeur a modifier si on est connecter
-            if($connected)
-            {
-                $("#profil").attr("style", "display: inline !important");
-                $("#connexion").attr("style", "display: none !important");
-                console.log("cc1");
-            }
-            else
-            {
-                $("#profil").attr("style", "display: none !important");
-                $("#connexion").attr("style", "display: inline !important");
-                console.log("cc2");
-            }
-
-</script>
-<div class="titre-page back-b-marine text-center h2 text-marron py-1">
-    Authentification
-</div>
-<form class="text-center center d-flex justify-content-center flex-column align-items-center">
-  <div>Se connecter : </div>
-  <div class="form-group vw-60 mb-2"> 
-    <label for="login"></label>
-    <small class="form-text text-muted  text-b-marine">Email</small>
-    <input type="text" class="form-control " id="login" placeholder="Entrer votre email">
-  </div>
-  <div class="form-group vw-60 mb-2">
-  <label for="mdp"></label>
-    <small class="form-text text-muted  text-b-marine">Mot de passe</small>
-    <input type="text" class="form-control" id="mdp" placeholder="Entrer votre mot de passe">
-  </div>
-  <button type="submit" class="btn back-b-marine text-beige">Se connecter</button>
-  <a href="compte.html" class="mt-2 text-decoration-none text-reset">Créer un compte</a>
-</form>
+        <div class="titre-page back-b-marine text-center h2 text-marron py-1">
+            Authentification
+        </div>
+        <form id="se-connecter" class="text-center center d-flex justify-content-center flex-column align-items-center">
+        <div>Se connecter : </div>
+        <div class="form-group vw-60 mb-2"> 
+            <label for="login"></label>
+            <small class="form-text text-muted  text-b-marine">Email</small>
+            <input type="text" class="form-control " id="login" placeholder="Entrer votre email" required>
+        </div>
+        <div class="form-group vw-60 mb-2">
+        <label for="mdp"></label>
+            <small class="form-text text-muted  text-b-marine">Mot de passe</small>
+            <input type="text" class="form-control" id="mdp" placeholder="Entrer votre mot de passe" required> 
+        </div>
+        <button type="submit" class="btn back-b-marine text-beige">Se connecter</button>
+        <a href="compte.html" class="mt-2 text-decoration-none text-reset">Créer un compte</a>
+        </form>
 
 
 
-</div>
-<footer class=" back-v-b">
+    </div>
+    <footer class=" back-v-b">
 
-<div class="text-center p-2 align-text-bottom mt-3 py-3">
-    Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
-</div>
-</footer>
+    <div class="text-center p-2 align-text-bottom mt-3 py-3">
+        Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+    </div>
+    </footer>
+</body>
+</html>
