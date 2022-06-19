@@ -1,9 +1,22 @@
 <?php
+
 session_start();
 $data = null;
 
-    if (isset($_SESSION['email']))
-        $data = $_SESSION['email'];
+    if(isset($_POST['deconnexion']) )
+    {
+        unset($_SESSION['deconnexion']);
+        unset($_SESSION['email']);
+        $data = "deco";
+    }
+    else
+    {
+        if (isset($_SESSION['email']))
+            $data = $_SESSION['email'];
+    }
+
+
+    
 
 echo json_encode($data);
 
