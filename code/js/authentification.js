@@ -14,7 +14,5 @@ function Connect(data)
     else
         email = data[0].email;
         
-    console.log(email);
-        
-        
+    console.log(email);        
 }
