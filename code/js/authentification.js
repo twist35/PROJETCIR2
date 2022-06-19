@@ -2,13 +2,14 @@
 $('#se-connecter').submit((event) =>
   {
     event.preventDefault();
-    ajaxRequest('POST', 'php/requete.php/authentification', Connect, 'login=' + $('#login').val() + '&mdp=' + $('#mdp').val());
+    ajaxRequest('POST', 'php/requete.php/authentification', Connect, 'email=' + $('#email').val() + '&mdp=' + $('#mdp').val());
   }
 );
 
 function Connect(data) 
 {
     let email;
+    console.log('email');
     if (data.length == 0)
         email = null;
     else

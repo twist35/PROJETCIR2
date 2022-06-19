@@ -18,3 +18,14 @@ function login(data){
         $("#connexion").attr("style", "display: inline !important");
     }
 }
+
+$('#deconnexion').click(() =>
+  {
+    console.log("dd");
+    ajaxRequest('POST', 'php/session.php', zero, 'deconnexion=vrai');
+  }
+);
+
+function zero(data){
+    console.log(data);
+}

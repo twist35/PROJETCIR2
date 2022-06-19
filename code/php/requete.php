@@ -1,5 +1,6 @@
 <?php
 require_once('database.php');
+session_start();
 
 // Database connexion.
 $db = dbConnect();
@@ -21,15 +22,13 @@ if ($requestMethod == 'POST')
 {
     if ($requestRessource == 'authentification')
     {
-        if(isset($_POST['login']) && isset($_POST['mdp']))
+        if(isset($_GET['email']) && isset($_GET['mdp']))
         {
-            $data = dbConnexion($db, $_POST['login'], $_POST['mdp']);
+            $data = dbConnexion($db, $_GET['email'], $_GET['mdp']);
             if ($data != NULL)
             {
-                session_start();
                 $_SESSION['email'] = $data[0]['email'];
                 //$data = $_SESSION['email'];
-
             }
             
         }
@@ -44,22 +43,13 @@ if ($requestRessource == 'match'){
 }
 
 if($requestRessource == 'profil'){
-    $data = dbRequestUser($db, 'lulu@gmail.com');
+$data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
 }
 
 if($requestRessource == 'compte'){
     dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
 }
 
-if ($requestRessource == 'login'){
-    session_start();
-    if (!isset($_SESSION['count'])) {
-    $_SESSION['count'] = 0;
-    } else {
-    $_SESSION['count']++;
-    }
-    $data = $_SESSION['count'];
-}
 
 // Send data to the client.
 header('Content-Type: application/json; charset=utf-8');
