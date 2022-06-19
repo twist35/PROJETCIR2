@@ -21,6 +21,7 @@ function login(data){
 
 $('#deconnexion').click(() =>
   {
+    console.log("dd");
     ajaxRequest('POST', 'php/session.php', zero, 'deconnexion=vrai');
   }
 );

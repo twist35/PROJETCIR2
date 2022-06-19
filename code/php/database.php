@@ -86,7 +86,7 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
     }
 }
 
-function dbConnexion($db, $login, $mdp)
+function dbConnexion($db, $email, $mdp)
   {
     try
     {
@@ -94,7 +94,7 @@ function dbConnexion($db, $login, $mdp)
       WHERE email = :email
       AND mdp = :mdp';
       $statement = $db->prepare($request);
-      $statement->bindParam(':email', $login, PDO::PARAM_STR, 20);
+      $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
       $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 20);
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);

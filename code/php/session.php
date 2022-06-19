@@ -7,16 +7,13 @@ $data = null;
     {
         unset($_SESSION['deconnexion']);
         unset($_SESSION['email']);
-        $data = "deco";
+        $data = "deconnexion effectuée";
     }
     else
     {
         if (isset($_SESSION['email']))
             $data = $_SESSION['email'];
     }
-
-
-    
 
 echo json_encode($data);
 

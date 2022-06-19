@@ -1,5 +1,6 @@
 - identification du match par un nom de match (visible par les utilisateurs et créé par l'organisateur
 - connexion grâce au session HTTP
+- bouton déconnexion
 
 à faire :
 ajouter image sur les sport (écran d'accueil)
