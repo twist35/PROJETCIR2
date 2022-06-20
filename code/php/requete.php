@@ -22,22 +22,19 @@ if ($requestMethod == 'POST')
 {
     if ($requestRessource == 'authentification')
     {
-        if(isset($_GET['email']) && isset($_GET['mdp']))
+        if(isset($_POST['email']) && isset($_POST['mdp']))
         {
-            $data = dbConnexion($db, $_GET['email'], $_GET['mdp']);
+            $data = dbConnexion($db, $_POST['email'], $_POST['mdp']);
             if ($data != NULL)
             {
                 $_SESSION['email'] = $data[0]['email'];
                 //$data = $_SESSION['email'];
             }
-            
         }
-            
     }
 
     if ($requestRessource == 'creercompte')
 }
-
 
 // Match request.
 if ($requestMethod == 'GET'){
