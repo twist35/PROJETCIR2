@@ -125,7 +125,7 @@ function dbFormeSportive($db)
   return $result;
 }
 
-function dbUpdateUser($db, $ville = NULL, $fs = NULL, $mdp = NULL, $avatar = NULL, $note = NULL)
+function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NULL, $avatar = NULL, $note = NULL)
 {
   try{
     $request = 'SELECT v.nom as "ville", u.condition_p, u.mdp, u.photo, u.note_site 
@@ -146,6 +146,8 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $mdp = NULL, $avatar = NUL
     }
     $result = $info_old;
 
+    if ($info_old[0]['mdp'] != $old_mdp)
+      return "mauvais mdp";
     
     if ($ville == NULL)
       $ville = $info_old[0]['ville'];
@@ -166,8 +168,7 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $mdp = NULL, $avatar = NUL
         $avatar,
         $note
   );
-  //return $result;
-  //return $mdp;
+
 
 
   try
