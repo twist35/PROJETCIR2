@@ -66,7 +66,7 @@ function displayLesMatch(matchs){
         $('#les_matchs').append('<div class="bulle text-center">' +
                                 '<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto py-3 text-white">' +
                                 '<div class="h5">' +
-                                '<span id="num">' + match.nom_partie + '</span>' +
+                                '<span id="num">' + match.nom_partie + '</span>' + ' | ' +
                                 '<span id="type">' + match.nom_sport + '</span>' +
                                 '</div>' +
                                 '<div class="d-flex flex-row justify-content-around w-100 pt-4">' +
@@ -91,6 +91,16 @@ function displayProfil(infos){
         console.log(info);
         $('#ville_profil').html(info.ville);
         $('#fs').html(info.condition_p);
+        
+        ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
+            for (let fs of data){
+                console.log(fs);
+                if (info.condition_p == fs.condition_p)
+                $('#fs_select').append('<option selected value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
+                else
+                    $('#fs_select').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
+            }
+        });
     }
 }
 

@@ -61,6 +61,10 @@ if ($requestMethod == 'GET'){
     {
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
     }
+    if($requestRessource == 'fs')
+    {
+        $data =dbFormeSportive($db);
+    }
 
 }
 

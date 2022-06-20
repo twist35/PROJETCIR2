@@ -1,6 +1,6 @@
 'use strict';
 ajaxRequest('GET', 'php/session.php', login);
-setInterval(ajaxRequest, 1000, 'GET', 'php/session.php', login);
+setInterval(ajaxRequest, 2000, 'GET', 'php/session.php', login);
 //ajaxRequest('GET', 'php/session.php', login);
 
 function login(data)
@@ -8,7 +8,7 @@ function login(data)
 
 
     let fichier_actuel = window.location.href.replace(/\/$/,"").substring(window.location.href.lastIndexOf('/')+1);
-    console.log(data);
+    //console.log(data);
     let connected = false
     if (data != null)
         connected = true; 
