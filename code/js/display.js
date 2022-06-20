@@ -1,6 +1,6 @@
 'use strict';
 ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
-ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
+
 
 
 
@@ -30,22 +30,4 @@ function displayMatch(matchs){
                                 );
     }
                     
-}
-
-function displayProfil(infos){
-    for(let info of infos){
-        console.log(info);
-        $('#ville_profil').html(info.ville);
-        $('.fs').html(info.condition_p);
-        
-        ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
-            for (let fs of data){
-                console.log(fs);
-                if (info.condition_p == fs.condition_p)
-                $('.fs').append('<option selected value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
-                else
-                    $('.fs').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
-            }
-        });
-    }
 }

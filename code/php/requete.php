@@ -40,6 +40,17 @@ if ($requestMethod == 'POST')
             $_SESSION['email'] = $_POST['email'];
         }
     }
+    if ($requestRessource == 'modifierProfil')
+    {
+        if(isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['old_mdp']) && isset($_POST['new_mdp']) && isset($_POST['avatar']) && isset($_POST['note']))
+        {
+            $data = dbUpdateUser($db, $_POST['ville'], $_POST['fs'], $_POST['new_mdp'], $_POST['avatar'], $_POST['note']);
+            //$data = "okkkkkkkkkkkkkkkkkkk";
+            
+        }
+        else
+            $data = "nono";
+    }
 }
 
 // Match request.

@@ -1,6 +1,6 @@
 'use strict';
 ajaxRequest('GET', 'php/session.php', login);
-setInterval(ajaxRequest, 2000, 'GET', 'php/session.php', login);
+setInterval(ajaxRequest, 1500, 'GET', 'php/session.php', login);
 //ajaxRequest('GET', 'php/session.php', login);
 
 function login(data)
