@@ -43,7 +43,7 @@ if ($requestMethod == 'POST')
 // Match request.
 if ($requestMethod == 'GET'){
     if ($requestRessource == 'match'){
-        $data = dbRequestMatch($db, 1);
+        $data = dbRequestMatch($db);
     }
 
     if($requestRessource == 'profil'){
