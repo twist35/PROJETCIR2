@@ -19,7 +19,7 @@ $requestRessource = array_shift($request);
 $data = false;
 
 if ($requestMethod == 'POST')
-{
+{   
     if ($requestRessource == 'authentification')
     {
         if(isset($_POST['email']) && isset($_POST['mdp']))
@@ -31,27 +31,34 @@ if ($requestMethod == 'POST')
             }
         }
     }
-
-    if ($requestRessource == 'creercompte'){
-        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance'])){
-            dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
-        }
+    if ($requestRessource == 'creercompte')
+    {
         
+        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance']))
+        {
+            dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+            $_SESSION['email'] = $_POST['email'];
+        }
     }
 }
 
 // Match request.
-if ($requestMethod == 'GET'){
-    if ($requestRessource == 'match'){
+if ($requestMethod == 'GET')
+{
+    if ($requestRessource == 'match')
+    {
         $data = dbRequestMatch($db, 1);
     }
 
-    if($requestRessource == 'profil'){
+    if($requestRessource == 'profil')
+    {
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
     }
 
-    if($requestRessource == 'compte'){
+    if($requestRessource == 'compte')
+    {
         dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+        
     }
 }
 
@@ -64,5 +71,3 @@ echo json_encode($data);
 
 exit;
 
-
-?>
