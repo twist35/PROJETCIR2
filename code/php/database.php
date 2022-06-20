@@ -23,14 +23,58 @@ function dbConnect()
   return $db;
 }
 
-
-function dbRequestMatch($db)
+function dbRequestMesMatchO($db)
   {
     try
     {
       $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
-      JOIN ville v ON p.id_ville = v.id_ville';
+      JOIN ville v ON p.id_ville = v.id_ville
+      WHERE p.email = :email AND p.date > NOW()';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
+function dbRequestMesMatchP($db)
+  {
+    try
+    {
+      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      FROM partie p
+      JOIN ville v ON p.id_ville = v.id_ville
+      JOIN user_inscrits i ON p.id_partie = i.id_partie
+      WHERE i.valide = 1 AND i.email = :email AND p.date > NOW()';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
+
+function dbRequestLesMatch($db)
+  {
+    try
+    {
+      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      FROM partie p
+      JOIN ville v ON p.id_ville = v.id_ville
+      WHERE p.date > NOW()';
       $statement = $db->prepare($request);
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);

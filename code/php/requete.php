@@ -45,8 +45,16 @@ if ($requestMethod == 'POST')
 // Match request.
 
 if ($requestMethod == 'GET'){
-    if ($requestRessource == 'match'){
-        $data = dbRequestMatch($db);
+    if ($requestRessource == 'mesmatchOrganisateur'){
+        $data = dbRequestMesMatchO($db);
+        }
+
+    if ($requestRessource == 'mesmatchParticipant'){
+        $data = dbRequestMesMatchP($db);
+        }
+
+    if ($requestRessource == 'lesmatch'){
+        $data = dbRequestLesMatch($db);
     }
 
     if($requestRessource == 'profil')
@@ -54,11 +62,6 @@ if ($requestMethod == 'GET'){
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
     }
 
-    if($requestRessource == 'compte')
-    {
-        dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
-        
-    }
 }
 
 // Send data to the client.
