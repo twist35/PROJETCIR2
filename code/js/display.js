@@ -7,8 +7,8 @@ ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
 
 function displayMatch(matchs){
     for(let match of matchs){
-        console.log(match);
-        console.log(match.nom_partie)
+        //console.log(match);
+        //console.log(match.nom_partie)
         $('#les_matchs').append('<div class="bulle text-center">' +
                                 '<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto py-3 text-white">' +
                                 '<div class="h5">' +
@@ -37,6 +37,16 @@ function displayProfil(infos){
         console.log(info);
         $('#ville_profil').html(info.ville);
         $('#fs').html(info.condition_p);
+        
+        ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
+            for (let fs of data){
+                console.log(fs);
+                if (info.condition_p == fs.condition_p)
+                $('#fs_select').append('<option selected value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
+                else
+                    $('#fs_select').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
+            }
+        });
     }
 }
 

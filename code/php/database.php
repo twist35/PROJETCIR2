@@ -85,23 +85,40 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
 }
 
 function dbConnexion($db, $email, $mdp)
+{
+  try
   {
-    try
-    {
-      $request =' SELECT email FROM user
-      WHERE email = :email
-      AND mdp = :mdp';
-      $statement = $db->prepare($request);
-      $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
-      $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 20);
-      $statement->execute();
-      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-    catch (PDOException $exception)
-    {
-      error_log('Request error: '.$exception->getMessage());
-      return false;
-    }
-    return $result;
+    $request =' SELECT email FROM user
+    WHERE email = :email
+    AND mdp = :mdp';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
+    $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 20);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
   }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
 
+
+function dbFormeSportive($db)
+{
+  try
+  {
+    $request ='SELECT * FROM condition_physique';
+    $statement = $db->prepare($request);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}

@@ -53,11 +53,9 @@ if ($requestMethod == 'GET'){
     {
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
     }
-
-    if($requestRessource == 'compte')
+    if($requestRessource == 'fs')
     {
-        dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
-        
+        $data =dbFormeSportive($db);
     }
 }
 
