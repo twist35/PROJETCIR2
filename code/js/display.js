@@ -1,13 +1,8 @@
 'use strict';
 ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
-/*$('#creer-compte').submit((event) =>
-  {
-    console.log('appuyé');
-    event.preventDefault();
-    ajaxRequest('POST', 'php/requete.php/creercompte/', InsertCompte,'nom=' + $('#nom').val() + '&prenom=' + $('#prenom').val() + '&email=' + $('#email').val() + '&mdp=' + $('#mdp').val() + '&ville=' + $('#ville').val() + '&fs=' + $('#fs').val() + '&avatar=' + $('#avatar').val() + '&date_naissance=' + $('#date_naissance').val());
-  }
-);*/
+
+
 
 
 function displayMatch(matchs){
@@ -28,9 +23,9 @@ function displayProfil(infos){
     }
 }
 
-/*function InsertCompte(){
-
-}*/
+function InsertCompte(data){
+  console.log(data);
+}
 
 //$("#profil").attr("style", "display: none !important");
 //                    $("#connexion").attr("style", "display: inline !important");
