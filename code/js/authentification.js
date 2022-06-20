@@ -9,7 +9,6 @@ $('#se-connecter').submit((event) =>
 function Connect(data) 
 {
     let email;
-    console.log('email');
     if (data.length == 0)
         email = null;
     else
