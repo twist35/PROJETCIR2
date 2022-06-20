@@ -222,6 +222,10 @@ body
     {
         grid-template-columns: repeat(4, 1fr);
     }
+    .bulle
+    {
+        width: 70%;
+    }
 }
 @media only screen and (max-width: 510px) 
 {
