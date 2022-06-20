@@ -56,8 +56,16 @@ if ($requestMethod == 'POST')
 // Match request.
 
 if ($requestMethod == 'GET'){
-    if ($requestRessource == 'match'){
-        $data = dbRequestMatch($db);
+    if ($requestRessource == 'mesmatchOrganisateur'){
+        $data = dbRequestMesMatchO($db);
+        }
+
+    if ($requestRessource == 'mesmatchParticipant'){
+        $data = dbRequestMesMatchP($db);
+        }
+
+    if ($requestRessource == 'lesmatch'){
+        $data = dbRequestLesMatch($db);
     }
 
     if($requestRessource == 'profil')
@@ -68,6 +76,7 @@ if ($requestMethod == 'GET'){
     {
         $data =dbFormeSportive($db);
     }
+
 }
 
 // Send data to the client.
