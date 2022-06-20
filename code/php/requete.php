@@ -34,22 +34,25 @@ if ($requestMethod == 'POST')
         }
             
     }
+
+    if ($requestRessource == 'creercompte')
 }
 
 
 // Match request.
-if ($requestRessource == 'match'){
-    $data = dbRequestMatch($db, 1);
-}
+if ($requestMethod == 'GET'){
+    if ($requestRessource == 'match'){
+        $data = dbRequestMatch($db, 1);
+    }
 
-if($requestRessource == 'profil'){
-$data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
-}
+    if($requestRessource == 'profil'){
+        $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
+    }
 
-if($requestRessource == 'compte'){
-    dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+    if($requestRessource == 'compte'){
+        dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+    }
 }
-
 
 // Send data to the client.
 header('Content-Type: application/json; charset=utf-8');
