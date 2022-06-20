@@ -24,16 +24,14 @@ function dbConnect()
 }
 
 
-function dbRequestMatch($db, $id)
+function dbRequestMatch($db)
   {
     try
     {
       $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
-      JOIN ville v ON p.id_ville = v.id_ville
-      WHERE id_partie = :id';
+      JOIN ville v ON p.id_ville = v.id_ville';
       $statement = $db->prepare($request);
-      $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     }
