@@ -14,7 +14,7 @@ $data = null;
             if (isset($_SESSION['email']))
             $data = $_SESSION['email'];
     }
-
+    
 echo json_encode($data);
 
 header('Content-Type: application/json; charset=utf-8');

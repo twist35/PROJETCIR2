@@ -34,6 +34,9 @@ if ($requestMethod == 'POST')
     }
 
     if ($requestRessource == 'creercompte')
+    {
+        
+    }
 }
 
 // Match request.
