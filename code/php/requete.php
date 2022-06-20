@@ -33,7 +33,11 @@ if ($requestMethod == 'POST')
         }
     }
 
-    if ($requestRessource == 'creercompte')
+    if ($requestRessource == 'creercompte'){
+        //if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance'])){
+            dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+        //}
+    }
 }
 
 // Match request.
