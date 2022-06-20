@@ -11,7 +11,7 @@ $data = null;
     }
     else
     {
-        if (isset($_SESSION['email']))
+            if (isset($_SESSION['email']))
             $data = $_SESSION['email'];
     }
 
