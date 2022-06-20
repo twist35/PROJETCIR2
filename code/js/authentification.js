@@ -1,6 +1,7 @@
 'use strict';
 $('#se-connecter').submit((event) =>
   {
+    console.log('appuyé');
     event.preventDefault();
     ajaxRequest('POST', 'php/requete.php/authentification', Connect, 'email=' + $('#email').val() + '&mdp=' + $('#mdp').val());
   }
