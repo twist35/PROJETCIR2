@@ -1,5 +1,5 @@
 'use strict';
-ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
+//ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
 
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrga);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchParti);

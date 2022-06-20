@@ -28,5 +28,6 @@ $('#modifier_profil').submit((event) =>
 
 function modifierProfil(data)
 {
+    
     window.alert(data);
 }
