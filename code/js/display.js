@@ -1,9 +1,9 @@
 'use strict';
+ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
+
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrga);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchParti);
 ajaxRequest('GET', 'php/requete.php/lesmatch/', displayLesMatch);
-ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
-
 
 function displayMesMatchOrga(matchs){
     console.log(matchs);
@@ -85,28 +85,3 @@ function displayLesMatch(matchs){
     }
                     
 }
-
-function displayProfil(infos){
-    for(let info of infos){
-        console.log(info);
-        $('#ville_profil').html(info.ville);
-        $('#fs').html(info.condition_p);
-        
-        ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
-            for (let fs of data){
-                console.log(fs);
-                if (info.condition_p == fs.condition_p)
-                $('#fs_select').append('<option selected value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
-                else
-                    $('#fs_select').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
-            }
-        });
-    }
-}
-
-function InsertCompte(data){
-  console.log(data);
-}
-
-//$("#profil").attr("style", "display: none !important");
-//                    $("#connexion").attr("style", "display: inline !important");

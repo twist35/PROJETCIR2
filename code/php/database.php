@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 require_once('constants.php');
 
 //----------------------------------------------------------------------------
@@ -163,6 +165,80 @@ function dbFormeSportive($db)
   {
     error_log('Request error: '.$exception->getMessage());
     return false;
+  }
+  return $result;
+}
+
+function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NULL, $avatar = NULL, $note = NULL)
+{
+  try{
+    $request = 'SELECT v.nom as "ville", u.condition_p, u.mdp, u.photo, u.note_site 
+                FROM ville v 
+                JOIN user u ON v.id_ville = u.id_ville 
+                WHERE u.email = :email;
+                ';
+
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+    $statement->execute();
+    $info_old = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    $result = $info_old;
+
+    if ($info_old[0]['mdp'] != $old_mdp)
+      return "mauvais mdp";
+    
+    if ($ville == NULL)
+      $ville = $info_old[0]['ville'];
+    if ($fs == NULL)
+      $fs = $info_old[0]['condition_p'];
+    if ($mdp == NULL)
+      $mdp = $info_old[0]['mdp'];
+    if ($avatar == NULL)
+      $avatar = $info_old[0]['photo'];
+    if ($note == NULL)
+      $note = $info_old[0]['note_site'];
+    
+      $result = array(
+      
+        $ville,
+        $fs,
+        $mdp,
+        $avatar,
+        $note
+  );
+
+
+
+  try
+  {
+    $request ='UPDATE user 
+    SET id_ville = (SELECT id_ville FROM ville WHERE nom = :ville),
+        condition_p = :fs,
+        note_site = :note,
+        mdp = :mdp,
+        photo = :avatar
+        WHERE user.email = :email;';
+    
+    $statement = $db->prepare($request);
+    $statement->bindParam(':fs', $fs, PDO::PARAM_STR, 20);
+    $statement->bindParam(':note', $note, PDO::PARAM_STR, 20);
+    $statement->bindParam(':mdp', $mdp, PDO::PARAM_STR, 20);
+    $statement->bindParam(':avatar', $avatar, PDO::PARAM_STR, 20);
+    $statement->bindParam(':ville', $ville, PDO::PARAM_STR, 20);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR, 20);
+
+    $result = $statement->execute();
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return 'Request error: '.$exception->getMessage();
   }
   return $result;
 }

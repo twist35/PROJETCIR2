@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="styles/general.css">
     <!-- JavaScript -->
     <script src="js/ajax.js"></script>
-    <script src="js/display.js" defer></script>
     <script src="js/session.js" defer></script>
+    <script src="js/profil.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
@@ -55,7 +55,7 @@
             <a href="index.html"><button id="deconnexion" type="button" class="btn btn-outline-secondary">Se déconnecter </button>
             </a>
         </div>
-        <form class="text-center center d-flex justify-content-center flex-column align-items-center" action="requete.php">
+        <form id="modifier_profil" class="text-center center d-flex justify-content-center flex-column align-items-center" >
         <div class="form-group vw-60 mb-2">
             <div>Ville : <span id="ville_profil"></span></div>
             <label for="ville"></label>
@@ -66,27 +66,27 @@
             <div>Forme sportive : <span id="fs"></span></div>
             <label for="fs"></label>
             <small class="form-text text-muted">Modifier votre forme sportive :</small>
-            <select name="fs" id="fs_select">
+            <select id="fs-t"  name="fs" class="fs"">
             </select>
         </div>
         <div class="form-group vw-60 mb-2">
             <div>Noter le site</div>
             <label for="note"></label>
             <small class="form-text text-muted">Mettre une note au site</small>
-            <select name="note">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <select id="note" name="note">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
             </select>
         </div>
         <div class="form-group vw-60 mb-2">
             <div>Mot de passe</div>
             <label for="mdp"></label>
             <small class="form-text text-muted  text-b-marine">Modifier votre mot de passe :</small>
-            <input type="text" class="form-control mb-2" id="old_mdp" name="old_mdp" placeholder="Entrer l'ancien mot de passe">
-            <input type="text" class="form-control " id="new_mdp" name="new_mdp" placeholder="Entrer le nouveau mot de passe">
+            <input type="password" class="form-control mb-2" id="old_mdp" name="old_mdp" placeholder="Entrer l'ancien mot de passe">
+            <input type="password" class="form-control " id="new_mdp" name="new_mdp" placeholder="Entrer le nouveau mot de passe">
         </div>
         <div class="form-group vw-60 mb-2">
             <div id="pdp text-b-marine">Photo de Profil</div>
