@@ -32,4 +32,5 @@ function modifierProfil(data)
         window.alert(data);
     if (data == "mauvais mdp")
         window.alert(data);
+    window.location.reload();
 }

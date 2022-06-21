@@ -169,6 +169,23 @@ function dbFormeSportive($db)
   return $result;
 }
 
+function dbTypeSport($db)
+{
+  try
+  {
+    $request ='SELECT * FROM sport';
+    $statement = $db->prepare($request);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
 function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NULL, $avatar = NULL, $note = NULL)
 {
   try{
@@ -191,7 +208,7 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
     $result = $info_old;
 
     if ($info_old[0]['mdp'] != $old_mdp)
-      return "mauvais mdp";
+      $result = "mauvais mdp";
     
     if ($ville == NULL)
       $ville = $info_old[0]['ville'];
@@ -203,15 +220,7 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
       $avatar = $info_old[0]['photo'];
     if ($note == NULL)
       $note = $info_old[0]['note_site'];
-    
-      $result = array(
-      
-        $ville,
-        $fs,
-        $mdp,
-        $avatar,
-        $note
-  );
+
 
 
 
