@@ -46,7 +46,10 @@ CREATE TABLE condition_physique(
 #------------------------------------------------------------
 
 INSERT INTO condition_physique (condition_p) VALUES
+('Grand sportif'),
 ('Sportif'),
+('Normal'),
+('mou du genou'),
 ('Sédentaire');
 
 #------------------------------------------------------------

@@ -28,14 +28,22 @@ $('#formulaire-recherche').submit((event) =>
   {
     console.log('appuyé');
     event.preventDefault();
-    ajaxRequest('PUT', 'php/requete.php/filtreMesMatch/', filtreMesMatch,'sport=' + $('.sport').val() + '&date=' + $('.date_r').val() + '&ville=' + $('.ville').val() + '&dispo=' + $('.dispo').val()
-    );
-  }
+    ajaxRequest('POST', 'php/requete.php/filtreMesMatchOrga/', filtreMesMatchOrga,'sport=' + $('#sport').val() + '&date=' + $('#date_r').val() + '&ville=' + $('#ville').val() + '&dispo=' + $('#dispo').val());
+    ajaxRequest('POST', 'php/requete.php/filtreMesMatchParti/', filtreMesMatchParti,'sport=' + $('#sport').val() + '&date=' + $('#date_r').val() + '&ville=' + $('#ville').val() + '&dispo=' + $('#dispo').val());
+    }
+);
+
+$('#formulaire-recherche-g').submit((event) =>
+  {
+    console.log('appuyé');
+    event.preventDefault();
+    ajaxRequest('POST', 'php/requete.php/filtreLesMatch/', filtreLesMatch,'sport=' + $('#sport_g').val() + '&date=' + $('#date_r_g').val() + '&ville=' + $('#ville_g').val() + '&dispo=' + $('#dispo_g').val());
+    }
 );
 
 
 function displayMesMatchOrga(matchs){
-    console.log(matchs);
+    //console.log(matchs);
     for(let match of matchs){
         //console.log(match);
         //console.log(match.nom_partie)
@@ -65,8 +73,8 @@ function displayMesMatchOrga(matchs){
 }
 
 function displayMesMatchParti(matchs){
-    console.log(matchs);
-    /*for(let match of matchs){
+    //console.log(matchs);
+    for(let match of matchs){
         //console.log(match);
         //console.log(match.nom_partie)
         $('#mes_matchs').append('<div class="bulle text-center">' +
@@ -91,15 +99,15 @@ function displayMesMatchParti(matchs){
                                 '</div>' +
                                 '</div>'
                                 );
-    }*/
+    }
 }
 
-function filtreMesMatch(matchs){
-    console.log(matchs);
+function filtreMesMatchOrga(matchs){
+    //console.log(matchs);
     for(let match of matchs){
         //console.log(match);
         //console.log(match.nom_partie)
-        $('#mes_matchs').append('<div class="bulle text-center">' +
+        $('#mes_matchs').html('<div class="bulle text-center">' +
                                 '<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto py-3 text-white">' +
                                 '<div class="h5">' +
                                 '<span id="num">' + match.nom_partie + '</span>' +
@@ -118,6 +126,66 @@ function filtreMesMatch(matchs){
                                 '</div>' +
                                 '<div class="h6 text-marron">' +
                                 '<span id="joueur-orga">Organisateur</span>' +
+                                '</div>' +
+                                '</div>'
+                                );
+    }
+}
+
+function filtreMesMatchParti(matchs){
+    //console.log(matchs);
+    for(let match of matchs){
+        //console.log(match);
+        //console.log(match.nom_partie)
+        $('#mes_matchs').html('<div class="bulle text-center">' +
+                                '<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto py-3 text-white">' +
+                                '<div class="h5">' +
+                                '<span id="num">' + match.nom_partie + '</span>' +
+                                '<span id="type">' + match.nom_sport + '</span>' +
+                                '</div>' +
+                                '<div class="d-flex flex-row justify-content-around w-100 pt-4">' +
+                                '<div>' +
+                                '<div id="ville">' + match.ville + '</div>' +
+                                '<div id="date">' + match.date + '</div>' +
+                                '<div id="heure">' + match.heure + '</div>' +
+                                '</div>' +
+                                '<div>' +  
+                                '<div>Places : <span id="places">' + match.places_restantes + '</span></div>' +
+                                '<div>Joueurs inscrits : <span id="inscrits">' + match.nb_joueurs + '</span></div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="h6 text-marron">' +
+                                '<span id="joueur-orga">Joueur</span>' +
+                                '</div>' +
+                                '</div>'
+                                );
+    }
+}
+
+function filtreLesMatch(matchs){
+    console.log(matchs);
+    for(let match of matchs){
+        //console.log(match);
+        //console.log(match.nom_partie)
+        $('#les_matchs').html('<div class="bulle text-center">' +
+                                '<div class="d-flex flex-column justify-content-center align-items-center w-100 mx-auto py-3 text-white">' +
+                                '<div class="h5">' +
+                                '<span id="num">' + match.nom_partie + '</span>' +
+                                '<span id="type">' + match.nom_sport + '</span>' +
+                                '</div>' +
+                                '<div class="d-flex flex-row justify-content-around w-100 pt-4">' +
+                                '<div>' +
+                                '<div id="ville">' + match.ville + '</div>' +
+                                '<div id="date">' + match.date + '</div>' +
+                                '<div id="heure">' + match.heure + '</div>' +
+                                '</div>' +
+                                '<div>' +  
+                                '<div>Places : <span id="places">' + match.places_restantes + '</span></div>' +
+                                '<div>Joueurs inscrits : <span id="inscrits">' + match.nb_joueurs + '</span></div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="h6 text-marron">' +
+                                '<span id="joueur-orga">Joueur</span>' +
                                 '</div>' +
                                 '</div>'
                                 );
@@ -153,6 +221,6 @@ function displayLesMatch(matchs){
 
 function test(datas){
     for(let data of datas){
-        console.log(data);
+        //console.log(data);
     }
 }

@@ -46,6 +46,26 @@ if ($requestMethod == 'POST')
         $data = dbCreerMatch($db, $_POST['nom_m'], $_POST['type'], $_POST['nb_max'], $_POST['nb_min'], $_POST['adresse'], $_POST['ville'], $_POST['date'], $_POST['duree'], $_POST['prix']);
         
     }
+    if ($requestRessource == 'filtreMesMatchOrga')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreMesMatchOrga($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
+
+    if ($requestRessource == 'filtreMesMatchParti')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreMesMatchParti($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
+
+    if ($requestRessource == 'filtreLesMatch')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreLesMatch($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
 }
 if ($requestMethod == 'PUT')
 {
@@ -63,13 +83,7 @@ if ($requestMethod == 'PUT')
             $data = "nono";
     }
 
-    if ($requestRessource == 'filtreMesMatch')
-    {
-        
-        //if(isset($_PUT['ville']) && isset($_PUT['sport']) && isset($_PUT['date']) && isset($_PUT['dispo'])){
-            $data = dbRequestFiltreMesMatch($db, $_PUT['sport'], $_PUT['date'], $_PUT['ville'], $_PUT['dispo']);
-        //}
-    }
+    
 
 }
 
