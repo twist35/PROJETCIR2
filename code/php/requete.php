@@ -66,8 +66,8 @@ if ($requestMethod == 'PUT')
     if ($requestRessource == 'filtreMesMatch')
     {
         
-        //if((isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
-            $data = dbRequestFiltreMesMatch($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        //if(isset($_PUT['ville']) && isset($_PUT['sport']) && isset($_PUT['date']) && isset($_PUT['dispo'])){
+            $data = dbRequestFiltreMesMatch($db, $_PUT['sport'], $_PUT['date'], $_PUT['ville'], $_PUT['dispo']);
         //}
     }
 
@@ -96,11 +96,21 @@ if ($requestMethod == 'GET'){
     {
         $data =dbFormeSportive($db);
     }
+
+    if($requestRessource == 'ville')
+    {
+        $data =dbVille($db);
+    }
+
     if($requestRessource == 'typeSport')
     {
         $data =dbTypeSport($db);
     }
 
+    if($requestRessource == 'test')
+    {
+        $data =dbTest($db);
+    }
 }
 
 // Send data to the client.
