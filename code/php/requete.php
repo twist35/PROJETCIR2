@@ -40,6 +40,12 @@ if ($requestMethod == 'POST')
             $_SESSION['email'] = $_POST['email'];
         }
     }
+    if ($requestRessource == 'creerMatch')
+    {
+        if(isset($_POST['nom_m']) && isset($_POST['type']) && isset($_POST['nb_max']) && isset($_POST['nb_min']) && isset($_POST['adresse']) && isset($_POST['ville'])&& isset($_POST['date'])&& isset($_POST['duree'])&& isset($_POST['prix']))
+        $data = dbCreerMatch($db, $_POST['nom_m'], $_POST['type'], $_POST['nb_max'], $_POST['nb_min'], $_POST['adresse'], $_POST['ville'], $_POST['date'], $_POST['duree'], $_POST['prix']);
+        
+    }
 }
 if ($requestMethod == 'PUT')
 {
@@ -56,11 +62,7 @@ if ($requestMethod == 'PUT')
         else
             $data = "nono";
     }
-    if ($requestRessource == 'creerMatch')
-    {
-        parse_str(file_get_contents('php://input'), $_PUT);
-        $data = $_PUT;
-    }
+    
 
 }
 // Match request.

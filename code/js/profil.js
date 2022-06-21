@@ -14,6 +14,7 @@ function displayProfil(infos){
                 else
                     $('.fs').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
             }
+            
         });
     }
 }
