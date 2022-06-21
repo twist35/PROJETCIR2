@@ -73,8 +73,6 @@ if ($requestMethod == 'PUT')
 
 }
 
-
-}
 // Match request.
 
 if ($requestMethod == 'GET'){
