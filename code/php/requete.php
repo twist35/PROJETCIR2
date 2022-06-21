@@ -62,7 +62,17 @@ if ($requestMethod == 'PUT')
         else
             $data = "nono";
     }
-    
+
+    if ($requestRessource == 'filtreMesMatch')
+    {
+        
+        //if((isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreMesMatch($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        //}
+    }
+
+}
+
 
 }
 // Match request.

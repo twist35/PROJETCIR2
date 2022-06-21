@@ -6,3 +6,4 @@ notification "nouvelle inscription"
 notification "demande d'inscription acepté/ refusé"
 modification de modif BDD en PUT (vs POST)
 gérer création de compte si l'email est déjà prit
+

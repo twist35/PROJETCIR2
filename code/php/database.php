@@ -25,6 +25,53 @@ function dbConnect()
   return $db;
 }
 
+function dbRequestFiltreMesMatch($db, $sport, $date, $ville, $dispo)
+  {
+    try
+    {
+      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      FROM partie p
+      JOIN ville v ON p.id_ville = v.id_ville
+      WHERE p.email = :email AND p.nom_sport = :sport AND p.date :pdate AND v.nom = :ville AND :dispo AND p.date > NOW()';
+      //WHERE p.email = 'lulu@gmail.com' AND p.nom_sport = 'Basketball' AND p.date = p.date AND v.nom = 'Quimper' AND p.joueurs_max-p.nb_joueurs > 0 AND p.date > NOW();
+      $statement = $db->prepare($request);
+      $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+      if($sport != NULL){
+        $statement->bindParam(':sport', $sport, PDO::PARAM_STR);
+      }else{
+        $statement->bindParam(':sport', 'p.nom_sport', PDO::PARAM_STR);
+      }
+
+      if($date != NULL){
+        $statement->bindParam(':pdate','< ' + $date, PDO::PARAM_STR);
+      }else{
+        $statement->bindParam(':pdate', '= p.date', PDO::PARAM_STR);
+      }
+
+      if($date != NULL){
+        $statement->bindParam(':ville', $ville, PDO::PARAM_STR);
+      }else{
+        $statement->bindParam(':ville', 'v.nom', PDO::PARAM_STR);
+      }
+
+      if($dispo != false){
+        $statement->bindParam(':dispo', 'p.joueurs_max-p.nb_joueurs > 0', PDO::PARAM_BOOL);
+      }else{
+        $statement->bindParam(':dispo', 'p.joueurs_max-p.nb_joueurs = 0', PDO::PARAM_BOOL);
+      }
+      
+
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
 function dbRequestMesMatchO($db)
   {
     try
