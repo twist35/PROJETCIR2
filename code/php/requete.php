@@ -40,12 +40,23 @@ if ($requestMethod == 'POST')
             $_SESSION['email'] = $_POST['email'];
         }
     }
+    if ($requestRessource == 'creerMatch')
+    {
+        if(isset($_POST['nom_m']) && isset($_POST['type']) && isset($_POST['nb_max']) && isset($_POST['nb_min']) && isset($_POST['adresse']) && isset($_POST['ville'])&& isset($_POST['date'])&& isset($_POST['duree'])&& isset($_POST['prix']))
+        $data = dbCreerMatch($db, $_POST['nom_m'], $_POST['type'], $_POST['nb_max'], $_POST['nb_min'], $_POST['adresse'], $_POST['ville'], $_POST['date'], $_POST['duree'], $_POST['prix']);
+        
+    }
+}
+if ($requestMethod == 'PUT')
+{
     if ($requestRessource == 'modifierProfil')
     {
-        if(isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['old_mdp']) && isset($_POST['new_mdp']) && isset($_POST['avatar']) && isset($_POST['note']))
+        
+        parse_str(file_get_contents('php://input'), $_PUT);
+        if(isset($_PUT['ville']) && isset($_PUT['fs']) && isset($_PUT['old_mdp']) && isset($_PUT['new_mdp']) && isset($_PUT['avatar']) && isset($_PUT['note']))
         {
-            $data = dbUpdateUser($db, $_POST['ville'], $_POST['fs'],$_POST['old_mdp'] ,$_POST['new_mdp'], $_POST['avatar'], $_POST['note']);
-            $data= "Changement de mot de passe effectué";
+            $data = dbUpdateUser($db, $_PUT['ville'], $_PUT['fs'],$_PUT['old_mdp'] ,$_PUT['new_mdp'], $_PUT['avatar'], $_PUT['note']);
+            //$data= "Changement de mot de passe effectué";
             
         }
         else
@@ -62,6 +73,8 @@ if ($requestMethod == 'POST')
 
 }
 
+
+}
 // Match request.
 
 if ($requestMethod == 'GET'){
@@ -84,6 +97,10 @@ if ($requestMethod == 'GET'){
     if($requestRessource == 'fs')
     {
         $data =dbFormeSportive($db);
+    }
+    if($requestRessource == 'typeSport')
+    {
+        $data =dbTypeSport($db);
     }
 
 }

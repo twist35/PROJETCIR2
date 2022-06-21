@@ -1,3 +1,9 @@
-session ? via variable de session ? 
-sinon mettre page de login a l'index ?
-Utiliser INTERSECT pour mes matchs
+filtrage match
+page détal match...
+page organiser maths...
+gestio photo de profil partout
+notification "nouvelle inscription"
+notification "demande d'inscription acepté/ refusé"
+modification de modif BDD en PUT (vs POST)
+gérer création de compte si l'email est déjà prit
+
