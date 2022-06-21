@@ -4,12 +4,31 @@
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrga);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchParti);
 ajaxRequest('GET', 'php/requete.php/lesmatch/', displayLesMatch);
+ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
+ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
+ajaxRequest('GET', 'php/requete.php/test/', test);
+
+
+function displayVille(infos){
+    for(let ville of infos){
+        $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+        };
+        $('.ville').append('<option selected value="' + 'null'+ '">'+'Toutes' +'</option>');
+}
+
+
+function displaySport(data)
+{
+    for (let sport of data)
+        $('.sport').append('<option value="' + sport.nom_sport + '">'+ sport.nom_sport +'</option>');  
+        $('.sport').append('<option selected value="' + 'null'+ '">'+'Tous' +'</option>');
+}
 
 $('#formulaire-recherche').submit((event) =>
   {
     console.log('appuyé');
     event.preventDefault();
-    ajaxRequest('POST', 'php/requete.php/filtreMesMatch/', filtreMesMatch,'sport=' + $('#sport').val() + '&date=' + $('#date_r').val() + '&ville=' + $('#ville').val() + '&dispo=' + $('#dispo').val()
+    ajaxRequest('PUT', 'php/requete.php/filtreMesMatch/', filtreMesMatch,'sport=' + $('.sport').val() + '&date=' + $('.date_r').val() + '&ville=' + $('.ville').val() + '&dispo=' + $('.dispo').val()
     );
   }
 );
@@ -47,7 +66,7 @@ function displayMesMatchOrga(matchs){
 
 function displayMesMatchParti(matchs){
     console.log(matchs);
-    for(let match of matchs){
+    /*for(let match of matchs){
         //console.log(match);
         //console.log(match.nom_partie)
         $('#mes_matchs').append('<div class="bulle text-center">' +
@@ -72,7 +91,7 @@ function displayMesMatchParti(matchs){
                                 '</div>' +
                                 '</div>'
                                 );
-    }
+    }*/
 }
 
 function filtreMesMatch(matchs){
@@ -130,4 +149,10 @@ function displayLesMatch(matchs){
                                 );
     }
                     
+}
+
+function test(datas){
+    for(let data of datas){
+        console.log(data);
+    }
 }
