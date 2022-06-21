@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 require_once('constants.php');
 
 //----------------------------------------------------------------------------
@@ -106,6 +104,44 @@ function dbRequestUser($db, $email){
       return false;
     }
     return $result;
+}
+
+function dbRequestAllMatchsOrga($db)
+{
+  try{
+    $request = 'SELECT * from partie where partie.email = :email;';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dbRequestFileAttente($db, $nb)
+{
+  try{
+    $request = 'SELECT p.nom_partie, p.email ,u.prenom, u.nom FROM partie p
+                JOIN user_inscrits i ON i.id_partie = p.id_partie
+                JOIN user u ON u.email = i.email
+                WHERE i.valide = 0 AND p.id_partie = :id_partie;
+    ';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id_partie', $nb, PDO::PARAM_STR);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
 }
 
 function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $naissance){
