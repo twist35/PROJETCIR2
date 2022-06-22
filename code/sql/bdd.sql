@@ -46,7 +46,10 @@ CREATE TABLE condition_physique(
 #------------------------------------------------------------
 
 INSERT INTO condition_physique (condition_p) VALUES
+('Grand sportif'),
 ('Sportif'),
+('Normal'),
+('mou du genou'),
 ('Sédentaire');
 
 #------------------------------------------------------------
@@ -74,9 +77,9 @@ CREATE TABLE user(
 #-- Contenu de user
 #------------------------------------------------------------
 
-INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p) VALUES
-('lulu@gmail.com','Lucas','LeBihan','123','2002-04-17','1','Sédentaire'),
-('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif');
+INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p, photo) VALUES
+('lulu@gmail.com','Lucas','Le Bihan','123','2002-04-17','1','Sédentaire', 'ressources/img/profil1.png'),
+('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif', 'ressources/img/profil2.png');
 
 #------------------------------------------------------------
 # Table: sport
@@ -129,13 +132,13 @@ CREATE TABLE partie(
 #-- Contenu de partie
 #------------------------------------------------------------
 
-INSERT INTO partie ( nom_partie, joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport) VALUES
-('Match1','2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football'),
-('Match2','5','20','2022-12-06 15:30:00','01:30:00','32 blabla','anto@gmail.com','3','Tennis'),
-('Match3','4','8','2017-02-25 10:00:00','01:00:00','5 blablabla','lulu@gmail.com','2','Basketball'),
-('Match4','4','8','2022-07-28 10:00:00','01:00:00','6 blablabla','lulu@gmail.com','1','Handball'),
-('Match5','4','8','2023-02-25 10:00:00','01:00:00','7 blablabla','anto@gmail.com','4','Football'),
-('Match6','4','8','2036-01-12 10:00:00','01:00:00','8 blablabla','lulu@gmail.com','5','Basketball');
+INSERT INTO partie ( nom_partie, nb_joueurs,joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport) VALUES
+('Match1', 10,'2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football'),
+('Match2', 5,'5','20','2022-12-06 15:30:00','01:30:00','32 blabla','anto@gmail.com','3','Tennis'),
+('Match3', 4,'4','8','2017-02-25 10:00:00','01:00:00','5 blablabla','lulu@gmail.com','2','Basketball'),
+('Match4', 2,'4','8','2022-07-28 10:00:00','01:00:00','6 blablabla','lulu@gmail.com','1','Handball'),
+('Match5', 8,'4','8','2023-02-25 10:00:00','01:00:00','7 blablabla','anto@gmail.com','4','Football'),
+('Match6', 7,'4','8','2036-01-12 10:00:00','01:00:00','8 blablabla','lulu@gmail.com','5','Basketball');
 
 #------------------------------------------------------------
 # Table: user_inscrits

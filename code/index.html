@@ -61,13 +61,11 @@
                 Mes Matchs
             </div>
             <div>
-                <form id="formulaire-recherche"class=" formulaire-recherche text-center center">
+                <form id="formulaire-recherche" class=" formulaire-recherche text-center center">
                     <div class="d-flex  align-items-end flex-row justify-content-center">
-                        <div class="recherche-div" >Forme sportive 
-                            <label for="fs"></label>
-                            <select class="back">
-                                <option value="Sportif">Sportif</option>
-                                <option value="Sédentaire">Sédentaire</option>
+                        <div class="recherche-div" >Type de sport 
+                            <label for="sport"></label>
+                            <select class="back sport" id="sport">
                             </select>
                         </div>
                         <div class="recherche-div" >Date Maximale
@@ -76,18 +74,14 @@
                         </div>
                         <div class="recherche-div">Ville
                             <label for="ville"></label>
-                            <select class="back">
-                                <option value="Brest">Brest</option>
-                                <option value="Quimper">Quimper</option>
-                                <option value="Rennes">Rennes</option>
-                                <option value="Lorient">Lorient</option>
+                            <select class="back ville" id="ville">
                             </select>
                         </div>
                         <div class="recherche-div" >Disponibilité
                             <label for="dispo"></label>
-                            <select class="back">
-                                <option>Disponible</option>
-                                <option>Indisponible</option>
+                            <select class="back dispo" id="dispo">
+                                <option value="true">Disponible</option>
+                                <option value="false">Indisponible</option>
                             </select>
                         </div>
                     </div>
@@ -122,33 +116,26 @@
                 Les Matchs
             </div>
             <div>
-                <form id="formulaire-recherche-g"class=" formulaire-recherche text-center center">
+                <form id="formulaire-recherche-g" class=" formulaire-recherche text-center center">
                     <div class="d-flex  align-items-end flex-row justify-content-center">
-                        <div class="recherche-div" >Forme sportive 
-                            <label for="fs-g"></label>
-                            <select class="back">
-                                <option>A</option>
-                                <option>B</option>
-                                <option>C</option>
-                                <option>D</option>
+                        <div class="recherche-div" >Type de sport 
+                            <label for="sport-g"></label>
+                            <select class="back sport" id="sport_g">
                             </select>
                         </div>
                         <div class="recherche-div" >Date Maximale
                             <label for="date_r_g"></label>
-                            <input class="back" type="date" id="date_r_g" name="date_r_g" value="2022-06-16" min="2018-01-01">
+                            <input class="back date_r_g" type="date" id="date_r_g" name="date_r_g" value="2022-06-16" min="2018-01-01">
                         </div>
                         <div class="recherche-div">Ville
                             <label for="ville_g"></label>
-                            <select class="back">
-                                <option>A</option>
-                                <option>B</option>
-                                <option>C</option>
-                                <option>D</option>
+                            <select class="back ville" id="ville_g">
+                            </select>
                             </select>
                         </div>
                         <div class="recherche-div" >Disponibilité
                             <label for="dispo_g"></label>
-                            <select class="back">
+                            <select class="back dispo_g" id="dispo_g">
                                 <option>Disponible</option>
                                 <option>Indisponible</option>
                             </select>

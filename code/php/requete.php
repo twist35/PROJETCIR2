@@ -21,6 +21,7 @@ $id = array_shift($request);
     $id = NULL;
 
 $data = false;
+$idtest = 4;
 
 if ($requestMethod == 'POST')
 {   
@@ -50,6 +51,27 @@ if ($requestMethod == 'POST')
         $data = dbCreerMatch($db, $_POST['nom_m'], $_POST['type'], $_POST['nb_max'], $_POST['nb_min'], $_POST['adresse'], $_POST['ville'], $_POST['date'], $_POST['duree'], $_POST['prix']);
         
     }
+    if ($requestRessource == 'filtreMesMatchOrga')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreMesMatchOrga($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
+
+    if ($requestRessource == 'filtreMesMatchParti')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreMesMatchParti($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
+
+    if ($requestRessource == 'filtreLesMatch')
+    {
+        if(isset($_POST['ville']) && isset($_POST['sport']) && isset($_POST['date']) && isset($_POST['dispo'])){
+            $data = dbRequestFiltreLesMatch($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
+        }
+    }
+
 }
 if ($requestMethod == 'PUT')
 {
@@ -66,9 +88,11 @@ if ($requestMethod == 'PUT')
         else
             $data = "nono";
     }
+
     
 
 }
+
 // Match request.
 
 if ($requestMethod == 'GET'){
@@ -78,17 +102,36 @@ if ($requestMethod == 'GET'){
     if ($requestRessource == 'mesmatchParticipant')
         $data = dbRequestMesMatchP($db);
 
-    if ($requestRessource == 'lesmatch')
+
+    if ($requestRessource == 'mesmatchOrganisateurPasses'){
+        $data = dbRequestMesMatchOP($db);
+    }
+    
+    if ($requestRessource == 'mesmatchParticipantPasses'){
+        $data = dbRequestMesMatchPP($db);
+    }
+
+    if ($requestRessource == 'lesmatch'){
         $data = dbRequestLesMatch($db);
 
     if($requestRessource == 'profil')
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
     if($requestRessource == 'fs')
         $data =dbFormeSportive($db);
+
+    }
+
+    if($requestRessource == 'ville')
+    {
+        $data =dbVille($db);
+    }
+
+
     if($requestRessource == 'typeSport')
         $data =dbTypeSport($db);
     if($requestRessource == 'fileAttente')
     {
+
 
         $data = dbRequestFileAttente($db, $id);
         
@@ -105,6 +148,31 @@ if ($requestMethod == 'GET'){
         {
             $data[1][$num_d] = dbRequestFileAttente($db, $data1[$num_d]["id_partie"]);
         }       
+
+    if($requestRessource == 'detail')
+    {
+        
+        $data = dbDetail($db, $idtest);
+    }
+
+    if($requestRessource == 'participants')
+    {
+        $data = dbParticipants($db, $idtest);
+    }
+
+    if($requestRessource == 'inscritTest')
+    {
+        $data = dbButtonTest($db, $idtest);
+    }
+
+    if($requestRessource == 'inscription')
+    {
+        $data = dbInscription($db, $idtest);
+    }
+
+    if($requestRessource == 'test')
+    {
+        //$data = dbInscription($db, $idtest);
     }
 }
 
