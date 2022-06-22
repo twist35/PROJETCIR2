@@ -1,3 +1,4 @@
+
 'use strict';
 
 ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
