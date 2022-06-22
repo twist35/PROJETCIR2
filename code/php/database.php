@@ -29,7 +29,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.email = :email AND p.nom_sport = :sport AND p.date < :pdate AND v.nom = :ville AND :dispo AND p.date > NOW()';
@@ -82,7 +82,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       JOIN user_inscrits i ON p.id_partie = i.id_partie
@@ -136,7 +136,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.nom_sport = :sport AND p.date < :pdate AND v.nom = :ville AND :dispo AND p.date > NOW()';
@@ -188,7 +188,7 @@ function dbRequestMesMatchO($db)
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.email = :email AND p.date > NOW()';
@@ -209,11 +209,54 @@ function dbRequestMesMatchP($db)
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       JOIN user_inscrits i ON p.id_partie = i.id_partie
       WHERE i.valide = 1 AND i.email = :email AND p.date > NOW()';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
+  function dbRequestMesMatchOP($db)
+  {
+    try
+    {
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      FROM partie p
+      JOIN ville v ON p.id_ville = v.id_ville
+      WHERE p.email = :email AND p.date < NOW()';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
+function dbRequestMesMatchPP($db)
+  {
+    try
+    {
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      FROM partie p
+      JOIN ville v ON p.id_ville = v.id_ville
+      JOIN user_inscrits i ON p.id_partie = i.id_partie
+      WHERE i.valide = 1 AND i.email = :email AND p.date < NOW()';
       $statement = $db->prepare($request);
       $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
       $statement->execute();
@@ -232,7 +275,7 @@ function dbRequestLesMatch($db)
   {
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.date > NOW()';
@@ -454,14 +497,97 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
   return $result;
 }
 
+function dbDetail($db, $id_partie){
+  try
+  {
+    $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, p.duree, p.prix, DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs, u.prenom, u.nom, u.photo
+    FROM partie p
+    JOIN user u ON p.email = u.email
+    WHERE id_partie = :idpartie';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dbParticipants($db, $id_partie){
+  try
+  {
+    $request = 'SELECT u.prenom, u.nom, u.photo FROM user u
+    JOIN user_inscrits i ON u.email = i.email
+    WHERE i.valide = 1 AND i.id_partie = :idpartie';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dbButtonTest($db, $id_partie){
+  try
+  {
+    $request = 'SELECT i.valide, p.date, NOW() AS "mtn" FROM user_inscrits i
+                JOIN partie p ON p.id_partie = i.id_partie
+                WHERE i.email = :email AND i.id_partie = :idpartie';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dbInscription($db, $id_partie){
+  try
+  {
+    $request = 'INSERT INTO user_inscrits (valide, mj, id_partie, email)
+                VALUES (0, 0, :idpartie , :email)';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result = 'db OK';
+}
+
 function dbTest($db){
     try
     {
-      $request = 'SELECT p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
-      FROM partie p
-      JOIN ville v ON p.id_ville = v.id_ville
-      WHERE p.email = :email AND p.nom_sport = "Handball" AND p.date = p.date AND v.nom = "Brest" AND p.joueurs_max-p.nb_joueurs > 0 AND p.date > NOW()';
-      //WHERE p.email = 'lulu@gmail.com' AND p.nom_sport = 'Basketball' AND p.date = p.date AND v.nom = 'Quimper' AND p.joueurs_max-p.nb_joueurs > 0 AND p.date > NOW();
+      $request = 'SELECT p.adresse, p.duree, p.prix, p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs, u.prenom, u.nom, u.photo
+    FROM partie p
+    JOIN user u ON p.email = u.email
+    WHERE id_partie = 4';
       $statement = $db->prepare($request);
       $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
       

@@ -17,6 +17,7 @@ $request = explode('/', $request);
 $requestRessource = array_shift($request);
 
 $data = false;
+$idtest = 4;
 
 if ($requestMethod == 'POST')
 {   
@@ -66,6 +67,7 @@ if ($requestMethod == 'POST')
             $data = dbRequestFiltreLesMatch($db, $_POST['sport'], $_POST['date'], $_POST['ville'], $_POST['dispo']);
         }
     }
+
 }
 if ($requestMethod == 'PUT')
 {
@@ -98,6 +100,14 @@ if ($requestMethod == 'GET'){
         $data = dbRequestMesMatchP($db);
         }
 
+    if ($requestRessource == 'mesmatchOrganisateurPasses'){
+        $data = dbRequestMesMatchOP($db);
+    }
+    
+    if ($requestRessource == 'mesmatchParticipantPasses'){
+        $data = dbRequestMesMatchPP($db);
+    }
+
     if ($requestRessource == 'lesmatch'){
         $data = dbRequestLesMatch($db);
     }
@@ -121,9 +131,30 @@ if ($requestMethod == 'GET'){
         $data =dbTypeSport($db);
     }
 
+    if($requestRessource == 'detail')
+    {
+        
+        $data = dbDetail($db, $idtest);
+    }
+
+    if($requestRessource == 'participants')
+    {
+        $data = dbParticipants($db, $idtest);
+    }
+
+    if($requestRessource == 'inscritTest')
+    {
+        $data = dbButtonTest($db, $idtest);
+    }
+
+    if($requestRessource == 'inscription')
+    {
+        $data = dbInscription($db, $idtest);
+    }
+
     if($requestRessource == 'test')
     {
-        $data =dbTest($db);
+        //$data = dbInscription($db, $idtest);
     }
 }
 
