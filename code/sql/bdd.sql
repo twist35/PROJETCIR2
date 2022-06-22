@@ -77,9 +77,9 @@ CREATE TABLE user(
 #-- Contenu de user
 #------------------------------------------------------------
 
-INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p) VALUES
-('lulu@gmail.com','Lucas','LeBihan','123','2002-04-17','1','Sédentaire'),
-('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif');
+INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p, photo) VALUES
+('lulu@gmail.com','Lucas','Le Bihan','123','2002-04-17','1','Sédentaire', 'ressources/img/profil1.png'),
+('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif', 'ressources/img/profil2.png');
 
 #------------------------------------------------------------
 # Table: sport
