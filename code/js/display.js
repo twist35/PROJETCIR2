@@ -257,7 +257,7 @@ function id_partie(id_partie){
 }
 
 function test(datas){
-    for(let data of datas){
-        //console.log(data);
-    }
+    /*for(let data of datas){
+        console.log(data);
+    }*/
 }

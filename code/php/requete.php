@@ -96,13 +96,14 @@ if ($requestMethod == 'PUT')
 // Match request.
 
 if ($requestMethod == 'GET'){
-    if ($requestRessource == 'mesmatchOrganisateur')
+    if ($requestRessource == 'mesmatchOrganisateur'){
         $data = dbRequestMesMatchO($db);
-
-    if ($requestRessource == 'mesmatchParticipant')
+    }
+        
+    if ($requestRessource == 'mesmatchParticipant'){
         $data = dbRequestMesMatchP($db);
-
-
+    }
+        
     if ($requestRessource == 'mesmatchOrganisateurPasses'){
         $data = dbRequestMesMatchOP($db);
     }
@@ -113,12 +114,14 @@ if ($requestMethod == 'GET'){
 
     if ($requestRessource == 'lesmatch'){
         $data = dbRequestLesMatch($db);
+    }
 
-    if($requestRessource == 'profil')
+    if($requestRessource == 'profil'){
         $data = dbRequestUser($db, /*'lulu@gmail.com'*/$_SESSION['email']);
-    if($requestRessource == 'fs')
+    }
+        
+    if($requestRessource == 'fs'){    
         $data =dbFormeSportive($db);
-
     }
 
     if($requestRessource == 'ville')
@@ -129,14 +132,11 @@ if ($requestMethod == 'GET'){
 
     if($requestRessource == 'typeSport')
         $data =dbTypeSport($db);
+
     if($requestRessource == 'fileAttente')
     {
-
-
-        $data = dbRequestFileAttente($db, $id);
-        
-        //dbRequestAllMatchsOrga($db);
-        
+        $data = dbRequestFileAttente($db, $id);        
+        //dbRequestAllMatchsOrga($db);        
     }
     if($requestRessource =='RequestAllAttente')
     {
@@ -147,7 +147,8 @@ if ($requestMethod == 'GET'){
         for ($num_d = 0; $num_d < count($data1); $num_d++)
         {
             $data[1][$num_d] = dbRequestFileAttente($db, $data1[$num_d]["id_partie"]);
-        }       
+        }
+    }       
 
     if($requestRessource == 'detail')
     {
