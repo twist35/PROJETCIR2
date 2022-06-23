@@ -24,7 +24,7 @@ body
 }
 .back-bleu
 {
-    background-color: #30BFB1
+    background-color: #30BFB1;
 }
 .text-beige
 {
@@ -42,12 +42,6 @@ body
 {
     width: 60vw;
     max-width: 330px;
-}
-
-#page
-{
-    /*width: 80vw;*/
-
 }
 /*HEADER*/
 
@@ -194,6 +188,8 @@ body
     grid-row-gap: 4vh;
 }
 
+
+/* TAILLE INTERMEDIAIRE*/
 @media only screen and (max-width: 980px) 
 {
 
@@ -242,12 +238,13 @@ body
         width: 70%;
     }
 }
+
+/*FORMAT TELEPHONE */
 @media only screen and (max-width: 510px) 
 {
     .wrapper 
     {
-        grid-template-columns: repeat(1, 1fr);
-        
+        grid-template-columns: repeat(1, 1fr);        
     }
     .wrapper-joueur 
     {

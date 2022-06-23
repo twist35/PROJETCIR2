@@ -2,6 +2,7 @@
   Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
+    contient les fonctions pour la page organisation
 */
 //organisation.js
 'use strict';
@@ -69,8 +70,6 @@ function displayAll(data)
                               ';
           }*/
     }
-
-    
     
       $("#les_matchs").append('\
       <div class= "bulle-attente text-center px-3">\
@@ -115,10 +114,7 @@ function displayStat(data)
         </div>\
     </div>\
     ';
-    
 
-    
-    
       $("#les_matchs_stat").append('\
       <div class= "bulle-attente text-center px-3">\
       <form class="changer_stat" action="">\
@@ -190,13 +186,10 @@ setTimeout(()=>
   $('.changer_stat').submit((event) =>{
     console.log($('.changer_stat').val());
   });
-
-
-
 }, 50);
 
-
 //Callback
+
 function creerMatch(data)
 {
     console.log(data);
