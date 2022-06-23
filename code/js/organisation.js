@@ -70,7 +70,6 @@ function displayAll(data)
 function displayStat(data)
 {
   console.log(data);
-  //for (let match of data[0]){
   for (let i =0; i < data[0].length; i++){
     let chaine_attente= '<form>\
     <div class="d-flex flex-row justify-content-between p-1">\
