@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result;
-
 require_once('constants.php');
 
 //----------------------------------------------------------------------------
@@ -310,6 +308,44 @@ function dbRequestUser($db, $email){
     return $result;
 }
 
+function dbRequestAllMatchsOrga($db)
+{
+  try{
+    $request = 'SELECT * from partie where partie.email = :email;';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dbRequestFileAttente($db, $nb)
+{
+  try{
+    $request = 'SELECT p.nom_partie, p.email ,u.prenom, u.nom FROM partie p
+                JOIN user_inscrits i ON i.id_partie = p.id_partie
+                JOIN user u ON u.email = i.email
+                WHERE i.valide = 0 AND p.id_partie = :id_partie;
+    ';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id_partie', $nb, PDO::PARAM_STR);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
 function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $naissance){
     try{
         $request = 'INSERT INTO user (nom, prenom, email, mdp, id_ville, condition_p, photo, date_naissance) VALUES
@@ -328,7 +364,7 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
     catch (PDOException $exception)
     {
       error_log('Request error: '.$exception->getMessage());
-      return false;
+      return 'Request error: '.$exception->getMessage();
     }
 }
 function dbCreerMatch($db, $nom_m, $type, $nb_max, $nb_min, $adresse, $ville, $date, $duree, $prix)
@@ -356,6 +392,25 @@ catch (PDOException $exception)
   error_log('Request error: '.$exception->getMessage());
   return 'Request error: '.$exception->getMessage();
 }
+}
+function dbCheckUserExist($db, $email)
+{
+  try
+  {
+    $request =' SELECT * from user
+    where user.email = :email';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
 }
 
 function dbConnexion($db, $email, $mdp)

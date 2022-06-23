@@ -257,11 +257,13 @@ function add(id) {
   }
 
 function id_partie(id_partie){
+
     document.location.href="match.html?id=" + id_partie;
+
 }
 
 function test(datas){
-    for(let data of datas){
-        //console.log(data);
-    }
+    /*for(let data of datas){
+        console.log(data);
+    }*/
 }
