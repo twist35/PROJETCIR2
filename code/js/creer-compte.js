@@ -1,4 +1,5 @@
 'use strict';
+ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 $('#creer-compte').submit((event) =>
   {
     console.log('appuyé');
@@ -15,3 +16,9 @@ function InsertCompte(data){
       document.location.href="index.html";
     }
   }
+
+  function displayVille(infos){
+    for(let ville of infos){
+        $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+        };
+}
