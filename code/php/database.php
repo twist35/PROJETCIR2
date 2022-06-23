@@ -616,6 +616,26 @@ function dbButtonTest($db, $id_partie){
   return $result;
 }
 
+function dejaInscrit($db, $id_partie){
+  try
+  {
+    $request = 'SELECT email FROM user_inscrits 
+    WHERE email = :email AND id_partie = :idpartie';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
 function dbInscription($db, $id_partie){
   try
   {
