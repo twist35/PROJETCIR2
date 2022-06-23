@@ -3,6 +3,7 @@
 ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
 
 ajaxRequest('GET', 'php/requete.php/RequestAllAttente/', displayAll);
+ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPasses/', displayStat);
 
 function displayAll(data)
 {
@@ -64,8 +65,64 @@ function displayAll(data)
           <\div>\
               ');
   }
+}
 
-  console.log('================================');
+function displayStat(data)
+{
+  for (let match of data){
+    console.log(match);
+
+    let chaine_attente= '<form>\
+    <div class="d-flex flex-row justify-content-between p-1">\
+        <div>\
+            <div>\
+                Score équipe A\
+            </div>\
+            <div>\
+                <input type="number" class="form-control" id="scoreA" name="scoreA" placeholder="'+match.score_a +'"required>\
+            </div>\
+        </div>\
+        <div class="mx-auto">\
+            <div>\
+                Score équipe B\
+            </div>\
+            <div >\
+                <input type="number" class="form-control  center" id="scoreB" placeholder="'+ match.score_b +'" name="scoreB" required>\
+            </div>\
+        </div>\
+    </div>\
+</form>\
+    ';
+    
+
+    
+    
+      $("#les_matchs_stat").append('\
+      <div class= "bulle-attente text-center px-3">\
+      <form action="">\
+          <div class="h6 mt-1"><span id="num_attente">'+ match.nom_partie+'</span>\ |\
+              <span id="type_stat">'+ match.nom_sport+'</span>\
+          </div>\
+          <div  id="liste_attente">\
+          '+ 
+            chaine_attente
+          
+          + '\
+          </div>\
+          </form>\
+          <\div>\
+          <div class="d-flex flex-column justify-content-between p-1">\
+                    <div>\
+                        Meilleur joueur\
+                    </div>\
+                    <div>\
+                        <input type="number" class="form-control center mb-1" id="prenom" name="prenom" placeholder="prenom" required>\
+                        <input type="number" class="form-control center" id="nom" name="nom" placeholder="nom" required>\
+                    </div>\
+                    <button type="submit" id="valider" class="btn btn-sm back-b-marine text-beige mt-2 ">Valider</button>\
+                </div>\
+              ');
+  }
 }
 
 function displaySport(data)

@@ -141,14 +141,25 @@ if ($requestMethod == 'GET'){
     if($requestRessource =='RequestAllAttente')
     {
         $data = array();
-        $data1 = dbRequestAllMatchsOrga($db);
+        $data1 = dbRequestMesMatchO($db);
         
         $data[0] = $data1;
         for ($num_d = 0; $num_d < count($data1); $num_d++)
         {
             $data[1][$num_d] = dbRequestFileAttente($db, $data1[$num_d]["id_partie"]);
         }
-    }       
+    }
+    if($requestRessource =='RequestAllAttente1')
+    {
+        $data = array();
+        $data1 = dbRequestMesMatchOP($db);
+        
+        $data[0] = $data1;
+        for ($num_d = 0; $num_d < count($data1); $num_d++)
+        {
+            $data[1][$num_d] = dbRequestFileAttente($db, $data1[$num_d]["id_partie"]);
+        }  
+    }     
 
     if($requestRessource == 'detail')
     {

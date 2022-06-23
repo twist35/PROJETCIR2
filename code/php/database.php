@@ -229,7 +229,7 @@ function dbRequestMesMatchP($db)
   {
     try
     {
-      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, p.score_a, p.score_b, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.email = :email AND p.date < NOW()';
@@ -306,23 +306,6 @@ function dbRequestUser($db, $email){
       return false;
     }
     return $result;
-}
-
-function dbRequestAllMatchsOrga($db)
-{
-  try{
-    $request = 'SELECT * from partie where partie.email = :email;';
-    $statement = $db->prepare($request);
-    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-    $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-  }
-  catch (PDOException $exception)
-  {
-    error_log('Request error: '.$exception->getMessage());
-    return false;
-  }
-  return $result;
 }
 
 function dbRequestFileAttente($db, $nb)
