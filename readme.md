@@ -77,6 +77,11 @@ Il existe par défaut 5 Villes :
 - Rennes
 - Lorient
 - Lannion
+- Vannes
+- Saint-Brieuc
+- Saint-Malo
+- Guingamp
+- Pontivy
 
 ### Recherche
 
