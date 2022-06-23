@@ -30,7 +30,9 @@ sudo mysql
 - se déplacer au serveur Apache
 
 ```bash
+
 sudo cd /var/www/html/
+
 ```
 
 - copier le contenu de bdd/adduser.sql dans le terminal sql et valider
@@ -38,7 +40,9 @@ sudo cd /var/www/html/
 - sortir de sql
 
 ```bash
+
 exit
+
 ```
 
 - executer le script sql fourni
@@ -112,4 +116,6 @@ Voici un résumé du partage des principales tâches,
 - Maquette Figma
 - Web dynamique
 
+La collaboration s'est faire grâce à Git.
 
+[Lien du github](https://github.com/twist35/PROJETCIR2)
