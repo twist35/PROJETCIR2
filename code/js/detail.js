@@ -15,15 +15,7 @@ ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrgaF
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchPartiFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPasses/', displayMesMatchOrgaPasses);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipantPasses/', displayMesMatchPartiPasses);
-ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
-
-$('#FormulaireInscrire').submit((event) =>
-  {
-    console.log('appuyé');
-    event.preventDefault();
-    ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
-    }
-);
+//ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
 
 function test(datas){
     console.log(datas)
@@ -97,19 +89,22 @@ function displayBouton(infos){
             }
         }
     }else{
-        $('#inscrire').html('<form id="FormulaireInscrire" class="FormulaireInscrire text-center center" method="post" action="match.html?id=' + idmatch + '">' +
-                            '<button type="submit" id="boutonInscrire" class=" boutonInscrire btn back-b-marine text-beige"><span id="bouton_inscription">S'+ "'" + 'inscrire</span></button>' +
-                            '</form>')
+        $('#inscrire').html('<div class="text-center center" >' + 
+                            '<button type="submit" onClick=inscrire(' + idmatch + ') id="boutonInscrire" class=" center boutonInscrire btn back-b-marine text-beige"><span id="bouton_inscription">S'+ "'" + 'inscrire</span></button>' +
+                            '</div')
     }
     
 }
 
-function inscription(datas){
-    console.log(datas);
+function inscrire(){
+    
+    console.log('appuyé');
+    ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
+    document.location.href="match.html?id=" + idmatch;
 }
 
-function id_partie(id_partie){
-    document.location.href="match.html?id=" + id_partie;
+function inscription(){
+    
 }
 
 function displayMesMatchOrgaFuturs(matchs){
@@ -235,4 +230,3 @@ function displayMesMatchPartiPasses(matchs){
                                 );
     }
 }
-
