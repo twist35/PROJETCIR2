@@ -17,6 +17,7 @@ function login(data)
     {
         $("#profil").attr("style", "display: inline !important");
         $("#connexion").attr("style", "display: none !important");
+        $("#mes_matchs_recherche").attr("style", "display: inline !important");
         switch(fichier_actuel)
         {
             case 'authentification.html':
@@ -39,6 +40,7 @@ function login(data)
         }
         $("#profil").attr("style", "display: none !important");
         $("#connexion").attr("style", "display: inline !important");
+        $("#mes_matchs_recherche").attr("style", "display: none !important");
     }
 }
 
