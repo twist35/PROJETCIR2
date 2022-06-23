@@ -15,18 +15,29 @@
 ## Installation
 
 - envoyer et décompresser les fichiers sur le serveur
+
+utilisation de unzip :
+
+```bash
+unzip fichier compréssé
+```
+
 - Copier ces fichiers dans le bon répertoire :
 
 ```bash
-sudo -r cp ~nomfichier_dezip/* /var/www/html
+sudo cp -r ~/nomfichier_dezip/* /var/www/html
 ```
 
 - se déplacer au serveur Apache
 
 ```bash
+cd /var/www/html/
+```
 
-sudo cd /var/www/html/
+- démarrer mysql
 
+```bash
+sudo service mysql restart
 ```
 
 - ouvrir mysql
@@ -45,7 +56,9 @@ exit
 
 ```
 
-- executer le script sql fourni
+- executer le script sql fourni 
+
+Avec le mot de passe : isen29
 
 ```bash
 mysql -u user1 -p projetcir2 < sql/bdd.sql
