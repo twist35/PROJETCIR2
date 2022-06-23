@@ -104,7 +104,7 @@ if ($requestMethod == 'PUT') // si on demand du PUT
         if(isset($_PUT['ville']) && isset($_PUT['fs']) && isset($_PUT['old_mdp']) && isset($_PUT['new_mdp']) && isset($_PUT['avatar']) && isset($_PUT['note']))
         {
             $data = dbUpdateUser($db, $_PUT['ville'], $_PUT['fs'],$_PUT['old_mdp'] ,$_PUT['new_mdp'], $_PUT['avatar'], $_PUT['note']);
-            $data= "Changement de mot de passe effectué";
+            $data= "Changement effectué";
         }
         else
             $data = "erreur lors de la modification";

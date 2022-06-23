@@ -57,7 +57,7 @@ function photoProfil(infos){
 $('#modifier_profil').submit((event) =>
   {
     event.preventDefault();
-    ajaxRequest('PUT', 'php/requete.php/modifierProfil/', modifierProfil,'ville=' + $('#ville').val() + '&fs=' + $('#fs-t').val() + '&old_mdp=' + $('#old_mdp').val() + '&new_mdp=' + $('#new_mdp').val() + '&avatar=' + $('#avatar').val() +'&note=' + $('#note').val());
+    ajaxRequest('PUT', 'php/requete.php/modifierProfil/', modifierProfil,'ville=' + $('#ville').val() + '&fs=' + $('#fs-t').val() + '&old_mdp=' + $('#old_mdp').val() + '&new_mdp=' + $('#new_mdp').val() + '&avatar=' + $('#photo').val() +'&note=' + $('#note').val());
   }
 );
 
