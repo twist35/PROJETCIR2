@@ -1,0 +1,6 @@
+RewriteEngine on
+
+# Page d'erreur
+ErrorDocument 500 "Oups ! erreur serveur"
+ ErrorDocument 404 "Oups ! La page n'a pas pu etre trouvee"
+ErrorDocument 300 "Oups ! choix multiples"
