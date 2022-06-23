@@ -678,7 +678,7 @@ function dbInscription($db, $id_partie){
   try
   {
     $request = 'INSERT INTO user_inscrits (valide, mj, id_partie, email)
-                VALUES (0, 0, :idpartie , :email)';
+                VALUES (1, 0, :idpartie , :email)';
     $statement = $db->prepare($request);
     $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
     $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
@@ -691,7 +691,24 @@ function dbInscription($db, $id_partie){
     error_log('Request error: '.$exception->getMessage());
     return false;
   }
-  return $result = 'db OK';
+  return $result;
+}
+
+//Requete pour selectionner une photo de profil
+function dbPhoto($db){
+  try
+  {
+    $request = 'SELECT * FROM photo';
+    $statement = $db->prepare($request);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
 }
 
 // requete SQL pour debuguer

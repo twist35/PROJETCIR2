@@ -11,6 +11,7 @@
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
+ajaxRequest('GET', 'php/requete.php/photo/', displayPhoto);
 
 //Affiche les informatons du profil
 function displayProfil(infos){
@@ -32,10 +33,18 @@ function displayProfil(infos){
 
 //Affiche les villes dans un <select>
 function displayVille(infos){
+    console.log(infos);
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
         };
 }
+
+//Affichage des villes dans un <select>
+function displayPhoto(infos){
+    for(let image of infos){
+        $('#photo').append('<option value="' + image.photo + '">'+ image.nom_photo +'</option>');     
+        };
+  }
 
 //Affiche la photo de profil de l'utilisateur
 function photoProfil(infos){

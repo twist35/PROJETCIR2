@@ -181,6 +181,9 @@ if ($requestMethod == 'GET') // si on demande du GET
     if($requestRessource == 'buttonTest')
         $data = dbButtonTest($db, $id);
 
+    if($requestRessource == 'photo')
+        $data = dbPhoto($db);
+
     if($requestRessource == 'test')
         $data = dbTest($db, $id);
 }
