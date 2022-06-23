@@ -20,10 +20,6 @@ $id = array_shift($request);
   if ($id == '')
     $id = NULL;
 
-$data = false;
-$id = array_shift($request);
-  if ($id == '')
-    $id = NULL;
 
 if ($requestMethod == 'POST')
 {   

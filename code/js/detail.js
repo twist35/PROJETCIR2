@@ -230,3 +230,7 @@ function displayMesMatchPartiPasses(matchs){
                                 );
     }
 }
+
+function id_partie(id_partie){
+    document.location.href="match.html?id=" + id_partie;
+}
