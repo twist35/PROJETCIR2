@@ -252,8 +252,12 @@ function displayLesMatch(matchs){
                     
 }
 
+function add(id) {
+    window.location.href = "php/requete.php?id=" + id;
+  }
+
 function id_partie(id_partie){
-    console.log(id_partie);
+    document.location.href="match.html?id=" + id_partie;
 }
 
 function test(datas){

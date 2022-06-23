@@ -17,7 +17,9 @@ $request = explode('/', $request);
 $requestRessource = array_shift($request);
 
 $data = false;
-$idtest = 4;
+$id = array_shift($request);
+  if ($id == '')
+    $id = NULL;
 
 if ($requestMethod == 'POST')
 {   
@@ -70,9 +72,13 @@ if ($requestMethod == 'POST')
 
     if($requestRessource == 'inscription')
     {
-        $dejaInscrit = dejaInscrit($db, $idtest);
-        if(empty($dejaInscrit)){
-            $data = dbInscription($db, $idtest);
+        if(isset($_POST['idmatch'])){
+            if(empty(dejaInscrit($db, $_POST['idmatch']))){
+                dbInscription($db, $_POST['idmatch']);
+                $data = 'vous etes inscrit';
+            }else{
+                $data = 'vous etes deja inscrit';
+            }
         }
     }
 }
@@ -141,22 +147,22 @@ if ($requestMethod == 'GET'){
     if($requestRessource == 'detail')
     {
         
-        $data = dbDetail($db, $idtest);
+        $data = dbDetail($db, $id);
     }
 
     if($requestRessource == 'participants')
     {
-        $data = dbParticipants($db, $idtest);
+        $data = dbParticipants($db, $id);
     }
 
-    if($requestRessource == 'inscritTest')
+    if($requestRessource == 'buttonTest')
     {
-        $data = dbButtonTest($db, $idtest);
+        $data = dbButtonTest($db, $id);
     }
 
     if($requestRessource == 'test')
     {
-        $data = dejaInscrit($db, $idtest);
+        $data = dbTest($db, $id);
     }
 }
 
