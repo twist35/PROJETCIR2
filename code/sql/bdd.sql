@@ -157,19 +157,19 @@ CREATE TABLE partie(
 #-- Contenu de partie
 #------------------------------------------------------------
 
-INSERT INTO partie ( nom_partie, nb_joueurs,joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport) VALUES
-('Retour dans le passé', 10,'2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football'),
-('Garro Roland', 5,'5','20','2022-12-06 15:30:00','01:30:00','32 blabla','anto@gmail.com','3','Tennis'),
-('Match3', 4,'4','8','2017-02-25 10:00:00','01:00:00','3 blablabla','lulu@gmail.com','2','Basketball'),
-('Les Brestois', 2,'4','8','2022-07-28 10:00:00','01:00:00','4 blablabla','lulu@gmail.com','1','Handball'),
-('Les Rennais', 8,'4','8','2023-02-25 10:00:00','01:00:00','5 blablabla','anto@gmail.com','4','Football'),
-('NBA rpz', 7,'4','8','2036-01-12 10:00:00','01:00:00','6 blablabla','lulu@gmail.com','5','Basketball'),
-('ISEN FC', 8,'4','8','2022-06-25 10:00:00','01:00:00','7 blablabla','napo@gmail.com','1','Football'),
-('La tantouze', 8,'4','8','2022-06-26 10:00:00','01:00:00','8 blablabla','vignaud@gmail.com','6','Basketball'),
-('Lapero', 8,'4','8','2022-06-27 10:00:00','01:00:00','9 blablabla','napo@gmail.com','3','Handball'),
-('Raquelette', 8,'4','8','2022-06-28 10:00:00','01:00:00','10 blablabla','vignaud@gmail.com','2','Tennis'),
-('Retour dans le passé', 8,'4','8','2022-05-26 10:00:00','01:00:00','11 blablabla','vignaud@gmail.com','6','Basketball'),
-('Retour dans le passé', 8,'4','8','2022-05-27 10:00:00','01:00:00','12 blablabla','napo@gmail.com','3','Handball');
+INSERT INTO partie ( nom_partie, nb_joueurs,joueurs_min, joueurs_max, date, duree, adresse, email, id_ville, nom_sport, score_a, score_b) VALUES
+('Retour dans le passé', 10,'2','10','2022-06-17 17:00:00','02:00:00','20 Cuirasse Bretagne','lulu@gmail.com','1','Football', 2, 1),
+('Garro Roland', 5,'5','20','2022-12-06 15:30:00','01:30:00','32 blabla','anto@gmail.com','3','Tennis', 0, 0),
+('Match3', 4,'4','8','2017-02-25 10:00:00','01:00:00','3 blablabla','lulu@gmail.com','2','Basketball', 42, 36),
+('Les Brestois', 2,'4','8','2022-07-28 10:00:00','01:00:00','4 blablabla','lulu@gmail.com','1','Handball', 0, 0),
+('Les Rennais', 8,'4','8','2023-02-25 10:00:00','01:00:00','5 blablabla','anto@gmail.com','4','Football', 0, 0),
+('NBA rpz', 7,'4','8','2036-01-12 10:00:00','01:00:00','6 blablabla','lulu@gmail.com','5','Basketball', 0, 0),
+('ISEN FC', 8,'4','8','2022-06-25 10:00:00','01:00:00','7 blablabla','napo@gmail.com','1','Football', 0, 0),
+('La tantouze', 8,'4','8','2022-06-26 10:00:00','01:00:00','8 blablabla','vignaud@gmail.com','6','Basketball', 0, 0),
+('Lapero', 8,'4','8','2022-06-27 10:00:00','01:00:00','9 blablabla','napo@gmail.com','3','Handball', 0 , 0),
+('Raquelette', 8,'4','8','2022-06-28 10:00:00','01:00:00','10 blablabla','vignaud@gmail.com','2','Tennis', 0, 0),
+('Retour dans le passé', 8,'4','8','2022-05-26 10:00:00','01:00:00','11 blablabla','vignaud@gmail.com','6','Basketball', 23, 46),
+('Retour dans le passé', 8,'4','8','2022-05-27 10:00:00','01:00:00','12 blablabla','napo@gmail.com','3','Handball', 11, 13);
 
 #------------------------------------------------------------
 # Table: photo
