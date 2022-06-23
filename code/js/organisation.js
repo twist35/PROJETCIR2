@@ -1,14 +1,26 @@
+/*
+  Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+*/
 'use strict';
 
 ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/RequestAllAttente/', displayAll);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPassesOrga/', displayStat);
+ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 
 function photoProfil(infos){
   for(let info of infos){
       $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
   }
+}
+
+function displayVille(infos){
+  for(let ville of infos){
+      $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+      };
 }
 
 function displayAll(data)

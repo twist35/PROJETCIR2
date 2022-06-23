@@ -1,3 +1,8 @@
+/*
+  Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+*/
 'use strict';
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
@@ -18,6 +23,12 @@ function displayProfil(infos){
             
         });
     }
+}
+
+function displayVille(infos){
+    for(let ville of infos){
+        $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+        };
 }
 
 function photoProfil(infos){

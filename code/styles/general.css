@@ -67,6 +67,12 @@ body
     padding-left: 15px;
     padding-right: 15px;
 }
+.ville_orga
+{
+    margin-top: 3.5vh;
+    width: 25vh;
+    height: 4.5vw;
+}
 
 .lien{
     display: flex;
