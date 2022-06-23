@@ -44,7 +44,7 @@ function InsertCompte(data){
         };
 }
 
-//Affichage des villes dans un <select>
+//Affichage des photos dans un <select>
 function displayPhoto(infos){
   for(let image of infos){
       $('#photo').append('<option value="' + image.photo + '">'+ image.nom_photo +'</option>');     
