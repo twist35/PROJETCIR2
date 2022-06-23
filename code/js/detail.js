@@ -4,14 +4,17 @@
     Pour le projet de fin d'année CIR2
     contient les fonctions pour afficher le détail d'un match
 */
+//detail.js
 'use strict';
 
+//Récupération de l'id du match en paramètre de l'url
 let queryString = window.location.search;
 console.log (queryString);
 let urlParams = new URLSearchParams (queryString);
 let idmatch = urlParams.get('id');
 console.log (idmatch);
 
+//Appel des requetes PHP
 ajaxRequest('GET', 'php/requete.php/test/' + idmatch, test);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/detail/' + idmatch, detail);
@@ -22,8 +25,8 @@ ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrgaF
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchPartiFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPasses/', displayMesMatchOrgaPasses);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipantPasses/', displayMesMatchPartiPasses);
-//ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
 
+//Fonction test pour débugger certaines requetes
 function test(datas){
     console.log(datas)
     /*for(let data of datas){
@@ -31,12 +34,14 @@ function test(datas){
     }*/
 }
 
+//Afficher la photo de profil de l'utilisateur sur le bouton profil
 function photoProfil(infos){
     for(let info of infos){
         $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
     }
 }
 
+//Afficher les détails du match selectionné
 function detail(infos){
     console.log(infos);
     for(let info of infos){
@@ -66,6 +71,7 @@ function detail(infos){
     }
 }
 
+//Afficher les participants du match
 function participants(infos){
     //console.log(infos);
     for(let info of infos){
@@ -77,31 +83,32 @@ function participants(infos){
     }
 }
 
+//Gestion du bouton s'inscrire qui apparait ou non selon certaines conditions
 function displayBouton(infos){
     console.log(infos);
-    if(infos.length != 0){
+    if(infos.length != 0){                  //Si l'utilisateur est déjà inscrit
         for(let info of infos){
             if(info.date > info.mtn){
                 if(info.valide = 0){
-                    $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +
+                    $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +     //Si l'utilisateur n'est pas encore accepté par l'organisateur du match
                                         '<span id="joueur-orga">En attente de réponse</span>' +
                                         '</div>'
                                         )
                 }else{
-                    $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +
+                    $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +    //Si on est déjà accepté par l'organisateur du match
                                         '<span id="joueur-orga">Déjà inscrit !</span>' +
                                         '</div>'
                                         )
                 }
     
             }else{
-                $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +
+                $('#inscrire').html('<div class="d-flex  align-items-end flex-row justify-content-center h6 text-marron">' +      //Si le match s'est déjà déroulé
                                         '<span id="joueur-orga">Match fini !</span>' +
                                         '</div>'
                                         )
             }
         }
-    }else{
+    }else{     //Si l'utilisateur n'est pas encore inscrit alors afficher le bouton s'inscrire
         $('#inscrire').html('<div class="text-center center" >' + 
                             '<button type="submit" onClick=inscrire(' + idmatch + ') id="boutonInscrire" class=" center boutonInscrire btn back-b-marine text-beige"><span id="bouton_inscription">S'+ "'" + 'inscrire</span></button>' +
                             '</div')
@@ -109,6 +116,7 @@ function displayBouton(infos){
     
 }
 
+//Mettre un utilisateur qui s'est inscrit en file d'attente
 function inscrire(){
     
     console.log('appuyé');
@@ -116,10 +124,12 @@ function inscrire(){
     document.location.href="match.html?id=" + idmatch;
 }
 
+//callback
 function inscription(){
     
 }
 
+//Afficher les matchs que l'utilisateur va organiser
 function displayMesMatchOrgaFuturs(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -151,6 +161,7 @@ function displayMesMatchOrgaFuturs(matchs){
     }
 }
 
+//Afficher les matchs que l'utilisateur va jouer
 function displayMesMatchPartiFuturs(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -182,6 +193,7 @@ function displayMesMatchPartiFuturs(matchs){
     }
 }
 
+//Afficher les matchs que l'utilisateur a déjà organisé
 function displayMesMatchOrgaPasses(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -213,6 +225,7 @@ function displayMesMatchOrgaPasses(matchs){
     }
 }
 
+//Afficher les matchs que l'utilisateur a déjà joué
 function displayMesMatchPartiPasses(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -244,6 +257,7 @@ function displayMesMatchPartiPasses(matchs){
     }
 }
 
+//Redirige l'utilisateur sur la page du match sur lequel il vient de cliquer
 function id_partie(id_partie){
     document.location.href="match.html?id=" + id_partie;
 }

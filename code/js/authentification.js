@@ -5,7 +5,10 @@
     contient les fonctions pour l'authentification
 */
 
+//authentification.js
+
 'use strict';
+//Récupération des données pour vérifier les identifiants lorsque le bouton se connecter est pressé
 $('#se-connecter').submit((event) =>
   {
     console.log('appuyé');
@@ -14,6 +17,7 @@ $('#se-connecter').submit((event) =>
   }
 );
 
+//Vérification de l'email
 function Connect(data) 
 {
     let email;

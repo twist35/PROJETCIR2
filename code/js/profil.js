@@ -4,11 +4,15 @@
     Pour le projet de fin d'année CIR2
     contient les fonctions pour la page profil
 */
+//profil.js
 'use strict';
+
+//Appel des requêtes PHP
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 
+//Affiche les informatons du profil
 function displayProfil(infos){
     for(let info of infos){
         $('#ville_profil').html(info.ville);
@@ -26,18 +30,21 @@ function displayProfil(infos){
     }
 }
 
+//Affiche les villes dans un <select>
 function displayVille(infos){
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
         };
 }
 
+//Affiche la photo de profil de l'utilisateur
 function photoProfil(infos){
     for(let info of infos){
         $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
     }
 }
 
+//Récupère les valeurs saisies par l'utilisateur
 $('#modifier_profil').submit((event) =>
   {
     event.preventDefault();
@@ -45,13 +52,7 @@ $('#modifier_profil').submit((event) =>
   }
 );
 
-function displayVille(infos){
-    console.log(infos);
-    for(let ville of infos){
-        $('#selectville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
-        };
-}
-
+//Vérification du mot de passe
 function modifierProfil(data)
 {
     if (data == "Changement de mot de passe effectué")
