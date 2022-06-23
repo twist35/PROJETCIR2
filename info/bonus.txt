@@ -4,3 +4,4 @@
 - changement de page celon si on est connecté ou pas
 - .htaccess pour gérer les erreurs (404, 500, 300)
 - ajout meta "description" pour le referencement
+- ajout icone sur les pages html
