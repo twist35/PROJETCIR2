@@ -38,12 +38,13 @@ if ($requestMethod == 'POST')
     }
     if ($requestRessource == 'creercompte')
     {
-        
-        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance']))
+        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance'])&& isset($_POST['avatar']))
         {
-            dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+            
+            $data =  dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], "1.png", $_POST['date_naissance']);
             $_SESSION['email'] = $_POST['email'];
-            $data ="compte crée";
+            //$data ="compte crée";
+           
         }
     }
     if ($requestRessource == 'creerMatch')

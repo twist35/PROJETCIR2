@@ -363,11 +363,12 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
         $statement->bindParam(':ville', $ville, PDO::PARAM_STR);
         $statement->bindParam(':naissance', $naissance, PDO::PARAM_STR);
         $statement->execute();
+        return "insertion compte ok";
     }
     catch (PDOException $exception)
     {
       error_log('Request error: '.$exception->getMessage());
-      return false;
+      return 'Request error: '.$exception->getMessage();
     }
 }
 function dbCreerMatch($db, $nom_m, $type, $nb_max, $nb_min, $adresse, $ville, $date, $duree, $prix)
