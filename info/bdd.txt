@@ -182,3 +182,9 @@ INSERT INTO 'user'(date_naissance) VALUES (TO_DATE('17/04/2002','DD/MM/YYYY'))
     WHERE id_partie = var_idpartie AND email = 'var_email';
     //Exemple WHERE id_partie = 1 AND email = 'lulu@gmail.com';
 
+### récupérer meilleur joueur 
+SELECT ui.email, u.prenom, u.nom from user_inscrits ui
+ JOIN  user u  ON u.email = ui.email
+ where ui.mj = 1 and ui.id_partie = 1
+;
+

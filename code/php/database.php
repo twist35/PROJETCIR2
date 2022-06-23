@@ -229,7 +229,7 @@ function dbRequestMesMatchP($db)
   {
     try
     {
-      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
+      $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, p.score_a, p.score_b, v.nom AS "ville", DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs
       FROM partie p
       JOIN ville v ON p.id_ville = v.id_ville
       WHERE p.email = :email AND p.date < NOW()';
@@ -289,6 +289,26 @@ function dbRequestLesMatch($db)
     return $result;
   }
 
+function dbRequestMJ($db, $id_partie)
+{
+  try
+    {
+      $request = 'SELECT ui.email, u.prenom, u.nom from user_inscrits ui
+      JOIN  user u  ON u.email = ui.email
+      where ui.mj = 1 and ui.id_partie = :id
+     ;';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':id', $id_partie, PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+}
 function dbRequestUser($db, $email){
     try{
         $request = 'SELECT v.nom as "ville", u.condition_p
@@ -306,23 +326,6 @@ function dbRequestUser($db, $email){
       return false;
     }
     return $result;
-}
-
-function dbRequestAllMatchsOrga($db)
-{
-  try{
-    $request = 'SELECT * from partie where partie.email = :email;';
-    $statement = $db->prepare($request);
-    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-    $statement->execute();
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-  }
-  catch (PDOException $exception)
-  {
-    error_log('Request error: '.$exception->getMessage());
-    return false;
-  }
-  return $result;
 }
 
 function dbRequestFileAttente($db, $nb)
@@ -360,6 +363,7 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
         $statement->bindParam(':ville', $ville, PDO::PARAM_STR);
         $statement->bindParam(':naissance', $naissance, PDO::PARAM_STR);
         $statement->execute();
+        return "insertion compte ok";
     }
     catch (PDOException $exception)
     {
