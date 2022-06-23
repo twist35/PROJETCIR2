@@ -5,8 +5,6 @@ notification "nouvelle inscription"
 notification "demande d'inscription acepté/ refusé"
 
 gérer création de compte si l'email est déjà prit
-
-modification de modif BDD en PUT (vs POST)
 gérer création de compte si l'email est déjà prit
 gérer la disponibilité d'un match dans le filtre et pouvoir réafficher tous les matchs après avoir filtrer
 

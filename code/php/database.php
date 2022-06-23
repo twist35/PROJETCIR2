@@ -364,7 +364,7 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
     catch (PDOException $exception)
     {
       error_log('Request error: '.$exception->getMessage());
-      return false;
+      return 'Request error: '.$exception->getMessage();
     }
 }
 function dbCreerMatch($db, $nom_m, $type, $nb_max, $nb_min, $adresse, $ville, $date, $duree, $prix)
