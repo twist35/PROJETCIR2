@@ -6,6 +6,7 @@
 'use strict';
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
+ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 
 function displayProfil(infos){
     for(let info of infos){
@@ -22,6 +23,12 @@ function displayProfil(infos){
             
         });
     }
+}
+
+function displayVille(infos){
+    for(let ville of infos){
+        $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+        };
 }
 
 function photoProfil(infos){
