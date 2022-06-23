@@ -7,7 +7,7 @@
 */
 // Database constants.
   define('DB_USER', 'user1');
-  define('DB_PASSWORD', 'isen29');
+  define('DB_PASSWORD', 'isen29'); // mot de passe à changer pour plus de sécurité
   define('DB_NAME', 'projetcir2');
-  define('DB_SERVER', 'localhost');
+  define('DB_SERVER', 'localhost'); 
 ?>

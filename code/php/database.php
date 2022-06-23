@@ -29,6 +29,7 @@ function dbConnect()
   return $db;
 }
 
+// requete SQL pour rechercher les matchs de l'organisateur
 function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = NULL, $dispo = true)
   {
     try
@@ -82,6 +83,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
     return $result;
   }
 
+// requete SQL pour rechercher les matchs de l'utilisateur connecté et auquels il participe
   function dbRequestFiltreMesMatchParti($db, $sport = NULL, $date = NULL, $ville = NULL, $dispo = true)
   {
     try
@@ -136,6 +138,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
     return $result;
   }
 
+// requete SQL pour rechercher les matchs 
   function dbRequestFiltreLesMatch($db, $sport = NULL, $date = NULL, $ville = NULL, $dispo = true)
   {
     try
@@ -188,6 +191,7 @@ function dbRequestFiltreMesMatchOrga($db, $sport = NULL, $date = NULL, $ville = 
     return $result;
   }
 
+// requete SQL pour rechercher les matchs que l'utilisateur organise
 function dbRequestMesMatchO($db)
   {
     try
@@ -209,6 +213,7 @@ function dbRequestMesMatchO($db)
     return $result;
   }
 
+  // requete SQL pour rechercher les matchs que l'utilisateur participe
 function dbRequestMesMatchP($db)
   {
     try
@@ -231,6 +236,8 @@ function dbRequestMesMatchP($db)
     return $result;
   }
 
+
+  // requete SQL pour rechercher les matchs de l'organisateur et qui y participe
   function dbRequestMesMatchOP($db)
   {
     try
@@ -252,6 +259,7 @@ function dbRequestMesMatchP($db)
     return $result;
   }
 
+// requete SQL pour rechercher les matchs qu'on a participé (passé)
 function dbRequestMesMatchPP($db)
   {
     try
@@ -274,7 +282,7 @@ function dbRequestMesMatchPP($db)
     return $result;
   }
 
-
+// requete SQL pour rechercher les matchs
 function dbRequestLesMatch($db)
   {
     try
@@ -295,6 +303,7 @@ function dbRequestLesMatch($db)
     return $result;
   }
 
+  // requete SQL pour rechercher le meilleur joueur d'un match
 function dbRequestMJ($db, $id_partie)
 {
   try
@@ -315,6 +324,8 @@ function dbRequestMJ($db, $id_partie)
     }
     return $result;
 }
+
+// requete SQL pour rechercher les informations d'un utilisateur
 function dbRequestUser($db, $email){
     try{
         $request = 'SELECT v.nom as "ville", u.condition_p, u.photo
@@ -334,6 +345,7 @@ function dbRequestUser($db, $email){
     return $result;
 }
 
+// requete SQL pour rechercher la file d'attente d'un certain match
 function dbRequestFileAttente($db, $nb)
 {
   try{
@@ -355,6 +367,7 @@ function dbRequestFileAttente($db, $nb)
   return $result;
 }
 
+// requete SQL pour créer un compte
 function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $naissance){
     try{
         $request = 'INSERT INTO user (nom, prenom, email, mdp, id_ville, condition_p, photo, date_naissance) VALUES
@@ -377,6 +390,8 @@ function dbInsertCompte($db, $nom, $prenom, $email, $mdp, $ville, $fs, $photo, $
       return 'Request error: '.$exception->getMessage();
     }
 }
+
+// requete SQL pour créer un match
 function dbCreerMatch($db, $nom_m, $type, $nb_max, $nb_min, $adresse, $ville, $date, $duree, $prix)
 {
   //$email = "anto@gmail.com";
@@ -396,13 +411,16 @@ function dbCreerMatch($db, $nom_m, $type, $nb_max, $nb_min, $adresse, $ville, $d
     $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
     $statement->execute();
     return "insertion match ok";
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return 'Request error: '.$exception->getMessage();
+  }
 }
-catch (PDOException $exception)
-{
-  error_log('Request error: '.$exception->getMessage());
-  return 'Request error: '.$exception->getMessage();
-}
-}
+
+// requete SQL qui regarde si l'utilisateur existe déà dands la BDD lors de
+// la création du compte
 function dbCheckUserExist($db, $email)
 {
   try
@@ -422,6 +440,8 @@ function dbCheckUserExist($db, $email)
   }
   return $result;
 }
+
+// requete SQL pour se connecter
 
 function dbConnexion($db, $email, $mdp)
 {
@@ -444,6 +464,7 @@ function dbConnexion($db, $email, $mdp)
   return $result;
 }
 
+// requete SQL pour récupérer toutes les formes sportives
 
 function dbFormeSportive($db)
 {
@@ -461,6 +482,7 @@ function dbFormeSportive($db)
   }
   return $result;
 }
+// requete SQL pour récupérer toutes les villes
 
 function dbVille($db)
 {
@@ -479,6 +501,7 @@ function dbVille($db)
   return $result;
 }
 
+// requete SQL pour récupérer toutes les types de sport
 function dbTypeSport($db)
 {
   try
@@ -496,6 +519,8 @@ function dbTypeSport($db)
   return $result;
 }
 
+
+// requete SQL pour mettre à jour les informations d'un utilisateur
 function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NULL, $avatar = NULL, $note = NULL)
 {
   try{
@@ -531,9 +556,6 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
     if ($note == NULL)
       $note = $info_old[0]['note_site'];
 
-
-
-
   try
   {
     $request ='UPDATE user 
@@ -562,6 +584,7 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
   return $result;
 }
 
+// requete SQL pour récupérer le détail d'un match
 function dbDetail($db, $id_partie){
   try
   {
@@ -585,6 +608,7 @@ function dbDetail($db, $id_partie){
   return $result;
 }
 
+// requete SQL pour récupérer les participants à un match
 function dbParticipants($db, $id_partie){
   try
   {
@@ -606,6 +630,7 @@ function dbParticipants($db, $id_partie){
   return $result;
 }
 
+// requete SQL pour savoir si on peut s'incrire à un match ou pas
 function dbButtonTest($db, $id_partie){
   try
   {
@@ -627,6 +652,7 @@ function dbButtonTest($db, $id_partie){
   return $result;
 }
 
+// requete SQL pour voir si on déjà inscrit à ce match
 function dejaInscrit($db, $id_partie){
   try
   {
@@ -647,6 +673,7 @@ function dejaInscrit($db, $id_partie){
   return $result;
 }
 
+// requete SQL pour s'incrire à un match
 function dbInscription($db, $id_partie){
   try
   {
@@ -667,6 +694,7 @@ function dbInscription($db, $id_partie){
   return $result = 'db OK';
 }
 
+// requete SQL pour debuguer
 function dbTest($db){
     try
     {
