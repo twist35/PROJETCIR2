@@ -44,6 +44,12 @@ $('#modifier_profil').submit((event) =>
   }
 );
 
+function displayVille(infos){
+    console.log(infos);
+    for(let ville of infos){
+        $('#selectville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
+        };
+}
 
 function modifierProfil(data)
 {
