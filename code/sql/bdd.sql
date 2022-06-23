@@ -49,7 +49,7 @@ INSERT INTO condition_physique (condition_p) VALUES
 ('Grand sportif'),
 ('Sportif'),
 ('Normal'),
-('mou du genou'),
+('Mou du genou'),
 ('Sédentaire');
 
 #------------------------------------------------------------
@@ -79,7 +79,12 @@ CREATE TABLE user(
 
 INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p, photo) VALUES
 ('lulu@gmail.com','Lucas','Le Bihan','123','2002-04-17','1','Sédentaire', 'ressources/img/profil1.png'),
-('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif', 'ressources/img/profil2.png');
+('louis@gmail.com','Louis','Le Grand','estht','2002-04-17','4','Grand sportif', 'ressources/img/profil3.png'),
+('vin@gmail.com','Vincent','Valentin','123','2002-04-17','5','Mou du genou', 'ressources/img/profil4.png'),
+('momo@gmail.com','Mohamed','Le Sang','123','2002-04-17','1','Sédentaire', 'ressources/img/profil5.png'),
+('anto@gmail.com','Antonin','Sabiron','1234','2002-12-06','3','Sportif', 'ressources/img/profil2.png'),
+('napo@gmail.com','Thibault','Napoléon','azerty','1980-07-06','1','Mou du genou', 'ressources/img/prof1.png'),
+('vignaud@gmail.com','Christophe','Vignaud','ytreza','1914-05-15','1','Grand sportif', 'ressources/img/prof2.png');
 
 #------------------------------------------------------------
 # Table: sport
@@ -165,6 +170,18 @@ INSERT INTO user_inscrits (valide, mj, email, id_partie) VALUES
 (0,0,'lulu@gmail.com',1),
 (0,0,'anto@gmail.com',1),
 (1,0,'lulu@gmail.com',2),
+(1,0,'napo@gmail.com',2),
+(1,0,'vignaud@gmail.com',2),
 (1,0,'anto@gmail.com',2),
+(1,0,'louis@gmail.com',2),
+(1,0,'vin@gmail.com',2),
+(1,0,'momo@gmail.com',2),
+(1,0,'vignaud@gmail.com',4),
+(1,0,'momo@gmail.com',4),
+(1,0,'louis@gmail.com',4),
+(1,0,'vin@gmail.com',4),
+(1,0,'anto@gmail.com',4),
 (1,0,'lulu@gmail.com',5),
+(1,0,'vin@gmail.com',5),
+(1,0,'napo@gmail.com',5),
 (1,0,'lulu@gmail.com',6);

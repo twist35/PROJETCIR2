@@ -38,6 +38,10 @@ if ($requestMethod == 'POST')
     {
         if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance']))
         {
+            if(!isset($_POST['avatar'])){
+                $_POST['avatar'] = 'ressources/img/image-vide.jpg';
+            }
+            
             $temp = dbCheckUserExist($db, $_POST['email']);
             if ($temp == NULL)
             {
