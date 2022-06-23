@@ -96,7 +96,6 @@ function displayStat(data)
             </div>\
         </div>\
     </div>\
-</form>\
     ';
     
 
@@ -104,7 +103,7 @@ function displayStat(data)
     
       $("#les_matchs_stat").append('\
       <div class= "bulle-attente text-center px-3">\
-      <form action="">\
+      <form class="changer_stat" action="">\
           <div class="h6 mt-1"><span id="num_attente">'+ data[0][i].nom_partie+'</span>\ |\
               <span id="type_stat">'+ data[0][i].nom_sport+'</span>\
           </div>\
@@ -114,19 +113,22 @@ function displayStat(data)
           
           + '\
           </div>\
-          </form>\
           <\div>\
           <div class="d-flex flex-column justify-content-between p-1">\
                     <div>\
                         Meilleur joueur\
                     </div>\
                     <div>\
-                        <input type="number" class="form-control center mb-1" id="prenom" name="prenom" placeholder="'+ data[1][0][i].prenom+'" required>\
-                        <input type="number" class="form-control center" id="nom" name="nom" placeholder="'+ data[1][0][i].nom+'" required>\
+                        <input type="text" class="form-control center mb-1" id="prenom_'+data[1][0][i].prenom+'" value="'+data[1][0][i].prenom+'" placeholder="'+ data[1][0][i].prenom+'" required>\
+                        <input type="text" class="form-control center" id="nom_'+data[1][0][i].nom+'" value="'+data[1][0][i].nom+'" placeholder="'+ data[1][0][i].nom+'" required>\
                     </div>\
-                    <button type="submit" id="valider" class="btn btn-sm back-b-marine text-beige mt-2 ">Valider</button>\
+                    <button type="bouton"'+
+                     //onClick=id_changeStats(' + data[0][i].id_partie +','+ $('#nom_'+data[1][0][i].nom).val() +')
+                      'id="valider" class="btn btn-sm back-b-marine text-beige mt-2 valider">Valider</button>\
                 </div>\
+                </form>\
               ');
+              console.log($('#nom_'+data[1][0][i].nom).val());
   }
 }
 
@@ -161,6 +163,12 @@ setTimeout(()=>
     console.log("accepter " + $('.accepter').val());
   });
   $('.accepter').val('Test');
+  
+  $('.changer_stat').submit((event) =>{
+    console.log($('.changer_stat').val());
+  });
+
+
 
 }, 50);
 
@@ -169,4 +177,12 @@ setTimeout(()=>
 function creerMatch(data)
 {
     console.log(data);
+}
+function id_changeStats(data, nb)
+{
+  console.log(nb);
+  ajaxRequest('PUT', 'php/requete.php/changerStats/', (data1)=>{
+
+    console.log(data1);
+  },"id=" + data);
 }

@@ -102,6 +102,15 @@ if ($requestMethod == 'PUT')
         else
             $data = "nono";
     }
+    if ($requestRessource =='changerStats')
+    {
+        parse_str(file_get_contents('php://input'), $_PUT);
+        if(isset($_PUT['id']))
+        {
+            $data = $_PUT;
+        }
+
+    }
 
     
 
@@ -123,9 +132,9 @@ if ($requestMethod == 'GET'){
     }
     if ($requestRessource == 'mesmatchOrganisateurPassesOrga'){
         $data[0] = dbRequestMesMatchOP($db); //dbRequestMJ($db, $data[0]['id_partie']);
-        for ($num_d = 0; $num_d < count($data) ; $num_d++)
+        for ($num_d = 0; $num_d < count($data[0]) ; $num_d++)
         {
-            $data[1][$num_d] = dbRequestFileAttente($db, $data[0][$num_d]["id_partie"]);
+           $data[1][$num_d] = dbRequestFileAttente($db, $data[0][$num_d]["id_partie"]);
         }
     }
     
