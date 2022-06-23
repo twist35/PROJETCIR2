@@ -9,4 +9,9 @@ $('#creer-compte').submit((event) =>
 
 function InsertCompte(data){
     console.log(data);
+    if (data = "email déjà utilisé")
+    {
+      alert(data);
+      document.location.href="index.html";
+    }
   }

@@ -393,6 +393,25 @@ catch (PDOException $exception)
   return 'Request error: '.$exception->getMessage();
 }
 }
+function dbCheckUserExist($db, $email)
+{
+  try
+  {
+    $request =' SELECT * from user
+    where user.email = :email';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
 
 function dbConnexion($db, $email, $mdp)
 {

@@ -38,11 +38,16 @@ if ($requestMethod == 'POST')
     }
     if ($requestRessource == 'creercompte')
     {
-        $data = $_POST;
         if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance']))
         {
-            $data = dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
-            $_SESSION['email'] = $_POST['email'];
+            $temp = dbCheckUserExist($db, $_POST['email']);
+            if ($temp == NULL)
+            {
+                dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+                $_SESSION['email'] = $_POST['email'];
+            }
+            else
+            $data = "email déjà utilisé";
         }
     }
     if ($requestRessource == 'creerMatch')
