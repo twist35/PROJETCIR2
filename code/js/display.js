@@ -254,6 +254,7 @@ function displayLesMatch(matchs){
 
 function id_partie(id_partie){
     console.log(id_partie);
+    document.location.href="http://google.com?" + id + "=" + id_partie; 
 }
 
 function test(datas){
