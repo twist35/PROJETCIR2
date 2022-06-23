@@ -4,15 +4,20 @@
     Pour le projet de fin d'année CIR2
     contient les fonctions pour l'authentification
 */
+
+//creer-compte.js
 'use strict';
+//Appel des requêtes PHP
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 
+//Affichage des conditions physiques dans un <select>
 ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
   for (let fs of data){
           $('.fs').append('<option value="' + fs.condition_p + '">'+ fs.condition_p +'</option>');
   }
 });
 
+//Insérer les données du nouvel utilisateur
 $('#creer-compte').submit((event) =>
   {
     console.log('appuyé');
@@ -21,6 +26,7 @@ $('#creer-compte').submit((event) =>
   }
 );
 
+//Vérifier si l'email est déjà utilisé ou non
 function InsertCompte(data){
     console.log(data);
     if (data = "email déjà utilisé")
@@ -30,6 +36,7 @@ function InsertCompte(data){
     }
   }
 
+  //Affichage des villes dans un <select>
   function displayVille(infos){
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     

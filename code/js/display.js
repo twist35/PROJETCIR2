@@ -3,9 +3,9 @@
     le 15/06/2022
     Pour le projet de fin d'année CIR2
 */
+//display.js
 'use strict';
-//ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
-
+//Appel des requetes PHP
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrga);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchParti);
@@ -14,12 +14,14 @@ ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 ajaxRequest('GET', 'php/requete.php/test/', test);
 
+//Affiche la photo de profil de l'utilisateur
 function photoProfil(infos){
     for(let info of infos){
         $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
     }
 }
 
+//Affiche les villes dans un <select>
 function displayVille(infos){
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
@@ -27,7 +29,7 @@ function displayVille(infos){
         $('.ville').append('<option selected value="' + 'null'+ '">'+'Toutes' +'</option>');
 }
 
-
+//Affiche les sports dans un <select>
 function displaySport(data)
 {
     for (let sport of data)
@@ -35,6 +37,7 @@ function displaySport(data)
         $('.sport').append('<option selected value="' + 'null'+ '">'+'Tous' +'</option>');
 }
 
+//Filtre les données du 1er filtre
 $('#formulaire-recherche').submit((event) =>
   {
     console.log('appuyé');
@@ -44,6 +47,7 @@ $('#formulaire-recherche').submit((event) =>
     }
 );
 
+//Filtre les données du 2ème filtre
 $('#formulaire-recherche-g').submit((event) =>
   {
     console.log('appuyé');
@@ -52,7 +56,7 @@ $('#formulaire-recherche-g').submit((event) =>
     }
 );
 
-
+//Affiche les matchs que l'utilisateur va organiser
 function displayMesMatchOrga(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -84,6 +88,7 @@ function displayMesMatchOrga(matchs){
     }
 }
 
+//Affiche les matchs que l'utilisateur va jouer
 function displayMesMatchParti(matchs){
     //console.log(matchs);
     for(let match of matchs){
@@ -115,6 +120,7 @@ function displayMesMatchParti(matchs){
     }
 }
 
+//Affiche les matchs que l'utilisateur va organiser après avoir été filtrés
 function filtreMesMatchOrga(matchs){
     console.log(matchs);
     for(let match of matchs){
@@ -147,6 +153,7 @@ function filtreMesMatchOrga(matchs){
     return matchs;
 }
 
+//Affiche les matchs que l'utilisateur va jouer après avoir été filtrés
 function filtreMesMatchParti(matchs){
     if(filtreMesMatchOrga() != null){
         for(let match of matchs){
@@ -204,6 +211,7 @@ function filtreMesMatchParti(matchs){
     
 }
 
+//Affiche les matchs qui vont se dérouler après avoir été filtrés
 function filtreLesMatch(matchs){
     console.log(matchs);
     for(let match of matchs){
@@ -235,6 +243,7 @@ function filtreLesMatch(matchs){
     }
 }
 
+//Affiche tous les matchs qui vont se dérouler
 function displayLesMatch(matchs){
     for(let match of matchs){
         //console.log(match);
@@ -263,10 +272,7 @@ function displayLesMatch(matchs){
                     
 }
 
-function add(id) {
-    window.location.href = "php/requete.php?id=" + id;
-  }
-
+//Redirige l'utilisateur sur les détails du match qu'il a choisi
 function id_partie(id_partie){
 
     document.location.href="match.html?id=" + id_partie;

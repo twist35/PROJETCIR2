@@ -3,26 +3,31 @@
     le 15/06/2022
     Pour le projet de fin d'année CIR2
 */
+//organisation.js
 'use strict';
 
+//Appel des requêtes PHP
 ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
 ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/RequestAllAttente/', displayAll);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPassesOrga/', displayStat);
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 
+//Affiche la photo de profil de l'utilisateur
 function photoProfil(infos){
   for(let info of infos){
       $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
   }
 }
 
+//Affiche les villes dans un <select>
 function displayVille(infos){
   for(let ville of infos){
       $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
       };
 }
 
+//Afficher les files d'attentes des matchs que l'on organise
 function displayAll(data)
 {
 
@@ -85,6 +90,7 @@ function displayAll(data)
   }
 }
 
+//Afficher les statistiques d'un match
 function displayStat(data)
 {
   console.log(data);
@@ -144,18 +150,22 @@ function displayStat(data)
   }
 }
 
+//Affiche les sports dans un <select>
 function displaySport(data)
 {
     for (let sport of data)
         $('#type').append('<option selected value="' + sport.nom_sport + '">'+ sport.nom_sport +'</option>');  
 }
 
+//Récupérer les données saisies pour les statistiques d'un match 
 $('#origaniser_match').submit((event) =>
   {
     event.preventDefault();
     ajaxRequest('POST', 'php/requete.php/creerMatch/', creerMatch,'nom_m=' + $('#nom_m').val() + '&type=' + $('#type').val() + '&nb_max=' + $('#nb_max').val() + '&nb_min=' + $('#nb_min').val() + '&adresse=' + $('#adresse').val() +'&ville=' + $('#ville').val() +'&date=' + $('#date').val() +'&duree=' + $('#duree').val() +'&prix=' + $('#prix').val());
   }
 );
+
+//Accepter ou refuser un joueur de la file d'attente
 $('#liste_attente').click((event) =>
   {
     event.preventDefault();
@@ -164,6 +174,7 @@ $('#liste_attente').click((event) =>
   }
 );
 
+//Permet de s'occuper de l'HTML modifié précédement 
 setTimeout(()=>
 {
   console.log("tt");
@@ -185,11 +196,13 @@ setTimeout(()=>
 }, 50);
 
 
-
+//Callback
 function creerMatch(data)
 {
     console.log(data);
 }
+
+//Change les statistiques
 function id_changeStats(data, nb)
 {
   console.log(nb);
