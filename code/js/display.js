@@ -1,6 +1,7 @@
 'use strict';
 //ajaxRequest('GET', 'php/requete.php/match/', displayMatch);
 
+ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrga);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchParti);
 ajaxRequest('GET', 'php/requete.php/lesmatch/', displayLesMatch);
@@ -8,6 +9,11 @@ ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
 ajaxRequest('GET', 'php/requete.php/test/', test);
 
+function photoProfil(infos){
+    for(let info of infos){
+        $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
+    }
+}
 
 function displayVille(infos){
     for(let ville of infos){
@@ -252,9 +258,14 @@ function displayLesMatch(matchs){
                     
 }
 
+function add(id) {
+    window.location.href = "php/requete.php?id=" + id;
+  }
+
 function id_partie(id_partie){
-    console.log(id_partie);
-    document.location.href="http://google.com?" + id + "=" + id_partie; 
+
+    document.location.href="match.html?id=" + id_partie;
+
 }
 
 function test(datas){

@@ -1,27 +1,34 @@
 'use strict';
-ajaxRequest('GET', 'php/requete.php/test/', test);
-ajaxRequest('GET', 'php/requete.php/detail/', detail);
-ajaxRequest('GET', 'php/requete.php/participants/', participants);
-ajaxRequest('GET', 'php/requete.php/inscritTest/', displayBouton);
+
+let queryString = window.location.search;
+console.log (queryString);
+let urlParams = new URLSearchParams (queryString);
+let idmatch = urlParams.get('id');
+console.log (idmatch);
+
+ajaxRequest('GET', 'php/requete.php/test/' + idmatch, test);
+ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
+ajaxRequest('GET', 'php/requete.php/detail/' + idmatch, detail);
+ajaxRequest('GET', 'php/requete.php/participants/' + idmatch, participants);
+ajaxRequest('GET', 'php/requete.php/buttonTest/' + idmatch, displayBouton);
 ajaxRequest('GET', 'php/requete.php/inscription/', inscription);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrgaFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchPartiFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPasses/', displayMesMatchOrgaPasses);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipantPasses/', displayMesMatchPartiPasses);
-
-$('#bouton-recherche').submit((event) =>
-  {
-    console.log('appuyé');
-    event.preventDefault();
-    ajaxRequest('GET', 'php/requete.php/inscription/', inscription);
-    }
-);
+//ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
 
 function test(datas){
     console.log(datas)
     /*for(let data of datas){
         console.log(data);
     }*/
+}
+
+function photoProfil(infos){
+    for(let info of infos){
+        $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
+    }
 }
 
 function detail(infos){
@@ -89,15 +96,22 @@ function displayBouton(infos){
             }
         }
     }else{
-        $('#inscrire').html('<form class=" formulaire-recherche text-center center">' +
-                            '<button type="submit" id="bouton-recherche" class=" bouton-recherche btn back-b-marine text-beige" ><span id="bouton_inscription">S'+ "'" + 'inscrire</span></button>' +
-                            '</form>')
+        $('#inscrire').html('<div class="text-center center" >' + 
+                            '<button type="submit" onClick=inscrire(' + idmatch + ') id="boutonInscrire" class=" center boutonInscrire btn back-b-marine text-beige"><span id="bouton_inscription">S'+ "'" + 'inscrire</span></button>' +
+                            '</div')
     }
     
 }
 
-function inscription(datas){
-    //console.log(datas);
+function inscrire(){
+    
+    console.log('appuyé');
+    ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
+    document.location.href="match.html?id=" + idmatch;
+}
+
+function inscription(){
+    
 }
 
 function displayMesMatchOrgaFuturs(matchs){
@@ -222,4 +236,8 @@ function displayMesMatchPartiPasses(matchs){
                                 '</div>'
                                 );
     }
+}
+
+function id_partie(id_partie){
+    document.location.href="match.html?id=" + id_partie;
 }
