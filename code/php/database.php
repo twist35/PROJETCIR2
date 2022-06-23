@@ -291,7 +291,7 @@ function dbRequestLesMatch($db)
 
 function dbRequestUser($db, $email){
     try{
-        $request = 'SELECT v.nom as "ville", u.condition_p
+        $request = 'SELECT v.nom as "ville", u.condition_p, u.photo
         FROM ville v
         JOIN user u ON v.id_ville = u.id_ville
         WHERE u.email = :email';

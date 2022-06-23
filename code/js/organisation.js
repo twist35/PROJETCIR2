@@ -1,8 +1,14 @@
 'use strict';
 
 ajaxRequest('GET', 'php/requete.php/typeSport/', displaySport);
-
+ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 ajaxRequest('GET', 'php/requete.php/RequestAllAttente/', displayAll);
+
+function photoProfil(infos){
+  for(let info of infos){
+      $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
+  }
+}
 
 function displayAll(data)
 {

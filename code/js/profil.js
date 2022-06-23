@@ -1,6 +1,6 @@
 'use strict';
 ajaxRequest('GET', 'php/requete.php/profil/', displayProfil);
-
+ajaxRequest('GET', 'php/requete.php/profil/', photoProfil);
 
 function displayProfil(infos){
     for(let info of infos){
@@ -16,6 +16,12 @@ function displayProfil(infos){
             }
             
         });
+    }
+}
+
+function photoProfil(infos){
+    for(let info of infos){
+        $('#photo-bouton').html('<img src="' + info.photo + '" height="32" width="32" alt="photo profil"></img>');
     }
 }
 
