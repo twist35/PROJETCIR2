@@ -21,18 +21,18 @@
 sudo -r cp ~nomfichier_dezip/* /var/www/html
 ```
 
-- ouvrir mysql
-
-```bash
-sudo mysql
-```
-
 - se déplacer au serveur Apache
 
 ```bash
 
 sudo cd /var/www/html/
 
+```
+
+- ouvrir mysql
+
+```bash
+sudo mysql
 ```
 
 - copier le contenu de bdd/adduser.sql dans le terminal sql et valider
