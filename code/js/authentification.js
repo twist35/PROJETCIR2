@@ -1,3 +1,9 @@
+/*
+  Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+*/
+
 'use strict';
 $('#se-connecter').submit((event) =>
   {
