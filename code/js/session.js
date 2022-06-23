@@ -2,6 +2,7 @@
   Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
+    contient les fonctions pour gérer les sessions, connexions et déconnexions
 */
 'use strict';
 ajaxRequest('GET', 'php/session.php', login);
@@ -22,7 +23,6 @@ function login(data)
     {
         $("#profil").attr("style", "display: inline !important");
         $("#connexion").attr("style", "display: none !important");
-        $("#mes_matchs_recherche").attr("style", "display: inline !important");
         switch(fichier_actuel)
         {
             case 'authentification.html':
@@ -45,7 +45,7 @@ function login(data)
         }
         $("#profil").attr("style", "display: none !important");
         $("#connexion").attr("style", "display: inline !important");
-        $("#mes_matchs_recherche").attr("style", "display: none !important");
+        $("#mes_matchs_recherche").hide();
     }
 }
 

@@ -3,6 +3,7 @@
   Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
+    contient les différentes requetes pour ensuitre contacter la base de données
 */
 require_once('database.php');
 session_start();

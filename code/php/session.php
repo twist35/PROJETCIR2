@@ -3,6 +3,7 @@
   Créé par Antonin SABIRON et Lucas Le Bihan
     le 15/06/2022
     Pour le projet de fin d'année CIR2
+    contient les fonctions pour les connexions et la déconnexions
 */
 session_start();
 $data = null;
