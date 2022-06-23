@@ -117,11 +117,11 @@ function displayBouton(infos){
 }
 
 //Mettre un utilisateur qui s'est inscrit en file d'attente
-function inscrire(){
+function inscrire(id_match){
     
     console.log('appuyé');
-    ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + idmatch);
-    document.location.href="match.html?id=" + idmatch;
+    ajaxRequest('POST', 'php/requete.php/inscription/', inscription, 'idmatch=' + id_match);
+    document.location.href="match.html?id=" + id_match;
 }
 
 //callback

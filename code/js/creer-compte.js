@@ -9,6 +9,7 @@
 'use strict';
 //Appel des requêtes PHP
 ajaxRequest('GET', 'php/requete.php/ville/', displayVille);
+ajaxRequest('GET', 'php/requete.php/photo/', displayPhoto);
 
 //Affichage des conditions physiques dans un <select>
 ajaxRequest('GET', 'php/requete.php/fs/', (data)=>{
@@ -22,7 +23,7 @@ $('#creer-compte').submit((event) =>
   {
     console.log('appuyé');
     event.preventDefault();
-    ajaxRequest('POST', 'php/requete.php/creercompte/', InsertCompte,'nom=' + $('#nom').val() + '&prenom=' + $('#prenom').val() + '&email=' + $('#email').val() + '&mdp=' + $('#mdp').val() + '&ville=' + $('#ville').val() + '&fs=' + $('#fs').val() + '&avatar=' + $('#avatar').val() + '&date_naissance=' + $('#date_naissance').val());
+    ajaxRequest('POST', 'php/requete.php/creercompte/', InsertCompte,'nom=' + $('#nom').val() + '&prenom=' + $('#prenom').val() + '&email=' + $('#email').val() + '&mdp=' + $('#mdp').val() + '&ville=' + $('#ville').val() + '&fs=' + $('#fs').val() + '&avatar=' + $('#photo').val() + '&date_naissance=' + $('#date_naissance').val());
   }
 );
 
@@ -41,4 +42,11 @@ function InsertCompte(data){
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
         };
+}
+
+//Affichage des villes dans un <select>
+function displayPhoto(infos){
+  for(let image of infos){
+      $('#photo').append('<option value="' + image.photo + '">'+ image.nom_photo +'</option>');     
+      };
 }
