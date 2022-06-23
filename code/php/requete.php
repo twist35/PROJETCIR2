@@ -1,4 +1,9 @@
 <?php
+/*
+  Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+*/
 require_once('database.php');
 session_start();
 
@@ -41,7 +46,7 @@ if ($requestMethod == 'POST')
             if(!isset($_POST['avatar'])){
                 $_POST['avatar'] = 'ressources/img/image-vide.jpg';
             }
-            
+
             $temp = dbCheckUserExist($db, $_POST['email']);
             if ($temp == NULL)
             {
