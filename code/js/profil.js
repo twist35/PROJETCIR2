@@ -33,6 +33,7 @@ function displayProfil(infos){
 
 //Affiche les villes dans un <select>
 function displayVille(infos){
+    console.log(infos);
     for(let ville of infos){
         $('.ville').append('<option value="' + ville.nom + '">'+ ville.nom +'</option>');     
         };
