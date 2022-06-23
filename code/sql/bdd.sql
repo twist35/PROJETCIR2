@@ -14,6 +14,8 @@ USE projetcir2;
 # Table: ville
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS ville;
+
 CREATE TABLE ville(
         id_ville Int  Auto_increment  NOT NULL ,
         nom      Varchar (255) NOT NULL ,
@@ -36,6 +38,8 @@ INSERT INTO ville (nom,cp) VALUES
 # Table: condition_physique
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS condition_physique;
+
 CREATE TABLE condition_physique(
         condition_p Varchar (255) NOT NULL
 	,CONSTRAINT condition_physique_PK PRIMARY KEY (condition_p)
@@ -55,6 +59,8 @@ INSERT INTO condition_physique (condition_p) VALUES
 #------------------------------------------------------------
 # Table: user
 #------------------------------------------------------------
+
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE user(
         email          Varchar (255) NOT NULL ,
@@ -90,6 +96,8 @@ INSERT INTO user (email, prenom, nom, mdp, date_naissance, id_ville, condition_p
 # Table: sport
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS sport;
+
 CREATE TABLE sport(
         nom_sport Varchar (255) NOT NULL
 	,CONSTRAINT sport_PK PRIMARY KEY (nom_sport)
@@ -110,6 +118,7 @@ INSERT INTO sport (nom_sport) VALUES
 # Table: partie
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS partie;
 
 CREATE TABLE partie(
         id_partie   Int  Auto_increment  NOT NULL ,
@@ -149,6 +158,7 @@ INSERT INTO partie ( nom_partie, nb_joueurs,joueurs_min, joueurs_max, date, dure
 # Table: user_inscrits
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS user_inscrits;
 
 CREATE TABLE user_inscrits(
         id_user   Int  Auto_increment  NOT NULL ,
@@ -162,9 +172,9 @@ CREATE TABLE user_inscrits(
 	,CONSTRAINT user_inscrits_user0_FK FOREIGN KEY (email) REFERENCES user(email)
 )ENGINE=InnoDB;
 
-------------------------------------------------------------
--- Contenu de user_inscrits
-------------------------------------------------------------
+#------------------------------------------------------------
+#-- Contenu de user_inscrits
+#------------------------------------------------------------
 
 INSERT INTO user_inscrits (valide, mj, email, id_partie) VALUES
 (0,0,'lulu@gmail.com',1),
