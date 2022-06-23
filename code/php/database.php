@@ -397,6 +397,25 @@ catch (PDOException $exception)
   return 'Request error: '.$exception->getMessage();
 }
 }
+function dbCheckUserExist($db, $email)
+{
+  try
+  {
+    $request =' SELECT * from user
+    where user.email = :email';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR, 20);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
 
 function dbConnexion($db, $email, $mdp)
 {
@@ -586,6 +605,26 @@ function dbButtonTest($db, $id_partie){
     $request = 'SELECT i.valide, p.date, NOW() AS "mtn" FROM user_inscrits i
                 JOIN partie p ON p.id_partie = i.id_partie
                 WHERE i.email = :email AND i.id_partie = :idpartie';
+    $statement = $db->prepare($request);
+    $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
+    $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+    error_log('Request error: '.$exception->getMessage());
+    return false;
+  }
+  return $result;
+}
+
+function dejaInscrit($db, $id_partie){
+  try
+  {
+    $request = 'SELECT email FROM user_inscrits 
+    WHERE email = :email AND id_partie = :idpartie';
     $statement = $db->prepare($request);
     $statement->bindParam(':idpartie', $id_partie, PDO::PARAM_INT);
     $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);

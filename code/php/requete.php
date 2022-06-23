@@ -20,8 +20,6 @@ $id = array_shift($request);
   if ($id == '')
     $id = NULL;
 
-$data = false;
-$idtest = 4;
 
 if ($requestMethod == 'POST')
 {   
@@ -38,13 +36,16 @@ if ($requestMethod == 'POST')
     }
     if ($requestRessource == 'creercompte')
     {
-        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance'])&& isset($_POST['avatar']))
+        if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['ville']) && isset($_POST['fs']) && isset($_POST['date_naissance']))
         {
-            
-            $data =  dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], "1.png", $_POST['date_naissance']);
-            $_SESSION['email'] = $_POST['email'];
-            //$data ="compte crée";
-           
+            $temp = dbCheckUserExist($db, $_POST['email']);
+            if ($temp == NULL)
+            {
+                dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
+                $_SESSION['email'] = $_POST['email'];
+            }
+            else
+            $data = "email déjà utilisé";
         }
     }
     if ($requestRessource == 'creerMatch')
@@ -74,6 +75,17 @@ if ($requestMethod == 'POST')
         }
     }
 
+    if($requestRessource == 'inscription')
+    {
+        if(isset($_POST['idmatch'])){
+            if(empty(dejaInscrit($db, $_POST['idmatch']))){
+                dbInscription($db, $_POST['idmatch']);
+                $data = 'vous etes inscrit';
+            }else{
+                $data = 'vous etes deja inscrit';
+            }
+        }
+    }
 }
 if ($requestMethod == 'PUT')
 {
@@ -173,27 +185,22 @@ if ($requestMethod == 'GET'){
     if($requestRessource == 'detail')
     {
         
-        $data = dbDetail($db, $idtest);
+        $data = dbDetail($db, $id);
     }
 
     if($requestRessource == 'participants')
     {
-        $data = dbParticipants($db, $idtest);
+        $data = dbParticipants($db, $id);
     }
 
-    if($requestRessource == 'inscritTest')
+    if($requestRessource == 'buttonTest')
     {
-        $data = dbButtonTest($db, $idtest);
-    }
-
-    if($requestRessource == 'inscription')
-    {
-        $data = dbInscription($db, $idtest);
+        $data = dbButtonTest($db, $id);
     }
 
     if($requestRessource == 'test')
     {
-        //$data = dbInscription($db, $idtest);
+        $data = dbTest($db, $id);
     }
 }
 
