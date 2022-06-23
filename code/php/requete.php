@@ -68,6 +68,13 @@ if ($requestMethod == 'POST')
         }
     }
 
+    if($requestRessource == 'inscription')
+    {
+        $dejaInscrit = dejaInscrit($db, $idtest);
+        if(empty($dejaInscrit)){
+            $data = dbInscription($db, $idtest);
+        }
+    }
 }
 if ($requestMethod == 'PUT')
 {
@@ -147,14 +154,9 @@ if ($requestMethod == 'GET'){
         $data = dbButtonTest($db, $idtest);
     }
 
-    if($requestRessource == 'inscription')
-    {
-        $data = dbInscription($db, $idtest);
-    }
-
     if($requestRessource == 'test')
     {
-        //$data = dbInscription($db, $idtest);
+        $data = dejaInscrit($db, $idtest);
     }
 }
 

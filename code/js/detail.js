@@ -3,7 +3,7 @@ ajaxRequest('GET', 'php/requete.php/test/', test);
 ajaxRequest('GET', 'php/requete.php/detail/', detail);
 ajaxRequest('GET', 'php/requete.php/participants/', participants);
 ajaxRequest('GET', 'php/requete.php/inscritTest/', displayBouton);
-ajaxRequest('GET', 'php/requete.php/inscription/', inscription);
+//ajaxRequest('GET', 'php/requete.php/inscription/', inscription);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateur/', displayMesMatchOrgaFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchParticipant/', displayMesMatchPartiFuturs);
 ajaxRequest('GET', 'php/requete.php/mesmatchOrganisateurPasses/', displayMesMatchOrgaPasses);
@@ -13,7 +13,7 @@ $('#bouton-recherche').submit((event) =>
   {
     console.log('appuyé');
     event.preventDefault();
-    ajaxRequest('GET', 'php/requete.php/inscription/', inscription);
+    ajaxRequest('POST', 'php/requete.php/inscription/', inscription);
     }
 );
 
@@ -97,7 +97,7 @@ function displayBouton(infos){
 }
 
 function inscription(datas){
-    //console.log(datas);
+    console.log(datas);
 }
 
 function displayMesMatchOrgaFuturs(matchs){
