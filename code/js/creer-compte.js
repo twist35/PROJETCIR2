@@ -30,7 +30,7 @@ $('#creer-compte').submit((event) =>
 //Vérifier si l'email est déjà utilisé ou non
 function InsertCompte(data){
     console.log(data);
-    if (data = "email déjà utilisé")
+    if (data == "email déjà utilisé")
     {
       alert(data);
       document.location.href="index.html";
