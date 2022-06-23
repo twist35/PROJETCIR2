@@ -1,4 +1,9 @@
 <?php
+/*
+  Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+*/
 
 require_once('constants.php');
 
@@ -559,7 +564,7 @@ function dbUpdateUser($db, $ville = NULL, $fs = NULL, $old_mdp = NULL ,$mdp = NU
 function dbDetail($db, $id_partie){
   try
   {
-    
+
     $request = 'SELECT p.id_partie, p.nom_partie, p.nom_sport, p.adresse, p.duree, p.prix, DATE(p.date) AS "date", TIME(p.date) AS "heure", p.joueurs_max-p.nb_joueurs AS "places_restantes", nb_joueurs, u.prenom, u.nom, u.photo
     FROM partie p
     JOIN user u ON p.email = u.email

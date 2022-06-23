@@ -178,6 +178,8 @@ CREATE TABLE user_inscrits(
 
 INSERT INTO user_inscrits (valide, mj, email, id_partie) VALUES
 (0,0,'lulu@gmail.com',1),
+(1,0,'vin@gmail.com',1),
+(1,0,'napo@gmail.com',1),
 (0,0,'anto@gmail.com',1),
 (1,0,'lulu@gmail.com',2),
 (1,0,'napo@gmail.com',2),
