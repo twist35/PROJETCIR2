@@ -43,6 +43,7 @@ if ($requestMethod == 'POST')
         {
             dbInsertCompte($db, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['ville'], $_POST['fs'], $_POST['avatar'], $_POST['date_naissance']);
             $_SESSION['email'] = $_POST['email'];
+            $data ="compte crée";
         }
     }
     if ($requestRessource == 'creerMatch')
@@ -106,6 +107,13 @@ if ($requestMethod == 'GET'){
         
     if ($requestRessource == 'mesmatchOrganisateurPasses'){
         $data = dbRequestMesMatchOP($db);
+    }
+    if ($requestRessource == 'mesmatchOrganisateurPassesOrga'){
+        $data[0] = dbRequestMesMatchOP($db); //dbRequestMJ($db, $data[0]['id_partie']);
+        for ($num_d = 0; $num_d < count($data); $num_d++)
+        {
+            $data[1][$num_d] = dbRequestFileAttente($db, $data[0][$num_d]["id_partie"]);
+        }
     }
     
     if ($requestRessource == 'mesmatchParticipantPasses'){

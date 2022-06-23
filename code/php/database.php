@@ -289,6 +289,26 @@ function dbRequestLesMatch($db)
     return $result;
   }
 
+function dbRequestMJ($db, $id_partie)
+{
+  try
+    {
+      $request = 'SELECT ui.email, u.prenom, u.nom from user_inscrits ui
+      JOIN  user u  ON u.email = ui.email
+      where ui.mj = 1 and ui.id_partie = :id
+     ;';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':id', $id_partie, PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+}
 function dbRequestUser($db, $email){
     try{
         $request = 'SELECT v.nom as "ville", u.condition_p

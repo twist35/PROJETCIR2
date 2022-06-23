@@ -4,6 +4,8 @@ gestio photo de profil partout
 notification "nouvelle inscription"
 notification "demande d'inscription acepté/ refusé"
 
+bug inscription ??
+
 gérer création de compte si l'email est déjà prit
 
 modification de modif BDD en PUT (vs POST)
