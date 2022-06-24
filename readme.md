@@ -99,7 +99,7 @@ Il existe par défaut quelques Villes :
 
 La page de recherche (index.html) permet d'effectuer un tri des matchs.
 
-Il faut rentrer une date futur et une ville afin d'avoir un intervalle entre aujourd'hui et cette date.
+Il faut rentrer une date futur, un sport et une ville afin d'avoir un intervalle entre aujourd'hui et cette date.
 
 ## Fonctionnalités bonus
 
