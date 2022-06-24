@@ -1,0 +1,185 @@
+<!--
+    Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+    Fichier contenant la page de création de match
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="page d'organisation d'un match">
+    <link rel="icon" type="image/x-icon" href="ressources/img/icone.png">
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/general.css">
+    <!-- JavaScript -->
+    <script src="js/ajax.js"></script>
+    <script src="js/session.js" defer></script>
+    <script src="js/organisation.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+    <title>Organisation</title>
+
+</head>
+
+<body class="back">   
+    <header>
+        <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
+            <a href="index.html" class="nav-link"><span class="h1  text-b-marine">Ça match !</span></a>
+            <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
+                <li class="nav-item  rounded-3 back-b-marine">
+                    <a class="nav-link text-beige" href="index.html">les matchs</a>
+                </li>
+                <li  id="nav2" class="nav-item  rounded-3 back-b-marine" >
+                    <a class="nav-link text-beige"  href="organisation.html">créer un match</a>
+                </li>
+                <li id="connexion" class="nav-item rounded-3 back-b-marine">
+                    <a class="nav-link  text-beige" href="authentification.html">connexion</a>
+                </li>
+                <li id="profil" class="nav-item back-b-marine rounded-3 ">
+                    <a class="nav-link text-beige" href="profil.html">profil
+                        <span id="photo-bouton"><img src="ressources\img\image-vide.jpg" height="32" width="32" alt="photo profil"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="page" class="back">
+        <div class="titre-page back-b-marine text-center h2 text-marron py-1">
+            Organisation
+        </div>
+        <div class="back-v-b py-1" >
+            <div class="h4 text-center text-white">Création d'un Match</div>
+        </div>
+        <form id="origaniser_match" class="text-center center d-flex justify-content-center flex-column align-items-center">
+            <div class="form-group mb-2">
+                <label for="nom_m">Nom du match</label>
+                <input type="text" class="form-control" id="nom_m" name="nom_m" required>
+            </div>
+            <div class="form-group mb-2">
+                <label for="type">Type de sport</label>
+                <select name="type" id="type" required>
+                </select>
+            </div>
+            <div class="form-group mb-2 d-flex flex-row align-items-center">
+                <label class="px-2" for="nb_max">Joueurs</label>
+                <div class="px-2">
+                    <small class="form-text text-muted">Nombre maximum</small>
+                    <input type="number" class="form-control" id="nb_max" name="nb_max" required >
+                </div>
+                <div class="px-2">
+                    <small class="form-text text-muted">Nombre minimum</small>
+                    <input type="number" class="form-control" id="nb_min" name="nb_min" required >
+                </div>
+            </div>
+            <div class="form-group mb-2 d-flex flex-row align-items-center">
+                <label class="px-2" for="lieu">Lieu</label>
+                <div class="px-2">
+                    <small class="form-text text-muted">Adresse </small>
+                    <input type="text" class="form-control" id="adresse" name="adresse" required >
+                </div>
+                <div class="px-2">
+                    <small class="form-text text-muted">Ville</small>
+                    <select class="ville ville_orga" id="ville">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="date">Date </label>
+                <input type="datetime-local" id="date" name="date" value="2022-06-17T14:30" required">
+            </div>
+            <div class="form-group mb-2">
+                <label for="fin">Durée</label>
+                <input type="time" id="duree" name="duree" required>
+            </div>
+            <div class="form-group mb-2">
+                <label for="prix">Prix d'inscription</label>
+                <input type="number" class="form-control" id="prix" name="prix" required>
+            </div>
+            <button type="submit" id="creer" class="btn back-b-marine text-beige ">Créer le match</button>
+        </form>
+    
+        <div class="back-v-b mt-3 py-1" >
+            <div class="h4 text-center text-white">Gestion des files d'attente</div>
+        </div>
+
+        <div id="les_matchs" class="wrapper text-center mt-4">
+            <!--<div class="bulle-attente text-center px-3">
+                <form action="">
+                    <div class="h6 mt-1">Match n°<span id="num_attente">X</span> |
+                        <span id="type_attente">Foot</span>
+                    </div>
+                    <div  id="liste_attente">
+                        <div class="d-flex flex-row justify-content-between border-bottom border-dark p-1">
+                            <div>
+                                <span id="prenom_attente">Prenom </span><span id="nom_attente">Nom</span>
+                            </div>
+                            <div>
+                                <button type="submit" id="refuser" class="btn  btn-sm back-b-marine text-beige ">Refuser</button>
+                                <button type="submit" id="accepter" class="btn btn-sm back-b-marine text-beige ">Accepter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>--> 
+        </div>
+        <div class="back-v-b mt-3 py-1" >
+            <div class="h4 text-center text-white">Saisie des statistiques</div>
+        </div>
+
+        <div id="les_matchs_stat" class="wrapper text-center mt-4">
+            <!--<div class="bulle-attente text-center px-3">
+                <div class="h6 mt-1">Match n°<span id="num_stat">X</span> |
+                    <span id="type_stat">Foot</span>
+                </div>
+                <form>
+                    <div class="d-flex flex-row justify-content-between p-1">
+                        <div>
+                            <div>
+                                Score équipe A
+                            </div>
+                            <div>
+                                <input type="number" class="form-control" id="scoreA" name="scoreA" required>
+                            </div>
+                            
+                        </div>
+                        <div class="mx-auto">
+                            <div>
+                                Score équipe B
+                            </div>
+                            <div >
+                                <input type="number" class="form-control  center" id="scoreB" name="scoreB" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="d-flex flex-column justify-content-between p-1">
+                    <div>
+                        Meilleur joueur
+                    </div>
+                    <div>
+                        <input type="number" class="form-control center mb-1" id="prenom" name="prenom" required>
+                        <input type="number" class="form-control center" id="nom" name="nom" required>
+                    </div>
+                    <button type="submit" id="valider" class="btn btn-sm back-b-marine text-beige mt-2 ">Valider</button>
+
+                </div>
+            </div>-->
+           
+            
+        </div>
+
+        <footer class=" back-v-b">
+            <div class="text-center p-2 align-text-bottom mt-3 py-3">
+                Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!--
+    Créé par Antonin SABIRON et Lucas Le Bihan
+    le 15/06/2022
+    Pour le projet de fin d'année CIR2
+    Fichier contenant la page de création de compte
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="page de creation de compte">
+    <link rel="icon" type="image/x-icon" href="ressources/img/icone.png">
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/general.css">
+    <!-- JavaScript -->
+    <script src="js/ajax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script src="js/creer-compte.js" defer></script>
+    <script src="js/session.js" defer></script>
+    <title>Compte</title>
+</head>
+
+<body class="back">   
+    <header>
+        <nav id="head" class="navbar navbar-expand-lg navbar-light d-flex back-v-b align-items-center flex-column justify-content-center">
+            <a href="index.html" class="nav-link"><span class="h1  text-b-marine">Ça match !</span></a>
+            <ul id="menu" class="navbar-nav d-flex flex-row justify-content-around align-items-center text-center"> 
+                <li class="nav-item  rounded-3 back-b-marine">
+                    <a class="nav-link text-beige" href="index.html">les matchs</a>
+                </li>
+                <li  id="nav2" class="nav-item  rounded-3 back-b-marine" >
+                    <a class="nav-link text-beige"  href="organisation.html">créer un match</a>
+                </li>
+                <li id="connexion" class="nav-item rounded-3 back-b-marine">
+                    <a class="nav-link  text-beige" href="authentification.html">connexion</a>
+                </li>
+                <li id="profil" class="nav-item back-b-marine rounded-3 ">
+                    <a class="nav-link text-beige" href="profil.html">profil
+                        <span id="photo-bouton"><img src="ressources\img\image-vide.jpg" height="32" width="32" alt="photo profil"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="page" class="back">
+        <div class="titre-page back-b-marine text-center h2 text-marron py-1">
+            Créer un compte
+        </div>
+        <form id="creer-compte" class="text-center center d-flex justify-content-center flex-column align-items-center">
+            <div class="form-group vw-60 mb-2">
+                <label for="nom">Entrer votre nom</label>
+                <input type="name" class="form-control" id="nom" name="nom" required >
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="prenom">Entrer votre prénom</label>
+                <input type="name" class="form-control" id="prenom" name="prenom" required >
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="email">Entrer votre email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="jean.dupond@gmail.com"  required >
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="mdp">Entrer votre mot de passe</label>
+                <input type="password" class="form-control" id="mdp" name="mdp" required>
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="ville">Entrer votre ville</label>
+                <select class="ville" id="ville">
+                </select>
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="fs">Entrez votre forme sportive</label>
+                <select class="fs" name="fs" id="fs"required>
+                </select>
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="avatar">Entrer votre photo de profil</label>
+                <select name="photo" id="photo"></select>
+            </div>
+            <div class="form-group vw-60 mb-2">
+                <label for="date_naissance">Entrer votre date de naissance</label>
+                <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+            </div>
+            <button type="submit" class="btn back-b-marine text-beige ">Valider</button>
+        </form>
+
+        </div>
+    <footer class=" back-v-b">
+        <div class="text-center p-2 align-text-bottom mt-3 py-3">
+            Projet CIR2 | Antonin SABIRON - Lucas LE BIHAN
+        </div>
+    </footer>
+</body>
+</html>
