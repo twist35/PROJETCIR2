@@ -18,13 +18,13 @@
 utilisation de unzip :
 
 ```bash
-unzip fichier_compréssé
+unzip fichier compréssé
 ```
 
 - Copier ces fichiers dans le bon répertoire :
 
 ```bash
-sudo cp -r ~/nomfichier_code/* /var/www/html
+sudo cp -r ~/nomfichier_dezip/* /var/www/html
 ```
 
 - se déplacer au serveur Apache
@@ -55,7 +55,7 @@ exit
 
 ```
 
-- executer le script sql fourni
+- executer le script sql fourni 
 
 Avec le mot de passe : isen29
 
@@ -82,7 +82,7 @@ anto@gmail.com / 1234
 ### Villes
 
 Les villes doivent être rentrées dans la base de données.
-Il existe par défaut quelques Villes :
+Il existe par défaut 5 Villes :
 
 - Brest
 - Quimper
@@ -99,7 +99,7 @@ Il existe par défaut quelques Villes :
 
 La page de recherche (index.html) permet d'effectuer un tri des matchs.
 
-Il faut rentrer une date futur et une ville afin d'avoir un intervalle entre aujourd'hui et cette date.
+Il faut rentrer une date futur afin d'avoir un intervalle entre aujourd'hui et cette date.
 
 ## Fonctionnalités bonus
 
